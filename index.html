@@ -199,31 +199,31 @@ function GuideModal({onClose}){
       <div style={{background:"white",borderRadius:"24px 24px 0 0",width:"100%",maxWidth:"480px",maxHeight:"88vh",display:"flex",flexDirection:"column",overflow:"hidden"}} onClick={e=>e.stopPropagation()}>
         <div style={{background:"linear-gradient(135deg,#1e1b4b,#4c1d95)",padding:"20px 20px 0",color:"white",flexShrink:0}}>
           <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"14px"}}>
-            <h2 style={{margin:0,fontSize:"17px",fontWeight:"900"}}>📖 이용 가이드</h2>
-            <button onClick={onClose} style={{background:"rgba(255,255,255,0.15)",border:"none",borderRadius:"50%",width:"32px",height:"32px",color:"white",fontSize:"16px",cursor:"pointer"}}>✕</button>
+            <h2 style={{margin:0,fontSize:"18px",fontWeight:"900"}}>📖 이용 가이드</h2>
+            <button onClick={onClose} style={{background:"rgba(255,255,255,0.15)",border:"none",borderRadius:"50%",width:"32px",height:"32px",color:"white",fontSize:"18px",cursor:"pointer"}}>✕</button>
           </div>
           <div style={{display:"flex",gap:"2px"}}>
-            {TABS.map(t=>(<button key={t.id} onClick={()=>setTab(t.id)} style={{flex:1,border:"none",cursor:"pointer",padding:"9px 6px",borderRadius:"10px 10px 0 0",fontSize:"12px",fontWeight:"800",background:tab===t.id?"white":"transparent",color:tab===t.id?"#7C3AED":"rgba(255,255,255,0.6)"}}>{t.emoji} {t.label}</button>))}
+            {TABS.map(t=>(<button key={t.id} onClick={()=>setTab(t.id)} style={{flex:1,border:"none",cursor:"pointer",padding:"9px 6px",borderRadius:"10px 10px 0 0",fontSize:"18px",fontWeight:"800",background:tab===t.id?"white":"transparent",color:tab===t.id?"#7C3AED":"rgba(255,255,255,0.6)"}}>{t.emoji} {t.label}</button>))}
           </div>
         </div>
         <div style={{overflowY:"auto",padding:"20px 20px 32px",flex:1}}>
           {tab==="participant"?(
             <div style={{display:"flex",flexDirection:"column",gap:"12px"}}>
-              <div style={{background:"linear-gradient(135deg,#f5f3ff,#fce7f3)",borderRadius:"14px",padding:"16px",fontSize:"12px",color:"#374151",lineHeight:1.8}}>별도 계정 없이 바로 참여 가능해요. 🎓 진단 참여 버튼을 누르세요.</div>
+              <div style={{background:"linear-gradient(135deg,#f5f3ff,#fce7f3)",borderRadius:"14px",padding:"16px",fontSize:"18px",color:"#374151",lineHeight:1.8}}>별도 계정 없이 바로 참여 가능해요. 🎓 진단 참여 버튼을 누르세요.</div>
               {[{step:"01",title:"행사 선택",desc:"활성화된 행사를 선택하거나 '일반 진단'을 선택하세요."},{step:"02",title:"기본 정보 입력",desc:"이름(필수), 전공 입력 후 팀 참가는 팀명을, 개인 참가는 '개인 참가' 버튼을 선택하세요."},{step:"03",title:"24문항 응답",desc:"6가지 역량 24문항에 솔직하게 답해주세요. 약 5분 소요."},{step:"04",title:"개인정보 동의",desc:"개인정보 수집·이용 동의 후 AI 분석 결과를 볼 수 있어요."},{step:"05",title:"결과 확인",desc:"종합 점수, 역량 차트, AI 유형, 팀 포지션, 액션 플랜 확인."}].map(({step,title,desc})=>(
                 <div key={step} style={{display:"flex",gap:"12px",alignItems:"flex-start"}}>
-                  <div style={{width:"28px",height:"28px",borderRadius:"50%",background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"10px",fontWeight:"900",flexShrink:0}}>{step}</div>
-                  <div><div style={{fontSize:"13px",fontWeight:"800",color:"#1e1b4b",marginBottom:"3px"}}>{title}</div><div style={{fontSize:"12px",color:"#6B7280",lineHeight:1.7}}>{desc}</div></div>
+                  <div style={{width:"28px",height:"28px",borderRadius:"50%",background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"18px",fontWeight:"900",flexShrink:0}}>{step}</div>
+                  <div><div style={{fontSize:"18px",fontWeight:"800",color:"#1e1b4b",marginBottom:"3px"}}>{title}</div><div style={{fontSize:"18px",color:"#6B7280",lineHeight:1.7}}>{desc}</div></div>
                 </div>
               ))}
             </div>
           ):(
             <div style={{display:"flex",flexDirection:"column",gap:"12px"}}>
-              <div style={{background:"linear-gradient(135deg,#eff6ff,#f0fdf4)",borderRadius:"14px",padding:"16px",fontSize:"12px",color:"#374151",lineHeight:1.8}}>기관코드+비밀번호, 이메일, 공유코드(PTIDNA2026) 세 가지 방식으로 접속할 수 있어요.</div>
+              <div style={{background:"linear-gradient(135deg,#eff6ff,#f0fdf4)",borderRadius:"14px",padding:"16px",fontSize:"18px",color:"#374151",lineHeight:1.8}}>기관코드+비밀번호, 이메일, 공유코드(PTIDNA2026) 세 가지 방식으로 접속할 수 있어요.</div>
               {[{t:"📊 현황",d:"참가자 수·평균·역량별 분포 확인"},{t:"📅 행사 관리",d:"행사 생성·활성화/비활성화"},{t:"👥 참가자",d:"역량 점수 조회 및 정렬"},{t:"🧩 팀 빌딩",d:"역량 기반 균형 팀 자동 구성"},{t:"📋 결과보고서",d:"5명 이상 시 보고서 요청"}].map(({t,d})=>(
                 <div key={t} style={{background:"white",borderRadius:"10px",padding:"12px 14px",border:"1px solid #e5e7eb"}}>
-                  <div style={{fontSize:"12px",fontWeight:"800",color:"#7C3AED",marginBottom:"4px"}}>{t}</div>
-                  <div style={{fontSize:"12px",color:"#6B7280"}}>{d}</div>
+                  <div style={{fontSize:"18px",fontWeight:"800",color:"#7C3AED",marginBottom:"4px"}}>{t}</div>
+                  <div style={{fontSize:"18px",color:"#6B7280"}}>{d}</div>
                 </div>
               ))}
             </div>
@@ -267,28 +267,28 @@ function LandingPage({onSubLogin,onSuperLogin,onParticipant}){
       <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"16px 24px",borderBottom:"1px solid rgba(255,255,255,0.08)",flexWrap:"wrap",gap:"8px",position:"sticky",top:0,background:"rgba(15,10,46,0.95)",backdropFilter:"blur(10px)",zIndex:100}}>
         <div style={{display:"flex",alignItems:"center",gap:"10px"}}>
           <span style={{fontSize:"22px"}}>🧬</span>
-          <div><div style={{fontSize:"13px",fontWeight:"900",letterSpacing:"1px"}}>창업 역량 진단</div><div style={{fontSize:"10px",opacity:.5}}>by {COMPANY.name}</div></div>
+          <div><div style={{fontSize:"18px",fontWeight:"900",letterSpacing:"1px"}}>창업 역량 진단</div><div style={{fontSize:"18px",opacity:.5}}>by {COMPANY.name}</div></div>
         </div>
         <div style={{display:"flex",gap:"6px",flexWrap:"wrap"}}>
-          <button className="lbtn" onClick={()=>setShowGuide(true)} style={{background:"rgba(255,255,255,0.08)",color:"rgba(255,255,255,0.7)",border:"1px solid rgba(255,255,255,0.15)",borderRadius:"20px",padding:"7px 12px",fontSize:"11px",fontWeight:"700"}}>📖 가이드</button>
-          <button className="lbtn" onClick={onParticipant} style={{background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",borderRadius:"20px",padding:"8px 14px",fontSize:"11px",fontWeight:"800"}}>🧬 진단하기</button>
-          <button className="lbtn" onClick={onSubLogin} style={{background:"rgba(167,139,250,0.2)",color:"#c4b5fd",border:"1px solid rgba(167,139,250,0.4)",borderRadius:"20px",padding:"8px 14px",fontSize:"11px",fontWeight:"700"}}>🏫 기관</button>
-          <button className="lbtn" onClick={onSuperLogin} style={{background:"rgba(255,255,255,0.08)",color:"rgba(255,255,255,0.5)",border:"1px solid rgba(255,255,255,0.1)",borderRadius:"20px",padding:"8px 12px",fontSize:"11px",fontWeight:"600"}}>🔐</button>
+          <button className="lbtn" onClick={()=>setShowGuide(true)} style={{background:"rgba(255,255,255,0.08)",color:"rgba(255,255,255,0.7)",border:"1px solid rgba(255,255,255,0.15)",borderRadius:"20px",padding:"7px 12px",fontSize:"18px",fontWeight:"700"}}>📖 가이드</button>
+          <button className="lbtn" onClick={onParticipant} style={{background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",borderRadius:"20px",padding:"8px 14px",fontSize:"18px",fontWeight:"800"}}>🧬 진단하기</button>
+          <button className="lbtn" onClick={onSubLogin} style={{background:"rgba(167,139,250,0.2)",color:"#c4b5fd",border:"1px solid rgba(167,139,250,0.4)",borderRadius:"20px",padding:"8px 14px",fontSize:"18px",fontWeight:"700"}}>🏫 기관</button>
+          <button className="lbtn" onClick={onSuperLogin} style={{background:"rgba(255,255,255,0.08)",color:"rgba(255,255,255,0.5)",border:"1px solid rgba(255,255,255,0.1)",borderRadius:"20px",padding:"8px 12px",fontSize:"18px",fontWeight:"600"}}>🔐</button>
         </div>
       </div>
 
       {/* 히어로 */}
       <div style={{textAlign:"center",padding:"80px 20px 60px",background:"radial-gradient(ellipse at 50% 0%,rgba(124,58,237,0.2) 0%,transparent 70%)"}}>
-        <div className="fade1" style={{fontSize:"11px",fontWeight:"800",letterSpacing:"4px",color:"#a78bfa",marginBottom:"16px"}}>RESEARCH-BASED · STARTUP DNA PLATFORM</div>
+        <div className="fade1" style={{fontSize:"18px",fontWeight:"800",letterSpacing:"4px",color:"#a78bfa",marginBottom:"16px"}}>RESEARCH-BASED · STARTUP DNA PLATFORM</div>
         <h1 className="fade2" style={{margin:"0 0 20px",fontSize:"clamp(28px,5vw,48px)",fontWeight:"900",lineHeight:1.2}}>내 안의 창업 DNA를<br/><span style={{background:"linear-gradient(135deg,#a78bfa,#f472b6)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent"}}>지금 발견해보세요</span></h1>
         <p className="fade3" style={{margin:"0 0 36px",fontSize:"clamp(13px,2vw,17px)",opacity:.7,lineHeight:1.8,maxWidth:"560px",marginLeft:"auto",marginRight:"auto"}}>나는 어떤 창업가 유형일까? 어떤 역량이 강하고 어떤 부분을 키워야 할까?<br/>5분 진단으로 6가지 창업 역량을 데이터로 확인하세요</p>
         <div style={{display:"flex",gap:"12px",justifyContent:"center",flexWrap:"wrap",marginBottom:"60px"}}>
-          <button className="lbtn" onClick={onParticipant} style={{background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",borderRadius:"50px",padding:"16px 36px",fontSize:"15px",fontWeight:"900"}}>🧬 내 창업 DNA 진단하기 →</button>
-          <button className="lbtn" onClick={()=>setShowReg(true)} style={{background:"rgba(255,255,255,0.1)",color:"white",border:"1px solid rgba(255,255,255,0.2)",borderRadius:"50px",padding:"16px 24px",fontSize:"14px",fontWeight:"700"}}>🏫 기관 도입 신청</button>
+          <button className="lbtn" onClick={onParticipant} style={{background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",borderRadius:"50px",padding:"16px 36px",fontSize:"18px",fontWeight:"900"}}>🧬 내 창업 DNA 진단하기 →</button>
+          <button className="lbtn" onClick={()=>setShowReg(true)} style={{background:"rgba(255,255,255,0.1)",color:"white",border:"1px solid rgba(255,255,255,0.2)",borderRadius:"50px",padding:"16px 24px",fontSize:"18px",fontWeight:"700"}}>🏫 기관 도입 신청</button>
         </div>
         <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(140px,1fr))",gap:"12px",maxWidth:"700px",margin:"0 auto"}}>
           {[{n:"6가지",l:"창업 역량 영역"},{n:"24문항",l:"과학적 진단 설계"},{n:"5분",l:"소요 시간"},{n:"AI",l:"역량 유형 분석"}].map(({n,l})=>(
-            <div key={l} className="stat-card"><div style={{fontSize:"24px",fontWeight:"900",color:"#a78bfa",marginBottom:"4px"}}>{n}</div><div style={{fontSize:"11px",opacity:.6}}>{l}</div></div>
+            <div key={l} className="stat-card"><div style={{fontSize:"24px",fontWeight:"900",color:"#a78bfa",marginBottom:"4px"}}>{n}</div><div style={{fontSize:"18px",opacity:.6}}>{l}</div></div>
           ))}
         </div>
       </div>
@@ -296,9 +296,9 @@ function LandingPage({onSubLogin,onSuperLogin,onParticipant}){
       {/* 섹션1: 개인 공감 — 페르소나 + 샘플 결과 */}
       <div style={{maxWidth:"960px",margin:"0 auto",padding:"70px 20px"}}>
         <div style={{textAlign:"center",marginBottom:"48px"}}>
-          <div style={{fontSize:"11px",fontWeight:"800",letterSpacing:"3px",color:"#f472b6",marginBottom:"12px"}}>WHO NEEDS THIS?</div>
+          <div style={{fontSize:"18px",fontWeight:"800",letterSpacing:"3px",color:"#f472b6",marginBottom:"12px"}}>WHO NEEDS THIS?</div>
           <h2 style={{margin:"0 0 12px",fontSize:"clamp(22px,4vw,32px)",fontWeight:"900"}}>이런 분들, 공감하시나요?</h2>
-          <p style={{margin:0,fontSize:"14px",opacity:.6,lineHeight:1.8}}>창업에 관심은 있지만, 내가 어떤 역량을 가진 사람인지<br/>한 번도 제대로 확인해본 적이 없었을 거예요</p>
+          <p style={{margin:0,fontSize:"18px",opacity:.6,lineHeight:1.8}}>창업에 관심은 있지만, 내가 어떤 역량을 가진 사람인지<br/>한 번도 제대로 확인해본 적이 없었을 거예요</p>
         </div>
         <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"24px",alignItems:"stretch"}}>
           {/* 페르소나 카드들 */}
@@ -313,11 +313,11 @@ function LandingPage({onSubLogin,onSuperLogin,onParticipant}){
                 <div style={{fontSize:"28px",flexShrink:0}}>{avatar}</div>
                 <div>
                   <div style={{display:"flex",alignItems:"center",gap:"7px",flexWrap:"wrap",marginBottom:"6px"}}>
-                    <span style={{fontSize:"13px",fontWeight:"900"}}>{name}</span>
-                    <span style={{fontSize:"10px",background:"rgba(167,139,250,0.2)",color:"#c4b5fd",fontWeight:"700",padding:"1px 8px",borderRadius:"20px"}}>{tag}</span>
+                    <span style={{fontSize:"18px",fontWeight:"900"}}>{name}</span>
+                    <span style={{fontSize:"18px",background:"rgba(167,139,250,0.2)",color:"#c4b5fd",fontWeight:"700",padding:"1px 8px",borderRadius:"20px"}}>{tag}</span>
                   </div>
-                  <p style={{margin:"0 0 8px",fontSize:"12px",opacity:.7,lineHeight:1.7,fontStyle:"italic"}}>"{story}"</p>
-                  <div style={{fontSize:"11px",color:"#a78bfa",fontWeight:"700"}}>{insight}</div>
+                  <p style={{margin:"0 0 8px",fontSize:"18px",opacity:.7,lineHeight:1.7,fontStyle:"italic"}}>"{story}"</p>
+                  <div style={{fontSize:"18px",color:"#a78bfa",fontWeight:"700"}}>{insight}</div>
                 </div>
               </div>
             ))}
@@ -325,18 +325,18 @@ function LandingPage({onSubLogin,onSuperLogin,onParticipant}){
           {/* 샘플 결과 미리보기 */}
           <div style={{position:"sticky",top:"80px",alignSelf:"flex-start"}}>
             <div style={{background:"linear-gradient(145deg,#1e1b4b,#2d1b69)",border:"1px solid rgba(167,139,250,0.3)",borderRadius:"24px",padding:"24px",boxShadow:"0 20px 60px rgba(124,58,237,0.3)"}}>
-              <div style={{fontSize:"10px",fontWeight:"800",letterSpacing:"2px",color:"#a78bfa",marginBottom:"12px",textAlign:"center"}}>✨ 진단 결과 예시</div>
+              <div style={{fontSize:"18px",fontWeight:"800",letterSpacing:"2px",color:"#a78bfa",marginBottom:"12px",textAlign:"center"}}>✨ 진단 결과 예시</div>
               <div style={{textAlign:"center",marginBottom:"16px"}}>
                 <div style={{fontSize:"20px",fontWeight:"900",marginBottom:"4px"}}>💡 성장형 혁신가</div>
-                <div style={{fontSize:"12px",opacity:.6,marginBottom:"12px"}}>아이디어를 현실로 만드는 힘이 있어!</div>
+                <div style={{fontSize:"18px",opacity:.6,marginBottom:"12px"}}>아이디어를 현실로 만드는 힘이 있어!</div>
                 <div style={{display:"inline-flex",gap:"8px"}}>
                   <div style={{background:"rgba(255,255,255,0.1)",borderRadius:"10px",padding:"8px 16px",textAlign:"center"}}>
                     <div style={{fontSize:"22px",fontWeight:"900",color:"#a78bfa"}}>74</div>
-                    <div style={{fontSize:"10px",opacity:.5}}>종합 점수</div>
+                    <div style={{fontSize:"18px",opacity:.5}}>종합 점수</div>
                   </div>
                   <div style={{background:"rgba(255,255,255,0.1)",borderRadius:"10px",padding:"8px 16px",textAlign:"center"}}>
-                    <div style={{fontSize:"14px",fontWeight:"900",color:"#34d399"}}>우수</div>
-                    <div style={{fontSize:"10px",opacity:.5}}>역량 등급</div>
+                    <div style={{fontSize:"18px",fontWeight:"900",color:"#34d399"}}>우수</div>
+                    <div style={{fontSize:"18px",opacity:.5}}>역량 등급</div>
                   </div>
                 </div>
               </div>
@@ -368,8 +368,8 @@ function LandingPage({onSubLogin,onSuperLogin,onParticipant}){
                   return(
                     <div key={key}>
                       <div style={{display:"flex",justifyContent:"space-between",marginBottom:"2px"}}>
-                        <span style={{fontSize:"10px",fontWeight:"700",opacity:.8}}>{d.emoji} {d.label}</span>
-                        <span style={{fontSize:"10px",fontWeight:"900",color:d.color}}>{v}</span>
+                        <span style={{fontSize:"18px",fontWeight:"700",opacity:.8}}>{d.emoji} {d.label}</span>
+                        <span style={{fontSize:"18px",fontWeight:"900",color:d.color}}>{v}</span>
                       </div>
                       <div style={{background:"rgba(255,255,255,0.1)",borderRadius:"100px",height:"4px"}}>
                         <div style={{background:d.color,height:"4px",width:`${v}%`,borderRadius:"100px"}}/>
@@ -379,10 +379,10 @@ function LandingPage({onSubLogin,onSuperLogin,onParticipant}){
                 })}
               </div>
               <div style={{background:"rgba(124,58,237,0.2)",borderRadius:"10px",padding:"10px 12px",textAlign:"center"}}>
-                <div style={{fontSize:"10px",opacity:.6,marginBottom:"3px"}}>🎯 최적 팀 포지션</div>
-                <div style={{fontSize:"12px",fontWeight:"800"}}>시장조사 리더 — 기회 포착의 달인</div>
+                <div style={{fontSize:"18px",opacity:.6,marginBottom:"3px"}}>🎯 최적 팀 포지션</div>
+                <div style={{fontSize:"18px",fontWeight:"800"}}>시장조사 리더 — 기회 포착의 달인</div>
               </div>
-              <button onClick={onParticipant} className="lbtn" style={{width:"100%",marginTop:"14px",background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",borderRadius:"12px",padding:"11px",fontSize:"13px",fontWeight:"900"}}>🧬 나도 진단해보기 →</button>
+              <button onClick={onParticipant} className="lbtn" style={{width:"100%",marginTop:"14px",background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",borderRadius:"12px",padding:"11px",fontSize:"18px",fontWeight:"900"}}>🧬 나도 진단해보기 →</button>
             </div>
           </div>
         </div>
@@ -397,11 +397,11 @@ function LandingPage({onSubLogin,onSuperLogin,onParticipant}){
       <div style={{background:"rgba(255,255,255,0.02)",borderTop:"1px solid rgba(255,255,255,0.06)",borderBottom:"1px solid rgba(255,255,255,0.06)",padding:"70px 20px"}}>
         <div style={{maxWidth:"860px",margin:"0 auto"}}>
           <div style={{textAlign:"center",marginBottom:"10px"}}>
-            <span style={{fontSize:"11px",fontWeight:"800",letterSpacing:"3px",color:"#a78bfa",background:"rgba(167,139,250,0.1)",padding:"4px 14px",borderRadius:"20px"}}>🎓 참가자라면</span>
+            <span style={{fontSize:"18px",fontWeight:"800",letterSpacing:"3px",color:"#a78bfa",background:"rgba(167,139,250,0.1)",padding:"4px 14px",borderRadius:"20px"}}>🎓 참가자라면</span>
           </div>
           <div style={{textAlign:"center",marginBottom:"48px",marginTop:"16px"}}>
             <h2 style={{margin:"0 0 12px",fontSize:"clamp(22px,4vw,32px)",fontWeight:"900"}}>5분 진단으로 이걸 알게 됩니다</h2>
-            <p style={{margin:0,fontSize:"14px",opacity:.6,lineHeight:1.8}}>막연했던 '나의 창업 가능성'이 데이터로 보이기 시작해요</p>
+            <p style={{margin:0,fontSize:"18px",opacity:.6,lineHeight:1.8}}>막연했던 '나의 창업 가능성'이 데이터로 보이기 시작해요</p>
           </div>
           <div style={{display:"grid",gridTemplateColumns:"repeat(2,1fr)",gap:"16px",marginBottom:"32px"}}>
             {[
@@ -412,8 +412,8 @@ function LandingPage({onSubLogin,onSuperLogin,onParticipant}){
             ].map(({e,t,d,c})=>(
               <div key={t} className="feature-card">
                 <div style={{fontSize:"28px",marginBottom:"10px"}}>{e}</div>
-                <div style={{fontSize:"13px",fontWeight:"900",color:c,marginBottom:"8px"}}>{t}</div>
-                <div style={{fontSize:"12px",opacity:.65,lineHeight:1.8}}>{d}</div>
+                <div style={{fontSize:"18px",fontWeight:"900",color:c,marginBottom:"8px"}}>{t}</div>
+                <div style={{fontSize:"18px",opacity:.65,lineHeight:1.8}}>{d}</div>
               </div>
             ))}
           </div>
@@ -421,23 +421,23 @@ function LandingPage({onSubLogin,onSuperLogin,onParticipant}){
           {/* 6가지 역량 인라인 */}
           <div style={{background:"rgba(255,255,255,0.03)",borderRadius:"20px",padding:"24px",marginBottom:"32px"}}>
             <div style={{textAlign:"center",marginBottom:"20px"}}>
-              <div style={{fontSize:"11px",fontWeight:"800",letterSpacing:"3px",color:"#a78bfa",marginBottom:"6px"}}>6 COMPETENCIES</div>
-              <div style={{fontSize:"15px",fontWeight:"900"}}>측정하는 6가지 창업 역량</div>
+              <div style={{fontSize:"18px",fontWeight:"800",letterSpacing:"3px",color:"#a78bfa",marginBottom:"6px"}}>6 COMPETENCIES</div>
+              <div style={{fontSize:"18px",fontWeight:"900"}}>측정하는 6가지 창업 역량</div>
             </div>
             <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"8px"}}>
               {DIMS.map(d=>(
                 <div key={d.key} style={{background:"rgba(255,255,255,0.04)",border:`1px solid ${d.color}30`,borderRadius:"12px",padding:"12px",textAlign:"center"}}>
                   <div style={{fontSize:"20px",marginBottom:"4px"}}>{d.emoji}</div>
-                  <div style={{fontSize:"11px",fontWeight:"900",color:d.color,marginBottom:"4px"}}>{d.label}</div>
-                  <div style={{fontSize:"9px",opacity:.6,lineHeight:1.5}}>{d.desc}</div>
+                  <div style={{fontSize:"18px",fontWeight:"900",color:d.color,marginBottom:"4px"}}>{d.label}</div>
+                  <div style={{fontSize:"18px",opacity:.6,lineHeight:1.5}}>{d.desc}</div>
                 </div>
               ))}
             </div>
           </div>
 
           <div style={{textAlign:"center"}}>
-            <button onClick={onParticipant} className="lbtn" style={{background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",borderRadius:"50px",padding:"16px 40px",fontSize:"15px",fontWeight:"900"}}>🧬 지금 바로 진단해보기 →</button>
-            <div style={{fontSize:"12px",opacity:.4,marginTop:"12px"}}>24문항 · 약 5분 · 즉시 결과 확인</div>
+            <button onClick={onParticipant} className="lbtn" style={{background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",borderRadius:"50px",padding:"16px 40px",fontSize:"18px",fontWeight:"900"}}>🧬 지금 바로 진단해보기 →</button>
+            <div style={{fontSize:"18px",opacity:.4,marginTop:"12px"}}>24문항 · 약 5분 · 즉시 결과 확인</div>
           </div>
         </div>
       </div>
@@ -450,11 +450,11 @@ function LandingPage({onSubLogin,onSuperLogin,onParticipant}){
       <div style={{padding:"70px 20px"}}>
         <div style={{maxWidth:"860px",margin:"0 auto"}}>
           <div style={{textAlign:"center",marginBottom:"10px"}}>
-            <span style={{fontSize:"11px",fontWeight:"800",letterSpacing:"3px",color:"#fbbf24",background:"rgba(251,191,36,0.1)",padding:"4px 14px",borderRadius:"20px"}}>🏫 기관·운영담당자라면</span>
+            <span style={{fontSize:"18px",fontWeight:"800",letterSpacing:"3px",color:"#fbbf24",background:"rgba(251,191,36,0.1)",padding:"4px 14px",borderRadius:"20px"}}>🏫 기관·운영담당자라면</span>
           </div>
           <div style={{textAlign:"center",marginBottom:"48px",marginTop:"16px"}}>
             <h2 style={{margin:"0 0 12px",fontSize:"clamp(22px,4vw,32px)",fontWeight:"900"}}>프로그램 운영, 이런 고민 있으시죠?</h2>
-            <p style={{margin:0,fontSize:"14px",opacity:.6,lineHeight:1.8}}>창업캠프·창업교육·정부지원사업 담당자라면 한번쯤 겪어봤을 상황들</p>
+            <p style={{margin:0,fontSize:"18px",opacity:.6,lineHeight:1.8}}>창업캠프·창업교육·정부지원사업 담당자라면 한번쯤 겪어봤을 상황들</p>
           </div>
           <div style={{display:"grid",gridTemplateColumns:"repeat(2,1fr)",gap:"16px",marginBottom:"40px"}}>
             {[
@@ -466,10 +466,10 @@ function LandingPage({onSubLogin,onSuperLogin,onParticipant}){
               <div key={t} className="need-card">
                 <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:"10px"}}>
                   <div style={{fontSize:"26px"}}>{e}</div>
-                  <span style={{fontSize:"10px",background:"rgba(251,191,36,0.15)",color:"#fbbf24",fontWeight:"700",padding:"2px 8px",borderRadius:"20px"}}>{tag}</span>
+                  <span style={{fontSize:"18px",background:"rgba(251,191,36,0.15)",color:"#fbbf24",fontWeight:"700",padding:"2px 8px",borderRadius:"20px"}}>{tag}</span>
                 </div>
-                <div style={{fontSize:"13px",fontWeight:"800",color:"#fde68a",marginBottom:"8px"}}>{t}</div>
-                <div style={{fontSize:"12px",opacity:.6,lineHeight:1.7}}>{d}</div>
+                <div style={{fontSize:"18px",fontWeight:"800",color:"#fde68a",marginBottom:"8px"}}>{t}</div>
+                <div style={{fontSize:"18px",opacity:.6,lineHeight:1.7}}>{d}</div>
               </div>
             ))}
           </div>
@@ -479,7 +479,7 @@ function LandingPage({onSubLogin,onSuperLogin,onParticipant}){
           <div style={{background:"linear-gradient(135deg,rgba(251,191,36,0.1),rgba(124,58,237,0.18))",border:"1px solid rgba(251,191,36,0.2)",borderRadius:"24px",padding:"32px",marginBottom:"32px",textAlign:"center"}}>
             <div style={{fontSize:"32px",marginBottom:"10px"}}>🧬</div>
             <div style={{fontSize:"18px",fontWeight:"900",marginBottom:"10px"}}>창업 DNA 진단을 프로그램 시작점에 도입하세요</div>
-            <div style={{fontSize:"13px",opacity:.75,lineHeight:1.9,maxWidth:"520px",margin:"0 auto"}}>참가자 전원이 진단을 마치는 순간, 담당자는 실시간 대시보드에서<br/>역량 분포와 팀 구성 데이터를 즉시 확인할 수 있어요.</div>
+            <div style={{fontSize:"18px",opacity:.75,lineHeight:1.9,maxWidth:"520px",margin:"0 auto"}}>참가자 전원이 진단을 마치는 순간, 담당자는 실시간 대시보드에서<br/>역량 분포와 팀 구성 데이터를 즉시 확인할 수 있어요.</div>
           </div>
 
           {/* 기능 3가지 */}
@@ -491,15 +491,15 @@ function LandingPage({onSubLogin,onSuperLogin,onParticipant}){
             ].map(({e,t,d,c})=>(
               <div key={t} style={{background:"rgba(255,255,255,0.05)",border:`1px solid ${c}30`,borderRadius:"16px",padding:"20px",textAlign:"center"}}>
                 <div style={{fontSize:"28px",marginBottom:"10px"}}>{e}</div>
-                <div style={{fontSize:"13px",fontWeight:"900",color:c,marginBottom:"8px"}}>{t}</div>
-                <div style={{fontSize:"11px",opacity:.6,lineHeight:1.7}}>{d}</div>
+                <div style={{fontSize:"18px",fontWeight:"900",color:c,marginBottom:"8px"}}>{t}</div>
+                <div style={{fontSize:"18px",opacity:.6,lineHeight:1.7}}>{d}</div>
               </div>
             ))}
           </div>
 
           {/* 운영 흐름 3단계 */}
           <div style={{background:"rgba(255,255,255,0.03)",borderRadius:"20px",padding:"24px",marginBottom:"32px"}}>
-            <div style={{fontSize:"11px",fontWeight:"800",letterSpacing:"3px",color:"#fbbf24",marginBottom:"20px",textAlign:"center"}}>HOW IT WORKS — 기관 도입 3단계</div>
+            <div style={{fontSize:"18px",fontWeight:"800",letterSpacing:"3px",color:"#fbbf24",marginBottom:"20px",textAlign:"center"}}>HOW IT WORKS — 기관 도입 3단계</div>
             {[
               {n:"01",t:"기관 도입 신청",d:"신청 후 24시간 내 담당자가 직접 연락드리고 로그인 코드를 발급해드려요."},
               {n:"02",t:"행사 생성 & 참가자 링크 배포",d:"대시보드에서 프로그램 행사를 만들고 참가자에게 링크만 공유하세요."},
@@ -507,8 +507,8 @@ function LandingPage({onSubLogin,onSuperLogin,onParticipant}){
             ].map(({n,t,d},i)=>(
               <div key={n}>
                 <div style={{display:"flex",gap:"14px",alignItems:"flex-start",padding:"10px 0"}}>
-                  <div style={{width:"36px",height:"36px",borderRadius:"50%",background:"linear-gradient(135deg,#fbbf24,#f59e0b)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"11px",fontWeight:"900",flexShrink:0,color:"#1e1b4b"}}>{n}</div>
-                  <div><div style={{fontSize:"14px",fontWeight:"900",marginBottom:"4px"}}>{t}</div><div style={{fontSize:"12px",opacity:.6,lineHeight:1.7}}>{d}</div></div>
+                  <div style={{width:"36px",height:"36px",borderRadius:"50%",background:"linear-gradient(135deg,#fbbf24,#f59e0b)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"18px",fontWeight:"900",flexShrink:0,color:"#1e1b4b"}}>{n}</div>
+                  <div><div style={{fontSize:"18px",fontWeight:"900",marginBottom:"4px"}}>{t}</div><div style={{fontSize:"18px",opacity:.6,lineHeight:1.7}}>{d}</div></div>
                 </div>
                 {i<2&&<div style={{width:"2px",height:"20px",background:"linear-gradient(to bottom,#fbbf24,#f59e0b)",marginLeft:"17px"}}/>}
               </div>
@@ -516,8 +516,8 @@ function LandingPage({onSubLogin,onSuperLogin,onParticipant}){
           </div>
 
           <div style={{textAlign:"center"}}>
-            <button onClick={()=>setShowReg(true)} className="lbtn" style={{background:"linear-gradient(135deg,#fbbf24,#f59e0b)",color:"#1e1b4b",borderRadius:"50px",padding:"16px 40px",fontSize:"15px",fontWeight:"900"}}>🏫 기관 도입 신청하기 →</button>
-            <div style={{fontSize:"12px",opacity:.4,marginTop:"12px"}}>신청 후 24시간 내 담당자가 직접 연락드립니다</div>
+            <button onClick={()=>setShowReg(true)} className="lbtn" style={{background:"linear-gradient(135deg,#fbbf24,#f59e0b)",color:"#1e1b4b",borderRadius:"50px",padding:"16px 40px",fontSize:"18px",fontWeight:"900"}}>🏫 기관 도입 신청하기 →</button>
+            <div style={{fontSize:"18px",opacity:.4,marginTop:"12px"}}>신청 후 24시간 내 담당자가 직접 연락드립니다</div>
           </div>
         </div>
       </div>
@@ -528,10 +528,10 @@ function LandingPage({onSubLogin,onSuperLogin,onParticipant}){
       <div style={{background:"rgba(255,255,255,0.02)",borderTop:"1px solid rgba(255,255,255,0.06)",padding:"70px 20px"}}>
         <div style={{maxWidth:"640px",margin:"0 auto",textAlign:"center"}}>
           <div style={{marginBottom:"10px"}}>
-            <span style={{fontSize:"11px",fontWeight:"800",letterSpacing:"3px",color:"#34d399",background:"rgba(52,211,153,0.1)",padding:"4px 14px",borderRadius:"20px"}}>👤 개인으로 해보고 싶다면</span>
+            <span style={{fontSize:"18px",fontWeight:"800",letterSpacing:"3px",color:"#34d399",background:"rgba(52,211,153,0.1)",padding:"4px 14px",borderRadius:"20px"}}>👤 개인으로 해보고 싶다면</span>
           </div>
           <h2 style={{margin:"20px 0 12px",fontSize:"clamp(20px,4vw,28px)",fontWeight:"900"}}>프로그램 참가 없이도<br/>지금 바로 진단할 수 있어요</h2>
-          <p style={{margin:"0 0 32px",fontSize:"14px",opacity:.6,lineHeight:1.8}}>창업에 관심 있는 누구나 — 대학생, 직장인, 예비창업자<br/>링크 하나로 내 창업 DNA를 바로 확인하세요</p>
+          <p style={{margin:"0 0 32px",fontSize:"18px",opacity:.6,lineHeight:1.8}}>창업에 관심 있는 누구나 — 대학생, 직장인, 예비창업자<br/>링크 하나로 내 창업 DNA를 바로 확인하세요</p>
           <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"10px",marginBottom:"36px"}}>
             {[
               {e:"🚀",t:"즉시 결과 확인",d:"진단 완료 즉시 유형·점수·포지션"},
@@ -540,22 +540,22 @@ function LandingPage({onSubLogin,onSuperLogin,onParticipant}){
             ].map(({e,t,d})=>(
               <div key={t} style={{background:"rgba(52,211,153,0.06)",border:"1px solid rgba(52,211,153,0.15)",borderRadius:"14px",padding:"16px"}}>
                 <div style={{fontSize:"24px",marginBottom:"6px"}}>{e}</div>
-                <div style={{fontSize:"12px",fontWeight:"900",color:"#34d399",marginBottom:"4px"}}>{t}</div>
-                <div style={{fontSize:"11px",opacity:.6,lineHeight:1.5}}>{d}</div>
+                <div style={{fontSize:"18px",fontWeight:"900",color:"#34d399",marginBottom:"4px"}}>{t}</div>
+                <div style={{fontSize:"18px",opacity:.6,lineHeight:1.5}}>{d}</div>
               </div>
             ))}
           </div>
-          <button onClick={onParticipant} className="lbtn" style={{background:"linear-gradient(135deg,#059669,#34d399)",color:"white",borderRadius:"50px",padding:"15px 36px",fontSize:"15px",fontWeight:"900",marginBottom:"32px"}}>🧬 개인 진단 시작하기 →</button>
+          <button onClick={onParticipant} className="lbtn" style={{background:"linear-gradient(135deg,#059669,#34d399)",color:"white",borderRadius:"50px",padding:"15px 36px",fontSize:"18px",fontWeight:"900",marginBottom:"32px"}}>🧬 개인 진단 시작하기 →</button>
 
           {/* 하단 연락처 */}
           <div style={{borderTop:"1px solid rgba(255,255,255,0.06)",paddingTop:"32px"}}>
-            <div style={{fontSize:"12px",opacity:.4,marginBottom:"12px"}}>도입 문의 · 협업 제안</div>
-            <div style={{display:"flex",gap:"16px",justifyContent:"center",flexWrap:"wrap",fontSize:"12px",opacity:.6}}>
+            <div style={{fontSize:"18px",opacity:.4,marginBottom:"12px"}}>도입 문의 · 협업 제안</div>
+            <div style={{display:"flex",gap:"16px",justifyContent:"center",flexWrap:"wrap",fontSize:"18px",opacity:.6}}>
               <span>📞 {COMPANY.phone}</span>
               <span>📧 {COMPANY.email}</span>
               <a href={COMPANY.kakao} target="_blank" rel="noreferrer" style={{color:"#fde68a",textDecoration:"none",fontWeight:"700"}}>💬 카카오 문의</a>
             </div>
-            <p style={{margin:"20px 0 0",fontSize:"11px",opacity:.3}}>© {new Date().getFullYear()} {COMPANY.name} · All rights reserved</p>
+            <p style={{margin:"20px 0 0",fontSize:"18px",opacity:.3}}>© {new Date().getFullYear()} {COMPANY.name} · All rights reserved</p>
           </div>
         </div>
       </div>
@@ -566,26 +566,26 @@ function LandingPage({onSubLogin,onSuperLogin,onParticipant}){
               <div style={{textAlign:"center"}}>
                 <div style={{fontSize:"48px",marginBottom:"12px"}}>✅</div>
                 <h2 style={{margin:"0 0 8px",color:"white",fontSize:"18px",fontWeight:"900"}}>신청 완료!</h2>
-                <p style={{margin:"0 0 16px",fontSize:"13px",color:"rgba(255,255,255,0.7)"}}>24시간 내 이메일로 접속 코드를 보내드립니다.</p>
+                <p style={{margin:"0 0 16px",fontSize:"18px",color:"rgba(255,255,255,0.7)"}}>24시간 내 이메일로 접속 코드를 보내드립니다.</p>
                 <div style={{background:"rgba(167,139,250,0.15)",borderRadius:"12px",padding:"14px",marginBottom:"20px"}}>
-                  <div style={{fontSize:"11px",color:"rgba(255,255,255,0.5)",marginBottom:"4px"}}>접수 확인 번호 (로그인 코드 아님)</div>
+                  <div style={{fontSize:"18px",color:"rgba(255,255,255,0.5)",marginBottom:"4px"}}>접수 확인 번호 (로그인 코드 아님)</div>
                   <div style={{fontSize:"18px",fontWeight:"900",color:"#c4b5fd",letterSpacing:"2px"}}>{regDone}</div>
-                  <div style={{fontSize:"11px",color:"rgba(255,255,255,0.4)",marginTop:"8px",lineHeight:1.6}}>📌 이 번호는 접수 확인용이에요.<br/>승인 후 <strong style={{color:"#a78bfa"}}>등록 이메일</strong>로 로그인 코드를 보내드립니다.<br/>승인되면 <strong style={{color:"#a78bfa"}}>이메일로 로그인</strong>도 가능해요.</div>
+                  <div style={{fontSize:"18px",color:"rgba(255,255,255,0.4)",marginTop:"8px",lineHeight:1.6}}>📌 이 번호는 접수 확인용이에요.<br/>승인 후 <strong style={{color:"#a78bfa"}}>등록 이메일</strong>로 로그인 코드를 보내드립니다.<br/>승인되면 <strong style={{color:"#a78bfa"}}>이메일로 로그인</strong>도 가능해요.</div>
                 </div>
-                <button onClick={()=>{setShowReg(false);setRegDone(null);setRegForm({org:"",contact:"",email:"",phone:""});}} style={{background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",border:"none",borderRadius:"12px",padding:"12px 28px",fontSize:"14px",fontWeight:"800",cursor:"pointer"}}>확인</button>
+                <button onClick={()=>{setShowReg(false);setRegDone(null);setRegForm({org:"",contact:"",email:"",phone:""});}} style={{background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",border:"none",borderRadius:"12px",padding:"12px 28px",fontSize:"18px",fontWeight:"800",cursor:"pointer"}}>확인</button>
               </div>
             ):(
               <>
-                <h2 style={{margin:"0 0 20px",color:"white",fontSize:"17px",fontWeight:"900"}}>🏫 기관 등록 신청</h2>
+                <h2 style={{margin:"0 0 20px",color:"white",fontSize:"18px",fontWeight:"900"}}>🏫 기관 등록 신청</h2>
                 {[{label:"기관명 *",key:"org",ph:"○○대학교 창업지원단"},{label:"담당자명",key:"contact",ph:"홍길동"},{label:"이메일 *",key:"email",ph:"contact@univ.ac.kr"},{label:"연락처",key:"phone",ph:"010-0000-0000"}].map(({label,key,ph})=>(
                   <div key={key} style={{marginBottom:"12px"}}>
-                    <label style={{fontSize:"11px",fontWeight:"700",color:"rgba(255,255,255,0.6)",display:"block",marginBottom:"5px"}}>{label}</label>
-                    <input value={regForm[key]} onChange={e=>setRegForm(p=>({...p,[key]:e.target.value}))} placeholder={ph} style={{width:"100%",background:"rgba(255,255,255,0.1)",border:"1.5px solid rgba(255,255,255,0.2)",borderRadius:"10px",padding:"10px 14px",fontSize:"13px",color:"white",boxSizing:"border-box",outline:"none"}}/>
+                    <label style={{fontSize:"18px",fontWeight:"700",color:"rgba(255,255,255,0.6)",display:"block",marginBottom:"5px"}}>{label}</label>
+                    <input value={regForm[key]} onChange={e=>setRegForm(p=>({...p,[key]:e.target.value}))} placeholder={ph} style={{width:"100%",background:"rgba(255,255,255,0.1)",border:"1.5px solid rgba(255,255,255,0.2)",borderRadius:"10px",padding:"10px 14px",fontSize:"18px",color:"white",boxSizing:"border-box",outline:"none"}}/>
                   </div>
                 ))}
                 <div style={{display:"flex",gap:"8px"}}>
-                  <button onClick={()=>setShowReg(false)} style={{flex:1,background:"rgba(255,255,255,0.1)",color:"white",border:"none",borderRadius:"10px",padding:"12px",fontSize:"13px",fontWeight:"700",cursor:"pointer"}}>취소</button>
-                  <button onClick={handleReg} disabled={!regForm.org.trim()||!regForm.email.trim()||regLoading} style={{flex:2,background:regForm.org.trim()&&regForm.email.trim()?"linear-gradient(135deg,#7C3AED,#DB2777)":"rgba(255,255,255,0.2)",color:"white",border:"none",borderRadius:"10px",padding:"12px",fontSize:"13px",fontWeight:"900",cursor:"pointer"}}>{regLoading?"⏳ 신청 중...":"✅ 신청하기"}</button>
+                  <button onClick={()=>setShowReg(false)} style={{flex:1,background:"rgba(255,255,255,0.1)",color:"white",border:"none",borderRadius:"10px",padding:"12px",fontSize:"18px",fontWeight:"700",cursor:"pointer"}}>취소</button>
+                  <button onClick={handleReg} disabled={!regForm.org.trim()||!regForm.email.trim()||regLoading} style={{flex:2,background:regForm.org.trim()&&regForm.email.trim()?"linear-gradient(135deg,#7C3AED,#DB2777)":"rgba(255,255,255,0.2)",color:"white",border:"none",borderRadius:"10px",padding:"12px",fontSize:"18px",fontWeight:"900",cursor:"pointer"}}>{regLoading?"⏳ 신청 중...":"✅ 신청하기"}</button>
                 </div>
               </>
             )}
@@ -610,16 +610,16 @@ function SubAdminLogin({onSuccess,onBack}){
   return(
     <div style={{minHeight:"100vh",background:"linear-gradient(145deg,#0f0a2e,#1e1b4b,#2d1b69)",display:"flex",alignItems:"center",justifyContent:"center",fontFamily:FF,padding:"20px"}}>
       <div style={{maxWidth:"380px",width:"100%",color:"white"}}>
-        <button onClick={onBack} style={{background:"rgba(255,255,255,0.1)",color:"white",border:"none",borderRadius:"8px",padding:"7px 14px",fontSize:"12px",cursor:"pointer",marginBottom:"24px"}}>← 홈으로</button>
+        <button onClick={onBack} style={{background:"rgba(255,255,255,0.1)",color:"white",border:"none",borderRadius:"8px",padding:"7px 14px",fontSize:"18px",cursor:"pointer",marginBottom:"24px"}}>← 홈으로</button>
         <div style={{textAlign:"center",marginBottom:"28px"}}><div style={{fontSize:"44px",marginBottom:"10px"}}>🏫</div><h1 style={{margin:"0 0 4px",fontSize:"20px",fontWeight:"900"}}>기관 담당자 로그인</h1></div>
         <div style={{display:"flex",gap:"4px",background:"rgba(255,255,255,0.08)",borderRadius:"12px",padding:"4px",marginBottom:"20px"}}>
-          {[{id:"code",l:"기관코드"},{id:"email",l:"이메일"},{id:"shared",l:"공유코드"}].map(({id,l})=>(<button key={id} onClick={()=>setMode(id)} style={{flex:1,background:mode===id?"white":"transparent",color:mode===id?"#7C3AED":"rgba(255,255,255,0.6)",border:"none",borderRadius:"9px",padding:"8px 4px",fontSize:"12px",fontWeight:"800",cursor:"pointer"}}>{l}</button>))}
+          {[{id:"code",l:"기관코드"},{id:"email",l:"이메일"},{id:"shared",l:"공유코드"}].map(({id,l})=>(<button key={id} onClick={()=>setMode(id)} style={{flex:1,background:mode===id?"white":"transparent",color:mode===id?"#7C3AED":"rgba(255,255,255,0.6)",border:"none",borderRadius:"9px",padding:"8px 4px",fontSize:"18px",fontWeight:"800",cursor:"pointer"}}>{l}</button>))}
         </div>
         <div style={{background:"rgba(255,255,255,0.08)",borderRadius:"20px",padding:"22px"}}>
-          {mode==="code"&&(<><div style={{marginBottom:"12px"}}><label style={{fontSize:"11px",fontWeight:"700",opacity:.6,display:"block",marginBottom:"5px"}}>기관 코드</label><input value={code} onChange={e=>setCode(e.target.value)} onKeyDown={e=>e.key==="Enter"&&loginByCode()} placeholder="발급받은 기관 코드" style={{width:"100%",background:"rgba(255,255,255,0.12)",border:"1.5px solid rgba(255,255,255,0.2)",borderRadius:"10px",padding:"11px 14px",fontSize:"14px",color:"white",boxSizing:"border-box",outline:"none",letterSpacing:"2px"}}/></div><div style={{marginBottom:"16px"}}><label style={{fontSize:"11px",fontWeight:"700",opacity:.6,display:"block",marginBottom:"5px"}}>비밀번호</label><input type="password" value={pw} onChange={e=>setPw(e.target.value)} onKeyDown={e=>e.key==="Enter"&&loginByCode()} style={{width:"100%",background:"rgba(255,255,255,0.12)",border:"1.5px solid rgba(255,255,255,0.2)",borderRadius:"10px",padding:"11px 14px",fontSize:"14px",color:"white",boxSizing:"border-box",outline:"none"}}/></div><button onClick={loginByCode} style={{width:"100%",background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",border:"none",borderRadius:"10px",padding:"13px",fontSize:"14px",fontWeight:"900",cursor:"pointer"}}>{loading?"⏳ 확인 중...":"로그인 →"}</button></>)}
-          {mode==="email"&&(<><div style={{marginBottom:"16px"}}><label style={{fontSize:"11px",fontWeight:"700",opacity:.6,display:"block",marginBottom:"5px"}}>등록 이메일</label><input type="email" value={email} onChange={e=>setEmail(e.target.value)} onKeyDown={e=>e.key==="Enter"&&loginByEmail()} placeholder="신청 시 등록한 이메일" style={{width:"100%",background:"rgba(255,255,255,0.12)",border:"1.5px solid rgba(255,255,255,0.2)",borderRadius:"10px",padding:"11px 14px",fontSize:"14px",color:"white",boxSizing:"border-box",outline:"none"}}/></div><button onClick={loginByEmail} style={{width:"100%",background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",border:"none",borderRadius:"10px",padding:"13px",fontSize:"14px",fontWeight:"900",cursor:"pointer"}}>{loading?"⏳ 확인 중...":"이메일로 로그인 →"}</button></>)}
-          {mode==="shared"&&(<><div style={{marginBottom:"16px"}}><label style={{fontSize:"11px",fontWeight:"700",opacity:.6,display:"block",marginBottom:"5px"}}>공유 접속 코드</label><input value={shared} onChange={e=>setShared(e.target.value)} onKeyDown={e=>e.key==="Enter"&&loginByShared()} placeholder="안내받은 공유 코드" style={{width:"100%",background:"rgba(255,255,255,0.12)",border:"1.5px solid rgba(255,255,255,0.2)",borderRadius:"10px",padding:"11px 14px",fontSize:"14px",color:"white",boxSizing:"border-box",outline:"none",letterSpacing:"3px"}}/></div><button onClick={loginByShared} style={{width:"100%",background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",border:"none",borderRadius:"10px",padding:"13px",fontSize:"14px",fontWeight:"900",cursor:"pointer"}}>{loading?"⏳ 확인 중...":"접속 →"}</button></>)}
-          {err&&<p style={{margin:"12px 0 0",fontSize:"12px",color:"#FCA5A5",fontWeight:"700",textAlign:"center"}}>❌ {err}</p>}
+          {mode==="code"&&(<><div style={{marginBottom:"12px"}}><label style={{fontSize:"18px",fontWeight:"700",opacity:.6,display:"block",marginBottom:"5px"}}>기관 코드</label><input value={code} onChange={e=>setCode(e.target.value)} onKeyDown={e=>e.key==="Enter"&&loginByCode()} placeholder="발급받은 기관 코드" style={{width:"100%",background:"rgba(255,255,255,0.12)",border:"1.5px solid rgba(255,255,255,0.2)",borderRadius:"10px",padding:"11px 14px",fontSize:"18px",color:"white",boxSizing:"border-box",outline:"none",letterSpacing:"2px"}}/></div><div style={{marginBottom:"16px"}}><label style={{fontSize:"18px",fontWeight:"700",opacity:.6,display:"block",marginBottom:"5px"}}>비밀번호</label><input type="password" value={pw} onChange={e=>setPw(e.target.value)} onKeyDown={e=>e.key==="Enter"&&loginByCode()} style={{width:"100%",background:"rgba(255,255,255,0.12)",border:"1.5px solid rgba(255,255,255,0.2)",borderRadius:"10px",padding:"11px 14px",fontSize:"18px",color:"white",boxSizing:"border-box",outline:"none"}}/></div><button onClick={loginByCode} style={{width:"100%",background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",border:"none",borderRadius:"10px",padding:"13px",fontSize:"18px",fontWeight:"900",cursor:"pointer"}}>{loading?"⏳ 확인 중...":"로그인 →"}</button></>)}
+          {mode==="email"&&(<><div style={{marginBottom:"16px"}}><label style={{fontSize:"18px",fontWeight:"700",opacity:.6,display:"block",marginBottom:"5px"}}>등록 이메일</label><input type="email" value={email} onChange={e=>setEmail(e.target.value)} onKeyDown={e=>e.key==="Enter"&&loginByEmail()} placeholder="신청 시 등록한 이메일" style={{width:"100%",background:"rgba(255,255,255,0.12)",border:"1.5px solid rgba(255,255,255,0.2)",borderRadius:"10px",padding:"11px 14px",fontSize:"18px",color:"white",boxSizing:"border-box",outline:"none"}}/></div><button onClick={loginByEmail} style={{width:"100%",background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",border:"none",borderRadius:"10px",padding:"13px",fontSize:"18px",fontWeight:"900",cursor:"pointer"}}>{loading?"⏳ 확인 중...":"이메일로 로그인 →"}</button></>)}
+          {mode==="shared"&&(<><div style={{marginBottom:"16px"}}><label style={{fontSize:"18px",fontWeight:"700",opacity:.6,display:"block",marginBottom:"5px"}}>공유 접속 코드</label><input value={shared} onChange={e=>setShared(e.target.value)} onKeyDown={e=>e.key==="Enter"&&loginByShared()} placeholder="안내받은 공유 코드" style={{width:"100%",background:"rgba(255,255,255,0.12)",border:"1.5px solid rgba(255,255,255,0.2)",borderRadius:"10px",padding:"11px 14px",fontSize:"18px",color:"white",boxSizing:"border-box",outline:"none",letterSpacing:"3px"}}/></div><button onClick={loginByShared} style={{width:"100%",background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",border:"none",borderRadius:"10px",padding:"13px",fontSize:"18px",fontWeight:"900",cursor:"pointer"}}>{loading?"⏳ 확인 중...":"접속 →"}</button></>)}
+          {err&&<p style={{margin:"12px 0 0",fontSize:"18px",color:"#FCA5A5",fontWeight:"700",textAlign:"center"}}>❌ {err}</p>}
         </div>
       </div>
     </div>
@@ -635,20 +635,20 @@ function ReportLockScreen({participantCount,onBack}){
   return(
     <div style={{fontFamily:FF,minHeight:"100%",background:"#f5f3ff",padding:"24px 16px 48px"}}>
       <div style={{maxWidth:"480px",margin:"0 auto"}}>
-        <button onClick={onBack} style={{background:"white",color:"#6B7280",border:"1.5px solid #e5e7eb",borderRadius:"8px",padding:"7px 14px",fontSize:"12px",cursor:"pointer",marginBottom:"20px"}}>← 대시보드</button>
+        <button onClick={onBack} style={{background:"white",color:"#6B7280",border:"1.5px solid #e5e7eb",borderRadius:"8px",padding:"7px 14px",fontSize:"18px",cursor:"pointer",marginBottom:"20px"}}>← 대시보드</button>
         <div style={{background:hasEnough?"linear-gradient(135deg,#7C3AED,#DB2777)":"linear-gradient(135deg,#374151,#1f2937)",borderRadius:"20px",padding:"24px",textAlign:"center",color:"white",marginBottom:"20px"}}>
           <div style={{fontSize:"40px",marginBottom:"10px"}}>{hasEnough?"📋":"⏳"}</div>
           <h2 style={{margin:"0 0 8px",fontSize:"18px",fontWeight:"900"}}>{hasEnough?"종합 결과보고서 요청 가능!":"보고서 생성 조건 미충족"}</h2>
-          <p style={{margin:0,fontSize:"13px",opacity:.8}}>{hasEnough?`${participantCount}명 진단 완료 — 지금 보고서를 요청하세요`:`현재 ${participantCount}명 / 최소 ${CONFIG.REPORT_CTA_MIN}명 필요`}</p>
+          <p style={{margin:0,fontSize:"18px",opacity:.8}}>{hasEnough?`${participantCount}명 진단 완료 — 지금 보고서를 요청하세요`:`현재 ${participantCount}명 / 최소 ${CONFIG.REPORT_CTA_MIN}명 필요`}</p>
         </div>
         <div style={{background:"linear-gradient(135deg,#1e1b4b,#4c1d95)",borderRadius:"20px",padding:"24px",color:"white"}}>
-          {requested?(<div style={{textAlign:"center"}}><div style={{fontSize:"40px",marginBottom:"10px"}}>✅</div><h3 style={{margin:"0 0 8px",fontSize:"16px",fontWeight:"900"}}>요청 완료!</h3><p style={{margin:0,fontSize:"12px",opacity:.7}}>2영업일 내 연락드릴게요.</p></div>):(
-            <><h3 style={{margin:"0 0 6px",fontSize:"16px",fontWeight:"900"}}>📋 종합 결과보고서 받기</h3>
-            <p style={{margin:"0 0 16px",fontSize:"12px",opacity:.7}}>역량 분포 분석 · 맞춤 교육 제언 · 팀 구성 전략 포함</p>
-            <button onClick={()=>setRequested(true)} disabled={!hasEnough} style={{width:"100%",background:hasEnough?"linear-gradient(135deg,#DB2777,#f59e0b)":"rgba(255,255,255,0.2)",color:"white",border:"none",borderRadius:"12px",padding:"13px",fontSize:"13px",fontWeight:"900",cursor:hasEnough?"pointer":"not-allowed",marginBottom:"8px"}}>{hasEnough?"📋 보고서 요청하기":"⏳ 참가자 5명 이상 필요"}</button>
+          {requested?(<div style={{textAlign:"center"}}><div style={{fontSize:"40px",marginBottom:"10px"}}>✅</div><h3 style={{margin:"0 0 8px",fontSize:"18px",fontWeight:"900"}}>요청 완료!</h3><p style={{margin:0,fontSize:"18px",opacity:.7}}>2영업일 내 연락드릴게요.</p></div>):(
+            <><h3 style={{margin:"0 0 6px",fontSize:"18px",fontWeight:"900"}}>📋 종합 결과보고서 받기</h3>
+            <p style={{margin:"0 0 16px",fontSize:"18px",opacity:.7}}>역량 분포 분석 · 맞춤 교육 제언 · 팀 구성 전략 포함</p>
+            <button onClick={()=>setRequested(true)} disabled={!hasEnough} style={{width:"100%",background:hasEnough?"linear-gradient(135deg,#DB2777,#f59e0b)":"rgba(255,255,255,0.2)",color:"white",border:"none",borderRadius:"12px",padding:"13px",fontSize:"18px",fontWeight:"900",cursor:hasEnough?"pointer":"not-allowed",marginBottom:"8px"}}>{hasEnough?"📋 보고서 요청하기":"⏳ 참가자 5명 이상 필요"}</button>
             <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"8px"}}>
-              <a href={`tel:${COMPANY.phone}`} style={{background:"rgba(255,255,255,0.1)",color:"white",border:"1px solid rgba(255,255,255,0.2)",borderRadius:"10px",padding:"10px",fontSize:"12px",fontWeight:"700",textDecoration:"none",textAlign:"center",display:"block"}}>📞 전화 문의</a>
-              <a href={COMPANY.kakao} target="_blank" rel="noreferrer" style={{background:"#FEE500",color:"#3A1D1D",borderRadius:"10px",padding:"10px",fontSize:"12px",fontWeight:"800",textDecoration:"none",textAlign:"center",display:"block"}}>💬 카카오</a>
+              <a href={`tel:${COMPANY.phone}`} style={{background:"rgba(255,255,255,0.1)",color:"white",border:"1px solid rgba(255,255,255,0.2)",borderRadius:"10px",padding:"10px",fontSize:"18px",fontWeight:"700",textDecoration:"none",textAlign:"center",display:"block"}}>📞 전화 문의</a>
+              <a href={COMPANY.kakao} target="_blank" rel="noreferrer" style={{background:"#FEE500",color:"#3A1D1D",borderRadius:"10px",padding:"10px",fontSize:"18px",fontWeight:"800",textDecoration:"none",textAlign:"center",display:"block"}}>💬 카카오</a>
             </div></>
           )}
         </div>
@@ -683,24 +683,24 @@ function SubAdminDashboard({account,onBack}){
       <div style={{background:"linear-gradient(135deg,#2d1b69,#1e1b4b)",padding:"16px 20px 0",color:"white"}}>
         <div style={{maxWidth:"800px",margin:"0 auto"}}>
           <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"12px",flexWrap:"wrap",gap:"10px"}}>
-            <div><div style={{fontSize:"10px",fontWeight:"800",letterSpacing:"3px",opacity:.5}}>🏫 PARTNER DASHBOARD · B2B</div><h1 style={{margin:0,fontSize:"16px",fontWeight:"900"}}>{account.org}</h1></div>
+            <div><div style={{fontSize:"18px",fontWeight:"800",letterSpacing:"3px",opacity:.5}}>🏫 PARTNER DASHBOARD · B2B</div><h1 style={{margin:0,fontSize:"18px",fontWeight:"900"}}>{account.org}</h1></div>
             <div style={{display:"flex",gap:"8px",alignItems:"center",flexWrap:"wrap"}}>
-              <div style={{textAlign:"center",background:"rgba(255,255,255,0.1)",borderRadius:"10px",padding:"7px 14px"}}><div style={{fontSize:"16px",fontWeight:"900"}}>{totalP}명</div><div style={{fontSize:"10px",opacity:.6}}>참가자</div></div>
-              <div style={{textAlign:"center",background:"rgba(255,255,255,0.1)",borderRadius:"10px",padding:"7px 14px"}}><div style={{fontSize:"16px",fontWeight:"900"}}>{avgS}점</div><div style={{fontSize:"10px",opacity:.6}}>평균</div></div>
-              <button onClick={()=>{loadAll();loadResults();}} style={{background:"rgba(255,255,255,0.15)",color:"white",border:"none",borderRadius:"10px",padding:"8px 12px",fontSize:"12px",cursor:"pointer"}}>{loading?"⏳":"🔄"}</button>
-              <button onClick={onBack} style={{background:"rgba(255,255,255,0.1)",color:"white",border:"none",borderRadius:"10px",padding:"8px 12px",fontSize:"12px",cursor:"pointer"}}>← 홈</button>
+              <div style={{textAlign:"center",background:"rgba(255,255,255,0.1)",borderRadius:"10px",padding:"7px 14px"}}><div style={{fontSize:"18px",fontWeight:"900"}}>{totalP}명</div><div style={{fontSize:"18px",opacity:.6}}>참가자</div></div>
+              <div style={{textAlign:"center",background:"rgba(255,255,255,0.1)",borderRadius:"10px",padding:"7px 14px"}}><div style={{fontSize:"18px",fontWeight:"900"}}>{avgS}점</div><div style={{fontSize:"18px",opacity:.6}}>평균</div></div>
+              <button onClick={()=>{loadAll();loadResults();}} style={{background:"rgba(255,255,255,0.15)",color:"white",border:"none",borderRadius:"10px",padding:"8px 12px",fontSize:"18px",cursor:"pointer"}}>{loading?"⏳":"🔄"}</button>
+              <button onClick={onBack} style={{background:"rgba(255,255,255,0.1)",color:"white",border:"none",borderRadius:"10px",padding:"8px 12px",fontSize:"18px",cursor:"pointer"}}>← 홈</button>
             </div>
           </div>
           <div style={{display:"flex",gap:"2px",overflowX:"auto"}}>
-            {TABS.map(t=>(<button key={t.id} onClick={()=>setTab(t.id)} style={{border:"none",cursor:"pointer",padding:"9px 14px",borderRadius:"10px 10px 0 0",fontSize:"12px",fontWeight:"800",background:t.id===tab?"#f5f3ff":"transparent",color:t.id===tab?"#7C3AED":"rgba(255,255,255,0.6)",whiteSpace:"nowrap"}}>{t.e} {t.l}</button>))}
+            {TABS.map(t=>(<button key={t.id} onClick={()=>setTab(t.id)} style={{border:"none",cursor:"pointer",padding:"9px 14px",borderRadius:"10px 10px 0 0",fontSize:"18px",fontWeight:"800",background:t.id===tab?"#f5f3ff":"transparent",color:t.id===tab?"#7C3AED":"rgba(255,255,255,0.6)",whiteSpace:"nowrap"}}>{t.e} {t.l}</button>))}
           </div>
         </div>
       </div>
       <div style={{maxWidth:"800px",margin:"0 auto",padding:"20px 16px"}}>
-        {tab==="overview"&&(students.length===0?(<div style={{...CARD,textAlign:"center",padding:"48px"}}><div style={{fontSize:"40px",marginBottom:"12px"}}>📭</div><p style={{color:"#9CA3AF",marginBottom:"16px"}}>아직 진단 결과가 없어요.</p><button onClick={()=>setTab("events")} style={{background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",border:"none",borderRadius:"10px",padding:"10px 24px",fontSize:"13px",fontWeight:"800",cursor:"pointer"}}>📅 행사 만들기 →</button></div>):(<div style={{display:"flex",flexDirection:"column",gap:"12px"}}><div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(100px,1fr))",gap:"10px"}}>{[{l:"탁월",v:students.filter(s=>s.avg>=80).length,c:"#7C3AED",bg:"#f5f3ff"},{l:"우수",v:students.filter(s=>s.avg>=60&&s.avg<80).length,c:"#0284C7",bg:"#eff6ff"},{l:"보통",v:students.filter(s=>s.avg>=40&&s.avg<60).length,c:"#D97706",bg:"#fffbeb"},{l:"개발필요",v:students.filter(s=>s.avg<40).length,c:"#DC2626",bg:"#fef2f2"}].map(({l,v,c,bg})=>(<div key={l} style={{...CARD,background:bg,textAlign:"center",padding:"12px"}}><div style={{fontSize:"18px",fontWeight:"900",color:c}}>{v}명</div><div style={{fontSize:"10px",color:"#6B7280"}}>{l}</div></div>))}</div><div style={CARD}><h3 style={{margin:"0 0 12px",fontSize:"13px",fontWeight:"800",color:"#1e1b4b"}}>📊 역량별 평균</h3>{DIMS.map(d=>{const a=Math.round(students.reduce((s,st)=>s+(st.scores?.[d.key]||0),0)/students.length);return(<div key={d.key} style={{marginBottom:"9px"}}><div style={{display:"flex",justifyContent:"space-between",marginBottom:"3px"}}><span style={{fontSize:"11px",fontWeight:"700"}}>{d.emoji} {d.label}</span><span style={{fontSize:"11px",fontWeight:"900",color:d.color}}>{a}점</span></div><div style={{background:"#f3f4f6",borderRadius:"100px",height:"7px"}}><div style={{background:d.color,height:"7px",width:`${a}%`,borderRadius:"100px"}}/></div></div>);})}</div></div>))}
-        {tab==="events"&&(<div style={{display:"flex",flexDirection:"column",gap:"12px"}}><div style={CARD}><h3 style={{margin:"0 0 12px",fontSize:"14px",fontWeight:"800",color:"#1e1b4b"}}>➕ 새 행사 만들기</h3><div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"10px",marginBottom:"10px"}}><div><label style={{fontSize:"11px",fontWeight:"700",color:"#6B7280",display:"block",marginBottom:"5px"}}>행사명 *</label><input value={evForm.name} onChange={e=>setEvForm(p=>({...p,name:e.target.value}))} placeholder="창업 기초 캠프" style={{width:"100%",border:"1.5px solid #e5e7eb",borderRadius:"10px",padding:"9px 12px",fontSize:"13px",boxSizing:"border-box",outline:"none"}}/></div><div><label style={{fontSize:"11px",fontWeight:"700",color:"#6B7280",display:"block",marginBottom:"5px"}}>날짜</label><input type="date" value={evForm.date} onChange={e=>setEvForm(p=>({...p,date:e.target.value}))} style={{width:"100%",border:"1.5px solid #e5e7eb",borderRadius:"10px",padding:"9px 12px",fontSize:"13px",boxSizing:"border-box",outline:"none"}}/></div></div><button onClick={handleCreateEv} disabled={!evForm.name.trim()||evSaving} style={{background:evForm.name.trim()?"linear-gradient(135deg,#7C3AED,#DB2777)":"#e5e7eb",color:evForm.name.trim()?"white":"#9CA3AF",border:"none",borderRadius:"10px",padding:"10px 22px",fontSize:"13px",fontWeight:"800",cursor:"pointer"}}>{evSaving?"⏳ 저장 중...":"✅ 행사 생성"}</button></div>{events.length===0?<div style={{...CARD,textAlign:"center",padding:"32px"}}><p style={{color:"#9CA3AF"}}>생성된 행사가 없어요.</p></div>:events.map(ev=>(<div key={ev.id} style={{...CARD,border:activeEvIds.includes(ev.id)?"2px solid #7C3AED":"1.5px solid #e5e7eb"}}><div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",flexWrap:"wrap",gap:"10px"}}><div><div style={{display:"flex",alignItems:"center",gap:"8px",marginBottom:"4px"}}><span style={{fontSize:"14px",fontWeight:"900"}}>{ev.name}</span>{activeEvIds.includes(ev.id)&&<span style={{background:"#f0fdf4",color:"#059669",border:"1px solid #bbf7d0",fontSize:"10px",fontWeight:"800",padding:"2px 8px",borderRadius:"20px"}}>🟢 활성</span>}</div><div style={{fontSize:"11px",color:"#9CA3AF"}}>{ev.date&&`📅 ${ev.date} · `}👥 {evCounts[ev.id]||0}명</div></div><button onClick={()=>handleToggle(ev)} style={{background:activeEvIds.includes(ev.id)?"#f3f4f6":"linear-gradient(135deg,#059669,#0284C7)",color:activeEvIds.includes(ev.id)?"#6B7280":"white",border:activeEvIds.includes(ev.id)?"1px solid #e5e7eb":"none",borderRadius:"8px",padding:"7px 12px",fontSize:"11px",fontWeight:"800",cursor:"pointer"}}>{activeEvIds.includes(ev.id)?"⏸ 비활성화":"🟢 활성화"}</button></div></div>))}</div>)}
-        {tab==="students"&&(<div style={{display:"flex",flexDirection:"column",gap:"10px"}}>{students.length>0&&(<div style={{...CARD,display:"flex",gap:"9px",flexWrap:"wrap",alignItems:"center"}}><select value={selEvId} onChange={e=>setSelEvId(e.target.value)} style={{border:"1.5px solid #e5e7eb",borderRadius:"10px",padding:"8px 11px",fontSize:"13px",cursor:"pointer",flex:1}}><option value="all">전체 행사</option>{events.map(ev=><option key={ev.id} value={ev.id}>{ev.name}</option>)}</select><select value={sortKey} onChange={e=>setSortKey(e.target.value)} style={{border:"1.5px solid #e5e7eb",borderRadius:"10px",padding:"8px 11px",fontSize:"13px",cursor:"pointer"}}><option value="avg">종합점수순</option>{DIMS.map(d=><option key={d.key} value={d.key}>{d.label}순</option>)}</select><button onClick={()=>{const evName=selEvId==='all'?'전체':events.find(e=>e.id===selEvId)?.name||'선택행사';exportAllResults(filtered,events,`B2B_${evName}`);}} style={{background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",border:"none",borderRadius:"10px",padding:"8px 14px",fontSize:"12px",fontWeight:"800",cursor:"pointer",flexShrink:0}}>📥 결과 내보내기</button></div>)}{filtered.length===0?<div style={{...CARD,textAlign:"center",padding:"40px"}}><p style={{color:"#9CA3AF"}}>진단 결과가 없어요.</p></div>:filtered.map((s,i)=>{const lv=getLevel(s.avg),topD=DIMS.find(d=>d.key===s.topKey)||DIMS[0],uid=s._uid||s.id,isOpen=expandId===uid;return(<div key={uid} style={{...CARD,padding:0,overflow:"hidden"}}><div style={{padding:"12px 14px",display:"flex",alignItems:"center",gap:"9px",cursor:"pointer"}} onClick={()=>setExpandId(isOpen?null:uid)}><span style={{fontSize:"11px",fontWeight:"900",color:"#9CA3AF",width:"20px"}}>{i+1}</span><MiniRadar scores={s.scores||{}} size={40}/><div style={{flex:1}}><div style={{display:"flex",alignItems:"center",gap:"5px",flexWrap:"wrap"}}><span style={{fontSize:"13px",fontWeight:"800"}}>{s.name}</span><span style={{fontSize:"10px",background:lv.bg,color:lv.c,fontWeight:"700",padding:"1px 7px",borderRadius:"20px"}}>{lv.l}</span></div><div style={{fontSize:"10px",color:topD.color,fontWeight:"700"}}>{topD.emoji} {topD.label}</div></div><div style={{fontSize:"15px",fontWeight:"900",color:"#7C3AED"}}>{s.avg}</div></div>{isOpen&&(<div style={{borderTop:"1px solid #f3f4f6",padding:"12px 14px",background:"#fafafa"}}><div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"7px"}}>{DIMS.map(d=>{const v=s.scores?.[d.key]||0,lv2=getLevel(v);return(<div key={d.key} style={{background:"white",borderRadius:"9px",padding:"9px",textAlign:"center"}}><div style={{fontSize:"13px"}}>{d.emoji}</div><div style={{fontSize:"9px",fontWeight:"700",color:"#374151",margin:"2px 0"}}>{d.label}</div><div style={{fontSize:"16px",fontWeight:"900",color:d.color}}>{v}</div><div style={{fontSize:"8px",background:lv2.bg,color:lv2.c,fontWeight:"700",padding:"1px 5px",borderRadius:"8px",marginTop:"2px"}}>{lv2.l}</div></div>);})}</div></div>)}</div>);})}</div>)}
-        {tab==="teambuilding"&&(<div style={{display:"flex",flexDirection:"column",gap:"14px"}}><div style={CARD}><h3 style={{margin:"0 0 12px",fontSize:"14px",fontWeight:"800",color:"#1e1b4b"}}>🧩 역량 기반 팀 자동 매칭</h3>{students.length===0?<p style={{color:"#9CA3AF",textAlign:"center",padding:"20px 0"}}>참가자 진단 완료 후 사용 가능해요.</p>:(<div style={{display:"flex",gap:"12px",flexWrap:"wrap",alignItems:"flex-end"}}><div><label style={{fontSize:"11px",fontWeight:"700",color:"#6B7280",display:"block",marginBottom:"5px"}}>팀 수</label><select value={numTeams} onChange={e=>setNumTeams(+e.target.value)} style={{border:"1.5px solid #e5e7eb",borderRadius:"10px",padding:"8px 12px",fontSize:"14px",fontWeight:"700",cursor:"pointer"}}>{[2,3,4,5,6,7,8].map(n=><option key={n} value={n}>{n}팀</option>)}</select></div><button onClick={buildTeams} style={{background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",border:"none",borderRadius:"10px",padding:"10px 20px",fontSize:"13px",fontWeight:"800",cursor:"pointer"}}>⚡ 자동 매칭</button></div>)}</div>{teamResult&&teamResult.map(t=>{const topD=DIMS.find(d=>d.key===Object.entries(t.dimAvgs||{}).sort((a,b)=>b[1]-a[1])[0]?.[0]);const weakD=DIMS.find(d=>d.key===Object.entries(t.dimAvgs||{}).sort((a,b)=>a[1]-b[1])[0]?.[0]);return(<div key={t.name} style={CARD}><div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"10px",flexWrap:"wrap",gap:"7px"}}><h3 style={{margin:0,fontSize:"15px",fontWeight:"900"}}>{t.name} <span style={{fontSize:"11px",color:"#9CA3AF"}}>{t.members.length}명</span></h3><span style={{background:"#f5f3ff",color:"#7C3AED",fontWeight:"800",padding:"2px 9px",borderRadius:"20px",fontSize:"10px"}}>평균 {t.avg}점</span></div>{t.members.map(s=>{const td=DIMS.find(d=>d.key===s.topKey)||DIMS[0],uid=s._uid||s.id,anchor=t.anchors?.[uid];return(<div key={uid} style={{display:"flex",alignItems:"center",gap:"9px",background:anchor?"#f0f9ff":"#fafafa",borderRadius:"9px",padding:"7px 11px",marginBottom:"5px"}}><MiniRadar scores={s.scores||{}} size={34}/><div style={{flex:1}}><div style={{display:"flex",alignItems:"center",gap:"5px"}}><span style={{fontSize:"12px",fontWeight:"800"}}>{s.name}</span>{anchor&&<span style={{fontSize:"10px",fontWeight:"800",background:anchor.includes("팀장")?"#0284C7":"#EA580C",color:"white",padding:"1px 6px",borderRadius:"20px"}}>{anchor}</span>}</div><div style={{fontSize:"10px",color:td.color,fontWeight:"700"}}>{td.emoji} {td.label}</div></div><div style={{fontSize:"12px",fontWeight:"900",color:"#7C3AED"}}>{s.avg}점</div></div>);})} {topD&&weakD&&<div style={{display:"flex",gap:"7px",marginTop:"7px"}}><div style={{flex:1,background:"#f0fdf4",borderRadius:"7px",padding:"7px",fontSize:"10px",color:"#166534",fontWeight:"700"}}>💚 강점: {topD.label}</div><div style={{flex:1,background:"#fef2f2",borderRadius:"7px",padding:"7px",fontSize:"10px",color:"#991B1B",fontWeight:"700"}}>⚠️ 보완: {weakD.label}</div></div>}</div>);})}</div>)}
+        {tab==="overview"&&(students.length===0?(<div style={{...CARD,textAlign:"center",padding:"48px"}}><div style={{fontSize:"40px",marginBottom:"12px"}}>📭</div><p style={{color:"#9CA3AF",marginBottom:"16px"}}>아직 진단 결과가 없어요.</p><button onClick={()=>setTab("events")} style={{background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",border:"none",borderRadius:"10px",padding:"10px 24px",fontSize:"18px",fontWeight:"800",cursor:"pointer"}}>📅 행사 만들기 →</button></div>):(<div style={{display:"flex",flexDirection:"column",gap:"12px"}}><div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(100px,1fr))",gap:"10px"}}>{[{l:"탁월",v:students.filter(s=>s.avg>=80).length,c:"#7C3AED",bg:"#f5f3ff"},{l:"우수",v:students.filter(s=>s.avg>=60&&s.avg<80).length,c:"#0284C7",bg:"#eff6ff"},{l:"보통",v:students.filter(s=>s.avg>=40&&s.avg<60).length,c:"#D97706",bg:"#fffbeb"},{l:"개발필요",v:students.filter(s=>s.avg<40).length,c:"#DC2626",bg:"#fef2f2"}].map(({l,v,c,bg})=>(<div key={l} style={{...CARD,background:bg,textAlign:"center",padding:"12px"}}><div style={{fontSize:"18px",fontWeight:"900",color:c}}>{v}명</div><div style={{fontSize:"18px",color:"#6B7280"}}>{l}</div></div>))}</div><div style={CARD}><h3 style={{margin:"0 0 12px",fontSize:"18px",fontWeight:"800",color:"#1e1b4b"}}>📊 역량별 평균</h3>{DIMS.map(d=>{const a=Math.round(students.reduce((s,st)=>s+(st.scores?.[d.key]||0),0)/students.length);return(<div key={d.key} style={{marginBottom:"9px"}}><div style={{display:"flex",justifyContent:"space-between",marginBottom:"3px"}}><span style={{fontSize:"18px",fontWeight:"700"}}>{d.emoji} {d.label}</span><span style={{fontSize:"18px",fontWeight:"900",color:d.color}}>{a}점</span></div><div style={{background:"#f3f4f6",borderRadius:"100px",height:"7px"}}><div style={{background:d.color,height:"7px",width:`${a}%`,borderRadius:"100px"}}/></div></div>);})}</div></div>))}
+        {tab==="events"&&(<div style={{display:"flex",flexDirection:"column",gap:"12px"}}><div style={CARD}><h3 style={{margin:"0 0 12px",fontSize:"18px",fontWeight:"800",color:"#1e1b4b"}}>➕ 새 행사 만들기</h3><div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"10px",marginBottom:"10px"}}><div><label style={{fontSize:"18px",fontWeight:"700",color:"#6B7280",display:"block",marginBottom:"5px"}}>행사명 *</label><input value={evForm.name} onChange={e=>setEvForm(p=>({...p,name:e.target.value}))} placeholder="창업 기초 캠프" style={{width:"100%",border:"1.5px solid #e5e7eb",borderRadius:"10px",padding:"9px 12px",fontSize:"18px",boxSizing:"border-box",outline:"none"}}/></div><div><label style={{fontSize:"18px",fontWeight:"700",color:"#6B7280",display:"block",marginBottom:"5px"}}>날짜</label><input type="date" value={evForm.date} onChange={e=>setEvForm(p=>({...p,date:e.target.value}))} style={{width:"100%",border:"1.5px solid #e5e7eb",borderRadius:"10px",padding:"9px 12px",fontSize:"18px",boxSizing:"border-box",outline:"none"}}/></div></div><button onClick={handleCreateEv} disabled={!evForm.name.trim()||evSaving} style={{background:evForm.name.trim()?"linear-gradient(135deg,#7C3AED,#DB2777)":"#e5e7eb",color:evForm.name.trim()?"white":"#9CA3AF",border:"none",borderRadius:"10px",padding:"10px 22px",fontSize:"18px",fontWeight:"800",cursor:"pointer"}}>{evSaving?"⏳ 저장 중...":"✅ 행사 생성"}</button></div>{events.length===0?<div style={{...CARD,textAlign:"center",padding:"32px"}}><p style={{color:"#9CA3AF"}}>생성된 행사가 없어요.</p></div>:events.map(ev=>(<div key={ev.id} style={{...CARD,border:activeEvIds.includes(ev.id)?"2px solid #7C3AED":"1.5px solid #e5e7eb"}}><div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",flexWrap:"wrap",gap:"10px"}}><div><div style={{display:"flex",alignItems:"center",gap:"8px",marginBottom:"4px"}}><span style={{fontSize:"18px",fontWeight:"900"}}>{ev.name}</span>{activeEvIds.includes(ev.id)&&<span style={{background:"#f0fdf4",color:"#059669",border:"1px solid #bbf7d0",fontSize:"18px",fontWeight:"800",padding:"2px 8px",borderRadius:"20px"}}>🟢 활성</span>}</div><div style={{fontSize:"18px",color:"#9CA3AF"}}>{ev.date&&`📅 ${ev.date} · `}👥 {evCounts[ev.id]||0}명</div></div><button onClick={()=>handleToggle(ev)} style={{background:activeEvIds.includes(ev.id)?"#f3f4f6":"linear-gradient(135deg,#059669,#0284C7)",color:activeEvIds.includes(ev.id)?"#6B7280":"white",border:activeEvIds.includes(ev.id)?"1px solid #e5e7eb":"none",borderRadius:"8px",padding:"7px 12px",fontSize:"18px",fontWeight:"800",cursor:"pointer"}}>{activeEvIds.includes(ev.id)?"⏸ 비활성화":"🟢 활성화"}</button></div></div>))}</div>)}
+        {tab==="students"&&(<div style={{display:"flex",flexDirection:"column",gap:"10px"}}>{students.length>0&&(<div style={{...CARD,display:"flex",gap:"9px",flexWrap:"wrap",alignItems:"center"}}><select value={selEvId} onChange={e=>setSelEvId(e.target.value)} style={{border:"1.5px solid #e5e7eb",borderRadius:"10px",padding:"8px 11px",fontSize:"18px",cursor:"pointer",flex:1}}><option value="all">전체 행사</option>{events.map(ev=><option key={ev.id} value={ev.id}>{ev.name}</option>)}</select><select value={sortKey} onChange={e=>setSortKey(e.target.value)} style={{border:"1.5px solid #e5e7eb",borderRadius:"10px",padding:"8px 11px",fontSize:"18px",cursor:"pointer"}}><option value="avg">종합점수순</option>{DIMS.map(d=><option key={d.key} value={d.key}>{d.label}순</option>)}</select><button onClick={()=>{const evName=selEvId==='all'?'전체':events.find(e=>e.id===selEvId)?.name||'선택행사';exportAllResults(filtered,events,`B2B_${evName}`);}} style={{background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",border:"none",borderRadius:"10px",padding:"8px 14px",fontSize:"18px",fontWeight:"800",cursor:"pointer",flexShrink:0}}>📥 결과 내보내기</button></div>)}{filtered.length===0?<div style={{...CARD,textAlign:"center",padding:"40px"}}><p style={{color:"#9CA3AF"}}>진단 결과가 없어요.</p></div>:filtered.map((s,i)=>{const lv=getLevel(s.avg),topD=DIMS.find(d=>d.key===s.topKey)||DIMS[0],uid=s._uid||s.id,isOpen=expandId===uid;return(<div key={uid} style={{...CARD,padding:0,overflow:"hidden"}}><div style={{padding:"12px 14px",display:"flex",alignItems:"center",gap:"9px",cursor:"pointer"}} onClick={()=>setExpandId(isOpen?null:uid)}><span style={{fontSize:"18px",fontWeight:"900",color:"#9CA3AF",width:"20px"}}>{i+1}</span><MiniRadar scores={s.scores||{}} size={40}/><div style={{flex:1}}><div style={{display:"flex",alignItems:"center",gap:"5px",flexWrap:"wrap"}}><span style={{fontSize:"18px",fontWeight:"800"}}>{s.name}</span><span style={{fontSize:"18px",background:lv.bg,color:lv.c,fontWeight:"700",padding:"1px 7px",borderRadius:"20px"}}>{lv.l}</span></div><div style={{fontSize:"18px",color:topD.color,fontWeight:"700"}}>{topD.emoji} {topD.label}</div></div><div style={{fontSize:"18px",fontWeight:"900",color:"#7C3AED"}}>{s.avg}</div></div>{isOpen&&(<div style={{borderTop:"1px solid #f3f4f6",padding:"12px 14px",background:"#fafafa"}}><div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"7px"}}>{DIMS.map(d=>{const v=s.scores?.[d.key]||0,lv2=getLevel(v);return(<div key={d.key} style={{background:"white",borderRadius:"9px",padding:"9px",textAlign:"center"}}><div style={{fontSize:"18px"}}>{d.emoji}</div><div style={{fontSize:"18px",fontWeight:"700",color:"#374151",margin:"2px 0"}}>{d.label}</div><div style={{fontSize:"18px",fontWeight:"900",color:d.color}}>{v}</div><div style={{fontSize:"18px",background:lv2.bg,color:lv2.c,fontWeight:"700",padding:"1px 5px",borderRadius:"8px",marginTop:"2px"}}>{lv2.l}</div></div>);})}</div></div>)}</div>);})}</div>)}
+        {tab==="teambuilding"&&(<div style={{display:"flex",flexDirection:"column",gap:"14px"}}><div style={CARD}><h3 style={{margin:"0 0 12px",fontSize:"18px",fontWeight:"800",color:"#1e1b4b"}}>🧩 역량 기반 팀 자동 매칭</h3>{students.length===0?<p style={{color:"#9CA3AF",textAlign:"center",padding:"20px 0"}}>참가자 진단 완료 후 사용 가능해요.</p>:(<div style={{display:"flex",gap:"12px",flexWrap:"wrap",alignItems:"flex-end"}}><div><label style={{fontSize:"18px",fontWeight:"700",color:"#6B7280",display:"block",marginBottom:"5px"}}>팀 수</label><select value={numTeams} onChange={e=>setNumTeams(+e.target.value)} style={{border:"1.5px solid #e5e7eb",borderRadius:"10px",padding:"8px 12px",fontSize:"18px",fontWeight:"700",cursor:"pointer"}}>{[2,3,4,5,6,7,8].map(n=><option key={n} value={n}>{n}팀</option>)}</select></div><button onClick={buildTeams} style={{background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",border:"none",borderRadius:"10px",padding:"10px 20px",fontSize:"18px",fontWeight:"800",cursor:"pointer"}}>⚡ 자동 매칭</button></div>)}</div>{teamResult&&teamResult.map(t=>{const topD=DIMS.find(d=>d.key===Object.entries(t.dimAvgs||{}).sort((a,b)=>b[1]-a[1])[0]?.[0]);const weakD=DIMS.find(d=>d.key===Object.entries(t.dimAvgs||{}).sort((a,b)=>a[1]-b[1])[0]?.[0]);return(<div key={t.name} style={CARD}><div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"10px",flexWrap:"wrap",gap:"7px"}}><h3 style={{margin:0,fontSize:"18px",fontWeight:"900"}}>{t.name} <span style={{fontSize:"18px",color:"#9CA3AF"}}>{t.members.length}명</span></h3><span style={{background:"#f5f3ff",color:"#7C3AED",fontWeight:"800",padding:"2px 9px",borderRadius:"20px",fontSize:"18px"}}>평균 {t.avg}점</span></div>{t.members.map(s=>{const td=DIMS.find(d=>d.key===s.topKey)||DIMS[0],uid=s._uid||s.id,anchor=t.anchors?.[uid];return(<div key={uid} style={{display:"flex",alignItems:"center",gap:"9px",background:anchor?"#f0f9ff":"#fafafa",borderRadius:"9px",padding:"7px 11px",marginBottom:"5px"}}><MiniRadar scores={s.scores||{}} size={34}/><div style={{flex:1}}><div style={{display:"flex",alignItems:"center",gap:"5px"}}><span style={{fontSize:"18px",fontWeight:"800"}}>{s.name}</span>{anchor&&<span style={{fontSize:"18px",fontWeight:"800",background:anchor.includes("팀장")?"#0284C7":"#EA580C",color:"white",padding:"1px 6px",borderRadius:"20px"}}>{anchor}</span>}</div><div style={{fontSize:"18px",color:td.color,fontWeight:"700"}}>{td.emoji} {td.label}</div></div><div style={{fontSize:"18px",fontWeight:"900",color:"#7C3AED"}}>{s.avg}점</div></div>);})} {topD&&weakD&&<div style={{display:"flex",gap:"7px",marginTop:"7px"}}><div style={{flex:1,background:"#f0fdf4",borderRadius:"7px",padding:"7px",fontSize:"18px",color:"#166534",fontWeight:"700"}}>💚 강점: {topD.label}</div><div style={{flex:1,background:"#fef2f2",borderRadius:"7px",padding:"7px",fontSize:"18px",color:"#991B1B",fontWeight:"700"}}>⚠️ 보완: {weakD.label}</div></div>}</div>);})}</div>)}
       </div>
     </div>
   );
@@ -715,13 +715,13 @@ function SuperAdminLogin({onSuccess,onBack}){
   return(
     <div style={{minHeight:"100vh",background:"linear-gradient(145deg,#0f0a2e,#1e1b4b)",display:"flex",alignItems:"center",justifyContent:"center",fontFamily:FF,padding:"20px"}}>
       <div style={{maxWidth:"300px",width:"100%",textAlign:"center",color:"white"}}>
-        <button onClick={onBack} style={{background:"rgba(255,255,255,0.1)",color:"white",border:"none",borderRadius:"8px",padding:"7px 14px",fontSize:"12px",cursor:"pointer",marginBottom:"24px"}}>← 홈</button>
+        <button onClick={onBack} style={{background:"rgba(255,255,255,0.1)",color:"white",border:"none",borderRadius:"8px",padding:"7px 14px",fontSize:"18px",cursor:"pointer",marginBottom:"24px"}}>← 홈</button>
         <div style={{fontSize:"44px",marginBottom:"12px"}}>🔐</div>
         <h1 style={{margin:"0 0 24px",fontSize:"18px",fontWeight:"900"}}>슈퍼관리자 로그인</h1>
         <div style={{background:"rgba(255,255,255,0.08)",borderRadius:"16px",padding:"20px"}}>
-          <input type="password" value={pw} onChange={e=>setPw(e.target.value)} onKeyDown={e=>e.key==="Enter"&&login()} placeholder="관리자 비밀번호" style={{width:"100%",background:"rgba(255,255,255,0.12)",border:`1.5px solid ${err?"#EF4444":"rgba(255,255,255,0.2)"}`,borderRadius:"10px",padding:"11px 14px",fontSize:"14px",color:"white",boxSizing:"border-box",outline:"none",marginBottom:"10px"}}/>
-          {err&&<p style={{margin:"0 0 10px",fontSize:"12px",color:"#FCA5A5",fontWeight:"700"}}>❌ 비밀번호 오류</p>}
-          <button onClick={login} style={{width:"100%",background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",border:"none",borderRadius:"10px",padding:"12px",fontSize:"14px",fontWeight:"800",cursor:"pointer"}}>로그인 →</button>
+          <input type="password" value={pw} onChange={e=>setPw(e.target.value)} onKeyDown={e=>e.key==="Enter"&&login()} placeholder="관리자 비밀번호" style={{width:"100%",background:"rgba(255,255,255,0.12)",border:`1.5px solid ${err?"#EF4444":"rgba(255,255,255,0.2)"}`,borderRadius:"10px",padding:"11px 14px",fontSize:"18px",color:"white",boxSizing:"border-box",outline:"none",marginBottom:"10px"}}/>
+          {err&&<p style={{margin:"0 0 10px",fontSize:"18px",color:"#FCA5A5",fontWeight:"700"}}>❌ 비밀번호 오류</p>}
+          <button onClick={login} style={{width:"100%",background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",border:"none",borderRadius:"10px",padding:"12px",fontSize:"18px",fontWeight:"800",cursor:"pointer"}}>로그인 →</button>
         </div>
       </div>
     </div>
@@ -907,15 +907,15 @@ function SuperAdminDashboard({onBack}){
       <div style={{background:"linear-gradient(135deg,#0f0a2e,#1e1b4b)",padding:"16px 20px 0",color:"white"}}>
         <div style={{maxWidth:"960px",margin:"0 auto"}}>
           <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"12px",flexWrap:"wrap",gap:"10px"}}>
-            <div><div style={{fontSize:"10px",fontWeight:"800",letterSpacing:"3px",opacity:.5}}>🔐 SUPER ADMIN · {COMPANY.name}</div><h1 style={{margin:"4px 0 0",fontSize:"17px",fontWeight:"900"}}>전체 운영 대시보드</h1></div>
+            <div><div style={{fontSize:"18px",fontWeight:"800",letterSpacing:"3px",opacity:.5}}>🔐 SUPER ADMIN · {COMPANY.name}</div><h1 style={{margin:"4px 0 0",fontSize:"18px",fontWeight:"900"}}>전체 운영 대시보드</h1></div>
             <div style={{display:"flex",gap:"8px",flexWrap:"wrap",alignItems:"center"}}>
-              {[{v:subAccounts.length,l:"B2B 기관"},{v:students.length,l:"B2B 참가자"},{v:dTotalP,l:"직접 참가자"}].map(({v,l})=>(<div key={l} style={{textAlign:"center",background:"rgba(255,255,255,0.1)",borderRadius:"10px",padding:"7px 12px"}}><div style={{fontSize:"14px",fontWeight:"900"}}>{v}</div><div style={{fontSize:"10px",opacity:.6}}>{l}</div></div>))}
-              <button onClick={loadAll} style={{background:"rgba(255,255,255,0.15)",color:"white",border:"none",borderRadius:"10px",padding:"8px 12px",fontSize:"12px",cursor:"pointer"}}>{loading?"⏳":"🔄"}</button>
-              <button onClick={onBack} style={{background:"rgba(255,255,255,0.1)",color:"white",border:"none",borderRadius:"10px",padding:"8px 12px",fontSize:"12px",cursor:"pointer"}}>← 홈</button>
+              {[{v:subAccounts.length,l:"B2B 기관"},{v:students.length,l:"B2B 참가자"},{v:dTotalP,l:"직접 참가자"}].map(({v,l})=>(<div key={l} style={{textAlign:"center",background:"rgba(255,255,255,0.1)",borderRadius:"10px",padding:"7px 12px"}}><div style={{fontSize:"18px",fontWeight:"900"}}>{v}</div><div style={{fontSize:"18px",opacity:.6}}>{l}</div></div>))}
+              <button onClick={loadAll} style={{background:"rgba(255,255,255,0.15)",color:"white",border:"none",borderRadius:"10px",padding:"8px 12px",fontSize:"18px",cursor:"pointer"}}>{loading?"⏳":"🔄"}</button>
+              <button onClick={onBack} style={{background:"rgba(255,255,255,0.1)",color:"white",border:"none",borderRadius:"10px",padding:"8px 12px",fontSize:"18px",cursor:"pointer"}}>← 홈</button>
             </div>
           </div>
           <div style={{display:"flex",gap:"2px",overflowX:"auto"}}>
-            {SUPER_TABS.map(t=>(<button key={t.id} onClick={()=>setTab(t.id)} style={{border:"none",cursor:"pointer",padding:"9px 14px",borderRadius:"10px 10px 0 0",fontSize:"12px",fontWeight:"800",background:t.id===tab?"#f8f7ff":"transparent",color:t.id===tab?"#7C3AED":"rgba(255,255,255,0.6)",whiteSpace:"nowrap"}}>{t.e} {t.l}</button>))}
+            {SUPER_TABS.map(t=>(<button key={t.id} onClick={()=>setTab(t.id)} style={{border:"none",cursor:"pointer",padding:"9px 14px",borderRadius:"10px 10px 0 0",fontSize:"18px",fontWeight:"800",background:t.id===tab?"#f8f7ff":"transparent",color:t.id===tab?"#7C3AED":"rgba(255,255,255,0.6)",whiteSpace:"nowrap"}}>{t.e} {t.l}</button>))}
           </div>
         </div>
       </div>
@@ -923,29 +923,29 @@ function SuperAdminDashboard({onBack}){
 
         {tab==="direct"&&(<div style={{display:"flex",flexDirection:"column",gap:"14px"}}>
           <div style={{background:"linear-gradient(135deg,#1e1b4b,#4c1d95)",borderRadius:"16px",padding:"16px 20px",color:"white",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:"10px"}}>
-            <div><div style={{fontSize:"11px",fontWeight:"800",letterSpacing:"2px",opacity:.6,marginBottom:"4px"}}>🏢 DIRECT OPERATION</div><div style={{fontSize:"15px",fontWeight:"900"}}>피티인사이트 자체 프로그램 운영</div><div style={{fontSize:"11px",opacity:.7,marginTop:"2px"}}>직접 운영 데이터는 B2B와 완전 분리 수집</div></div>
-            <div style={{display:"flex",gap:"8px"}}>{[{v:dTotalP,l:"참가자"},{v:dAvg,l:"평균점수"},{v:directEvents.length,l:"행사"}].map(({v,l})=>(<div key={l} style={{textAlign:"center",background:"rgba(255,255,255,0.12)",borderRadius:"10px",padding:"8px 14px"}}><div style={{fontSize:"18px",fontWeight:"900"}}>{v}</div><div style={{fontSize:"10px",opacity:.6}}>{l}</div></div>))}</div>
+            <div><div style={{fontSize:"18px",fontWeight:"800",letterSpacing:"2px",opacity:.6,marginBottom:"4px"}}>🏢 DIRECT OPERATION</div><div style={{fontSize:"18px",fontWeight:"900"}}>피티인사이트 자체 프로그램 운영</div><div style={{fontSize:"18px",opacity:.7,marginTop:"2px"}}>직접 운영 데이터는 B2B와 완전 분리 수집</div></div>
+            <div style={{display:"flex",gap:"8px"}}>{[{v:dTotalP,l:"참가자"},{v:dAvg,l:"평균점수"},{v:directEvents.length,l:"행사"}].map(({v,l})=>(<div key={l} style={{textAlign:"center",background:"rgba(255,255,255,0.12)",borderRadius:"10px",padding:"8px 14px"}}><div style={{fontSize:"18px",fontWeight:"900"}}>{v}</div><div style={{fontSize:"18px",opacity:.6}}>{l}</div></div>))}</div>
           </div>
           <div style={{display:"flex",gap:"4px",background:"white",borderRadius:"12px",padding:"4px",boxShadow:"0 2px 12px rgba(0,0,0,0.06)"}}>
-            {DIRECT_SUBTABS.map(t=>(<button key={t.id} onClick={()=>setDTab(t.id)} style={{flex:1,border:"none",cursor:"pointer",padding:"9px 6px",borderRadius:"9px",fontSize:"12px",fontWeight:"800",background:dTab===t.id?"linear-gradient(135deg,#7C3AED,#DB2777)":"transparent",color:dTab===t.id?"white":"#6B7280"}}>{t.l}</button>))}
+            {DIRECT_SUBTABS.map(t=>(<button key={t.id} onClick={()=>setDTab(t.id)} style={{flex:1,border:"none",cursor:"pointer",padding:"9px 6px",borderRadius:"9px",fontSize:"18px",fontWeight:"800",background:dTab===t.id?"linear-gradient(135deg,#7C3AED,#DB2777)":"transparent",color:dTab===t.id?"white":"#6B7280"}}>{t.l}</button>))}
           </div>
 
-          {dTab==="overview"&&(directStudents.length===0?(<div style={{...CARD,textAlign:"center",padding:"48px"}}><div style={{fontSize:"40px",marginBottom:"12px"}}>📭</div><p style={{color:"#9CA3AF",marginBottom:"16px"}}>직접 운영 진단 결과가 없어요.</p><button onClick={()=>setDTab("events")} style={{background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",border:"none",borderRadius:"10px",padding:"10px 24px",fontSize:"13px",fontWeight:"800",cursor:"pointer"}}>📅 행사 만들기 →</button></div>):(<div style={{display:"flex",flexDirection:"column",gap:"12px"}}><div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(100px,1fr))",gap:"10px"}}>{[{l:"탁월",v:directStudents.filter(s=>s.avg>=80).length,c:"#7C3AED",bg:"#f5f3ff"},{l:"우수",v:directStudents.filter(s=>s.avg>=60&&s.avg<80).length,c:"#0284C7",bg:"#eff6ff"},{l:"보통",v:directStudents.filter(s=>s.avg>=40&&s.avg<60).length,c:"#D97706",bg:"#fffbeb"},{l:"개발필요",v:directStudents.filter(s=>s.avg<40).length,c:"#DC2626",bg:"#fef2f2"}].map(({l,v,c,bg})=>(<div key={l} style={{...CARD,background:bg,textAlign:"center",padding:"12px"}}><div style={{fontSize:"18px",fontWeight:"900",color:c}}>{v}명</div><div style={{fontSize:"10px",color:"#6B7280"}}>{l}</div></div>))}</div><div style={CARD}><h3 style={{margin:"0 0 12px",fontSize:"13px",fontWeight:"800",color:"#1e1b4b"}}>📊 역량별 평균</h3>{DIMS.map(d=>{const a=Math.round(directStudents.reduce((s,st)=>s+(st.scores?.[d.key]||0),0)/directStudents.length);return(<div key={d.key} style={{marginBottom:"9px"}}><div style={{display:"flex",justifyContent:"space-between",marginBottom:"3px"}}><span style={{fontSize:"11px",fontWeight:"700"}}>{d.emoji} {d.label}</span><span style={{fontSize:"11px",fontWeight:"900",color:d.color}}>{a}점</span></div><div style={{background:"#f3f4f6",borderRadius:"100px",height:"7px"}}><div style={{background:d.color,height:"7px",width:`${a}%`,borderRadius:"100px"}}/></div></div>);})}</div></div>))}
+          {dTab==="overview"&&(directStudents.length===0?(<div style={{...CARD,textAlign:"center",padding:"48px"}}><div style={{fontSize:"40px",marginBottom:"12px"}}>📭</div><p style={{color:"#9CA3AF",marginBottom:"16px"}}>직접 운영 진단 결과가 없어요.</p><button onClick={()=>setDTab("events")} style={{background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",border:"none",borderRadius:"10px",padding:"10px 24px",fontSize:"18px",fontWeight:"800",cursor:"pointer"}}>📅 행사 만들기 →</button></div>):(<div style={{display:"flex",flexDirection:"column",gap:"12px"}}><div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(100px,1fr))",gap:"10px"}}>{[{l:"탁월",v:directStudents.filter(s=>s.avg>=80).length,c:"#7C3AED",bg:"#f5f3ff"},{l:"우수",v:directStudents.filter(s=>s.avg>=60&&s.avg<80).length,c:"#0284C7",bg:"#eff6ff"},{l:"보통",v:directStudents.filter(s=>s.avg>=40&&s.avg<60).length,c:"#D97706",bg:"#fffbeb"},{l:"개발필요",v:directStudents.filter(s=>s.avg<40).length,c:"#DC2626",bg:"#fef2f2"}].map(({l,v,c,bg})=>(<div key={l} style={{...CARD,background:bg,textAlign:"center",padding:"12px"}}><div style={{fontSize:"18px",fontWeight:"900",color:c}}>{v}명</div><div style={{fontSize:"18px",color:"#6B7280"}}>{l}</div></div>))}</div><div style={CARD}><h3 style={{margin:"0 0 12px",fontSize:"18px",fontWeight:"800",color:"#1e1b4b"}}>📊 역량별 평균</h3>{DIMS.map(d=>{const a=Math.round(directStudents.reduce((s,st)=>s+(st.scores?.[d.key]||0),0)/directStudents.length);return(<div key={d.key} style={{marginBottom:"9px"}}><div style={{display:"flex",justifyContent:"space-between",marginBottom:"3px"}}><span style={{fontSize:"18px",fontWeight:"700"}}>{d.emoji} {d.label}</span><span style={{fontSize:"18px",fontWeight:"900",color:d.color}}>{a}점</span></div><div style={{background:"#f3f4f6",borderRadius:"100px",height:"7px"}}><div style={{background:d.color,height:"7px",width:`${a}%`,borderRadius:"100px"}}/></div></div>);})}</div></div>))}
 
-          {dTab==="events"&&(<div style={{display:"flex",flexDirection:"column",gap:"12px"}}><div style={CARD}><h3 style={{margin:"0 0 12px",fontSize:"14px",fontWeight:"800",color:"#1e1b4b"}}>➕ 직접 운영 행사 만들기</h3><div style={{background:"#f0fdf4",border:"1px solid #bbf7d0",borderRadius:"10px",padding:"10px 12px",marginBottom:"12px",fontSize:"11px",color:"#166534"}}>🏢 이 행사는 <strong>직접 운영(direct)</strong>으로 저장됩니다.</div><div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"10px",marginBottom:"10px"}}><div><label style={{fontSize:"11px",fontWeight:"700",color:"#6B7280",display:"block",marginBottom:"5px"}}>행사명 *</label><input value={dEvForm.name} onChange={e=>setDEvForm(p=>({...p,name:e.target.value}))} placeholder="2026 고성 창업캠프" style={{width:"100%",border:"1.5px solid #e5e7eb",borderRadius:"10px",padding:"9px 12px",fontSize:"13px",boxSizing:"border-box",outline:"none"}}/></div><div><label style={{fontSize:"11px",fontWeight:"700",color:"#6B7280",display:"block",marginBottom:"5px"}}>날짜</label><input type="date" value={dEvForm.date} onChange={e=>setDEvForm(p=>({...p,date:e.target.value}))} style={{width:"100%",border:"1.5px solid #e5e7eb",borderRadius:"10px",padding:"9px 12px",fontSize:"13px",boxSizing:"border-box",outline:"none"}}/></div></div><div style={{marginBottom:"12px"}}><label style={{fontSize:"11px",fontWeight:"700",color:"#6B7280",display:"block",marginBottom:"5px"}}>설명</label><input value={dEvForm.desc} onChange={e=>setDEvForm(p=>({...p,desc:e.target.value}))} placeholder="예: 2026 고성 로컬브랜딩 청년창업 점프업" style={{width:"100%",border:"1.5px solid #e5e7eb",borderRadius:"10px",padding:"9px 12px",fontSize:"13px",boxSizing:"border-box",outline:"none"}}/></div><button onClick={handleCreateDirectEv} disabled={!dEvForm.name.trim()||dEvSaving} style={{background:dEvForm.name.trim()?"linear-gradient(135deg,#7C3AED,#DB2777)":"#e5e7eb",color:dEvForm.name.trim()?"white":"#9CA3AF",border:"none",borderRadius:"10px",padding:"10px 22px",fontSize:"13px",fontWeight:"800",cursor:"pointer"}}>{dEvSaving?"⏳ 저장 중...":"✅ 직접운영 행사 생성"}</button></div>{directEvents.length===0?<div style={{...CARD,textAlign:"center",padding:"32px"}}><p style={{color:"#9CA3AF"}}>생성된 직접 운영 행사가 없어요.</p></div>:directEvents.map(ev=>(<div key={ev.id} style={{...CARD,border:directActiveIds.includes(ev.id)?"2px solid #7C3AED":"1.5px solid #e5e7eb"}}><div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",flexWrap:"wrap",gap:"10px"}}><div><div style={{display:"flex",alignItems:"center",gap:"8px",marginBottom:"4px"}}><span style={{fontSize:"14px",fontWeight:"900"}}>{ev.name}</span><span style={{background:"#f0fdf4",color:"#059669",border:"1px solid #bbf7d0",fontSize:"10px",fontWeight:"800",padding:"2px 8px",borderRadius:"20px"}}>🏢 직접운영</span>{directActiveIds.includes(ev.id)&&<span style={{background:"#eff6ff",color:"#0284C7",border:"1px solid #bfdbfe",fontSize:"10px",fontWeight:"800",padding:"2px 8px",borderRadius:"20px"}}>🟢 활성</span>}</div><div style={{fontSize:"11px",color:"#9CA3AF"}}>{ev.date&&`📅 ${ev.date} · `}👥 {dEvCounts[ev.id]||0}명</div></div><button onClick={()=>handleToggleDirectEv(ev)} style={{background:directActiveIds.includes(ev.id)?"#f3f4f6":"linear-gradient(135deg,#059669,#0284C7)",color:directActiveIds.includes(ev.id)?"#6B7280":"white",border:directActiveIds.includes(ev.id)?"1px solid #e5e7eb":"none",borderRadius:"8px",padding:"7px 12px",fontSize:"11px",fontWeight:"800",cursor:"pointer"}}>{directActiveIds.includes(ev.id)?"⏸ 비활성화":"🟢 활성화"}</button></div></div>))}</div>)}
+          {dTab==="events"&&(<div style={{display:"flex",flexDirection:"column",gap:"12px"}}><div style={CARD}><h3 style={{margin:"0 0 12px",fontSize:"18px",fontWeight:"800",color:"#1e1b4b"}}>➕ 직접 운영 행사 만들기</h3><div style={{background:"#f0fdf4",border:"1px solid #bbf7d0",borderRadius:"10px",padding:"10px 12px",marginBottom:"12px",fontSize:"18px",color:"#166534"}}>🏢 이 행사는 <strong>직접 운영(direct)</strong>으로 저장됩니다.</div><div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"10px",marginBottom:"10px"}}><div><label style={{fontSize:"18px",fontWeight:"700",color:"#6B7280",display:"block",marginBottom:"5px"}}>행사명 *</label><input value={dEvForm.name} onChange={e=>setDEvForm(p=>({...p,name:e.target.value}))} placeholder="2026 고성 창업캠프" style={{width:"100%",border:"1.5px solid #e5e7eb",borderRadius:"10px",padding:"9px 12px",fontSize:"18px",boxSizing:"border-box",outline:"none"}}/></div><div><label style={{fontSize:"18px",fontWeight:"700",color:"#6B7280",display:"block",marginBottom:"5px"}}>날짜</label><input type="date" value={dEvForm.date} onChange={e=>setDEvForm(p=>({...p,date:e.target.value}))} style={{width:"100%",border:"1.5px solid #e5e7eb",borderRadius:"10px",padding:"9px 12px",fontSize:"18px",boxSizing:"border-box",outline:"none"}}/></div></div><div style={{marginBottom:"12px"}}><label style={{fontSize:"18px",fontWeight:"700",color:"#6B7280",display:"block",marginBottom:"5px"}}>설명</label><input value={dEvForm.desc} onChange={e=>setDEvForm(p=>({...p,desc:e.target.value}))} placeholder="예: 2026 고성 로컬브랜딩 청년창업 점프업" style={{width:"100%",border:"1.5px solid #e5e7eb",borderRadius:"10px",padding:"9px 12px",fontSize:"18px",boxSizing:"border-box",outline:"none"}}/></div><button onClick={handleCreateDirectEv} disabled={!dEvForm.name.trim()||dEvSaving} style={{background:dEvForm.name.trim()?"linear-gradient(135deg,#7C3AED,#DB2777)":"#e5e7eb",color:dEvForm.name.trim()?"white":"#9CA3AF",border:"none",borderRadius:"10px",padding:"10px 22px",fontSize:"18px",fontWeight:"800",cursor:"pointer"}}>{dEvSaving?"⏳ 저장 중...":"✅ 직접운영 행사 생성"}</button></div>{directEvents.length===0?<div style={{...CARD,textAlign:"center",padding:"32px"}}><p style={{color:"#9CA3AF"}}>생성된 직접 운영 행사가 없어요.</p></div>:directEvents.map(ev=>(<div key={ev.id} style={{...CARD,border:directActiveIds.includes(ev.id)?"2px solid #7C3AED":"1.5px solid #e5e7eb"}}><div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",flexWrap:"wrap",gap:"10px"}}><div><div style={{display:"flex",alignItems:"center",gap:"8px",marginBottom:"4px"}}><span style={{fontSize:"18px",fontWeight:"900"}}>{ev.name}</span><span style={{background:"#f0fdf4",color:"#059669",border:"1px solid #bbf7d0",fontSize:"18px",fontWeight:"800",padding:"2px 8px",borderRadius:"20px"}}>🏢 직접운영</span>{directActiveIds.includes(ev.id)&&<span style={{background:"#eff6ff",color:"#0284C7",border:"1px solid #bfdbfe",fontSize:"18px",fontWeight:"800",padding:"2px 8px",borderRadius:"20px"}}>🟢 활성</span>}</div><div style={{fontSize:"18px",color:"#9CA3AF"}}>{ev.date&&`📅 ${ev.date} · `}👥 {dEvCounts[ev.id]||0}명</div></div><button onClick={()=>handleToggleDirectEv(ev)} style={{background:directActiveIds.includes(ev.id)?"#f3f4f6":"linear-gradient(135deg,#059669,#0284C7)",color:directActiveIds.includes(ev.id)?"#6B7280":"white",border:directActiveIds.includes(ev.id)?"1px solid #e5e7eb":"none",borderRadius:"8px",padding:"7px 12px",fontSize:"18px",fontWeight:"800",cursor:"pointer"}}>{directActiveIds.includes(ev.id)?"⏸ 비활성화":"🟢 활성화"}</button></div></div>))}</div>)}
 
-          {dTab==="students"&&(<div style={{display:"flex",flexDirection:"column",gap:"10px"}}>{directStudents.length>0&&(<div style={{...CARD,display:"flex",gap:"9px",flexWrap:"wrap",alignItems:"center"}}><select value={dSelEvId} onChange={e=>setDSelEvId(e.target.value)} style={{border:"1.5px solid #e5e7eb",borderRadius:"10px",padding:"8px 11px",fontSize:"13px",cursor:"pointer",flex:1}}><option value="all">전체 행사</option>{directEvents.map(ev=><option key={ev.id} value={ev.id}>{ev.name}</option>)}</select><select value={dSortKey} onChange={e=>setDSortKey(e.target.value)} style={{border:"1.5px solid #e5e7eb",borderRadius:"10px",padding:"8px 11px",fontSize:"13px",cursor:"pointer"}}><option value="avg">종합점수순</option>{DIMS.map(d=><option key={d.key} value={d.key}>{d.label}순</option>)}</select><span style={{fontSize:"12px",color:"#9CA3AF"}}>{dFiltered.length}명</span><button onClick={()=>{const evName=dSelEvId==='all'?'전체':directEvents.find(e=>e.id===dSelEvId)?.name||'선택행사';exportAllResults(dFiltered,directEvents,`직접운영_${evName}`);}} style={{background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",border:"none",borderRadius:"10px",padding:"8px 14px",fontSize:"12px",fontWeight:"800",cursor:"pointer",flexShrink:0}}>📥 결과 내보내기</button></div>)}{dFiltered.length===0?<div style={{...CARD,textAlign:"center",padding:"40px"}}><p style={{color:"#9CA3AF"}}>직접 운영 진단 결과가 없어요.</p></div>:dFiltered.map((s,i)=>{const lv=getLevel(s.avg),topD=DIMS.find(d=>d.key===s.topKey)||DIMS[0],uid=s._uid||s.id,isOpen=dExpandId===uid;return(<div key={uid} style={{...CARD,padding:0,overflow:"hidden"}}><div style={{padding:"12px 14px",display:"flex",alignItems:"center",gap:"9px",cursor:"pointer"}} onClick={()=>setDExpandId(isOpen?null:uid)}><span style={{fontSize:"11px",fontWeight:"900",color:"#9CA3AF",width:"20px"}}>{i+1}</span><MiniRadar scores={s.scores||{}} size={40}/><div style={{flex:1}}><div style={{display:"flex",alignItems:"center",gap:"5px",flexWrap:"wrap"}}><span style={{fontSize:"13px",fontWeight:"800"}}>{s.name}</span><span style={{fontSize:"10px",background:lv.bg,color:lv.c,fontWeight:"700",padding:"1px 7px",borderRadius:"20px"}}>{lv.l}</span></div><div style={{fontSize:"10px",color:topD.color,fontWeight:"700"}}>{topD.emoji} {topD.label}</div></div><div style={{fontSize:"15px",fontWeight:"900",color:"#7C3AED"}}>{s.avg}</div><span style={{fontSize:"12px",opacity:.3}}>{isOpen?"▲":"▼"}</span></div>{isOpen&&(<div style={{borderTop:"1px solid #f3f4f6",padding:"12px 14px",background:"#fafafa"}}><div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"7px"}}>{DIMS.map(d=>{const v=s.scores?.[d.key]||0,lv2=getLevel(v);return(<div key={d.key} style={{background:"white",borderRadius:"9px",padding:"9px",textAlign:"center"}}><div style={{fontSize:"13px"}}>{d.emoji}</div><div style={{fontSize:"9px",fontWeight:"700",color:"#374151",margin:"2px 0"}}>{d.label}</div><div style={{fontSize:"16px",fontWeight:"900",color:d.color}}>{v}</div><div style={{fontSize:"8px",background:lv2.bg,color:lv2.c,fontWeight:"700",padding:"1px 5px",borderRadius:"8px",marginTop:"2px"}}>{lv2.l}</div></div>);})}</div></div>)}</div>);})}</div>)}
+          {dTab==="students"&&(<div style={{display:"flex",flexDirection:"column",gap:"10px"}}>{directStudents.length>0&&(<div style={{...CARD,display:"flex",gap:"9px",flexWrap:"wrap",alignItems:"center"}}><select value={dSelEvId} onChange={e=>setDSelEvId(e.target.value)} style={{border:"1.5px solid #e5e7eb",borderRadius:"10px",padding:"8px 11px",fontSize:"18px",cursor:"pointer",flex:1}}><option value="all">전체 행사</option>{directEvents.map(ev=><option key={ev.id} value={ev.id}>{ev.name}</option>)}</select><select value={dSortKey} onChange={e=>setDSortKey(e.target.value)} style={{border:"1.5px solid #e5e7eb",borderRadius:"10px",padding:"8px 11px",fontSize:"18px",cursor:"pointer"}}><option value="avg">종합점수순</option>{DIMS.map(d=><option key={d.key} value={d.key}>{d.label}순</option>)}</select><span style={{fontSize:"18px",color:"#9CA3AF"}}>{dFiltered.length}명</span><button onClick={()=>{const evName=dSelEvId==='all'?'전체':directEvents.find(e=>e.id===dSelEvId)?.name||'선택행사';exportAllResults(dFiltered,directEvents,`직접운영_${evName}`);}} style={{background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",border:"none",borderRadius:"10px",padding:"8px 14px",fontSize:"18px",fontWeight:"800",cursor:"pointer",flexShrink:0}}>📥 결과 내보내기</button></div>)}{dFiltered.length===0?<div style={{...CARD,textAlign:"center",padding:"40px"}}><p style={{color:"#9CA3AF"}}>직접 운영 진단 결과가 없어요.</p></div>:dFiltered.map((s,i)=>{const lv=getLevel(s.avg),topD=DIMS.find(d=>d.key===s.topKey)||DIMS[0],uid=s._uid||s.id,isOpen=dExpandId===uid;return(<div key={uid} style={{...CARD,padding:0,overflow:"hidden"}}><div style={{padding:"12px 14px",display:"flex",alignItems:"center",gap:"9px",cursor:"pointer"}} onClick={()=>setDExpandId(isOpen?null:uid)}><span style={{fontSize:"18px",fontWeight:"900",color:"#9CA3AF",width:"20px"}}>{i+1}</span><MiniRadar scores={s.scores||{}} size={40}/><div style={{flex:1}}><div style={{display:"flex",alignItems:"center",gap:"5px",flexWrap:"wrap"}}><span style={{fontSize:"18px",fontWeight:"800"}}>{s.name}</span><span style={{fontSize:"18px",background:lv.bg,color:lv.c,fontWeight:"700",padding:"1px 7px",borderRadius:"20px"}}>{lv.l}</span></div><div style={{fontSize:"18px",color:topD.color,fontWeight:"700"}}>{topD.emoji} {topD.label}</div></div><div style={{fontSize:"18px",fontWeight:"900",color:"#7C3AED"}}>{s.avg}</div><span style={{fontSize:"18px",opacity:.3}}>{isOpen?"▲":"▼"}</span></div>{isOpen&&(<div style={{borderTop:"1px solid #f3f4f6",padding:"12px 14px",background:"#fafafa"}}><div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"7px"}}>{DIMS.map(d=>{const v=s.scores?.[d.key]||0,lv2=getLevel(v);return(<div key={d.key} style={{background:"white",borderRadius:"9px",padding:"9px",textAlign:"center"}}><div style={{fontSize:"18px"}}>{d.emoji}</div><div style={{fontSize:"18px",fontWeight:"700",color:"#374151",margin:"2px 0"}}>{d.label}</div><div style={{fontSize:"18px",fontWeight:"900",color:d.color}}>{v}</div><div style={{fontSize:"18px",background:lv2.bg,color:lv2.c,fontWeight:"700",padding:"1px 5px",borderRadius:"8px",marginTop:"2px"}}>{lv2.l}</div></div>);})}</div></div>)}</div>);})}</div>)}
 
-          {dTab==="teambuilding"&&(<div style={{display:"flex",flexDirection:"column",gap:"14px"}}><div style={CARD}><h3 style={{margin:"0 0 12px",fontSize:"14px",fontWeight:"800",color:"#1e1b4b"}}>🧩 직접 운영 팀 자동 매칭</h3>{directStudents.length===0?<p style={{color:"#9CA3AF",textAlign:"center",padding:"20px 0"}}>직접 운영 참가자 진단 완료 후 사용 가능해요.</p>:(<div style={{display:"flex",gap:"12px",flexWrap:"wrap",alignItems:"flex-end"}}><div><label style={{fontSize:"11px",fontWeight:"700",color:"#6B7280",display:"block",marginBottom:"5px"}}>팀 수</label><select value={dNumTeams} onChange={e=>setDNumTeams(+e.target.value)} style={{border:"1.5px solid #e5e7eb",borderRadius:"10px",padding:"8px 12px",fontSize:"14px",fontWeight:"700",cursor:"pointer"}}>{[2,3,4,5,6,7,8].map(n=><option key={n} value={n}>{n}팀</option>)}</select></div><button onClick={buildDirectTeams} style={{background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",border:"none",borderRadius:"10px",padding:"10px 20px",fontSize:"13px",fontWeight:"800",cursor:"pointer"}}>⚡ 자동 매칭</button></div>)}</div>{dTeamResult&&dTeamResult.map(t=>{const entries=Object.entries(t.dimAvgs||{});const topD=DIMS.find(d=>d.key===[...entries].sort((a,b)=>b[1]-a[1])[0]?.[0]);const weakD=DIMS.find(d=>d.key===[...entries].sort((a,b)=>a[1]-b[1])[0]?.[0]);return(<div key={t.name} style={CARD}><div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"10px"}}><h3 style={{margin:0,fontSize:"15px",fontWeight:"900"}}>{t.name} <span style={{fontSize:"11px",color:"#9CA3AF"}}>{t.members.length}명</span></h3><span style={{background:"#f5f3ff",color:"#7C3AED",fontWeight:"800",padding:"2px 9px",borderRadius:"20px",fontSize:"10px"}}>평균 {t.avg}점</span></div>{t.members.map(s=>{const td=DIMS.find(d=>d.key===s.topKey)||DIMS[0],uid=s._uid||s.id,anchor=t.anchors?.[uid];return(<div key={uid} style={{display:"flex",alignItems:"center",gap:"9px",background:anchor?"#f0f9ff":"#fafafa",borderRadius:"9px",padding:"7px 11px",marginBottom:"5px"}}><MiniRadar scores={s.scores||{}} size={34}/><div style={{flex:1}}><div style={{display:"flex",alignItems:"center",gap:"5px"}}><span style={{fontSize:"12px",fontWeight:"800"}}>{s.name}</span>{anchor&&<span style={{fontSize:"10px",fontWeight:"800",background:anchor.includes("팀장")?"#0284C7":"#EA580C",color:"white",padding:"1px 6px",borderRadius:"20px"}}>{anchor}</span>}</div><div style={{fontSize:"10px",color:td.color,fontWeight:"700"}}>{td.emoji} {td.label}</div></div><div style={{fontSize:"12px",fontWeight:"900",color:"#7C3AED"}}>{s.avg}점</div></div>);})} {topD&&weakD&&<div style={{display:"flex",gap:"7px",marginTop:"7px"}}><div style={{flex:1,background:"#f0fdf4",borderRadius:"7px",padding:"7px",fontSize:"10px",color:"#166534",fontWeight:"700"}}>💚 강점: {topD.label}</div><div style={{flex:1,background:"#fef2f2",borderRadius:"7px",padding:"7px",fontSize:"10px",color:"#991B1B",fontWeight:"700"}}>⚠️ 보완: {weakD.label}</div></div>}</div>);})}</div>)}
+          {dTab==="teambuilding"&&(<div style={{display:"flex",flexDirection:"column",gap:"14px"}}><div style={CARD}><h3 style={{margin:"0 0 12px",fontSize:"18px",fontWeight:"800",color:"#1e1b4b"}}>🧩 직접 운영 팀 자동 매칭</h3>{directStudents.length===0?<p style={{color:"#9CA3AF",textAlign:"center",padding:"20px 0"}}>직접 운영 참가자 진단 완료 후 사용 가능해요.</p>:(<div style={{display:"flex",gap:"12px",flexWrap:"wrap",alignItems:"flex-end"}}><div><label style={{fontSize:"18px",fontWeight:"700",color:"#6B7280",display:"block",marginBottom:"5px"}}>팀 수</label><select value={dNumTeams} onChange={e=>setDNumTeams(+e.target.value)} style={{border:"1.5px solid #e5e7eb",borderRadius:"10px",padding:"8px 12px",fontSize:"18px",fontWeight:"700",cursor:"pointer"}}>{[2,3,4,5,6,7,8].map(n=><option key={n} value={n}>{n}팀</option>)}</select></div><button onClick={buildDirectTeams} style={{background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",border:"none",borderRadius:"10px",padding:"10px 20px",fontSize:"18px",fontWeight:"800",cursor:"pointer"}}>⚡ 자동 매칭</button></div>)}</div>{dTeamResult&&dTeamResult.map(t=>{const entries=Object.entries(t.dimAvgs||{});const topD=DIMS.find(d=>d.key===[...entries].sort((a,b)=>b[1]-a[1])[0]?.[0]);const weakD=DIMS.find(d=>d.key===[...entries].sort((a,b)=>a[1]-b[1])[0]?.[0]);return(<div key={t.name} style={CARD}><div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"10px"}}><h3 style={{margin:0,fontSize:"18px",fontWeight:"900"}}>{t.name} <span style={{fontSize:"18px",color:"#9CA3AF"}}>{t.members.length}명</span></h3><span style={{background:"#f5f3ff",color:"#7C3AED",fontWeight:"800",padding:"2px 9px",borderRadius:"20px",fontSize:"18px"}}>평균 {t.avg}점</span></div>{t.members.map(s=>{const td=DIMS.find(d=>d.key===s.topKey)||DIMS[0],uid=s._uid||s.id,anchor=t.anchors?.[uid];return(<div key={uid} style={{display:"flex",alignItems:"center",gap:"9px",background:anchor?"#f0f9ff":"#fafafa",borderRadius:"9px",padding:"7px 11px",marginBottom:"5px"}}><MiniRadar scores={s.scores||{}} size={34}/><div style={{flex:1}}><div style={{display:"flex",alignItems:"center",gap:"5px"}}><span style={{fontSize:"18px",fontWeight:"800"}}>{s.name}</span>{anchor&&<span style={{fontSize:"18px",fontWeight:"800",background:anchor.includes("팀장")?"#0284C7":"#EA580C",color:"white",padding:"1px 6px",borderRadius:"20px"}}>{anchor}</span>}</div><div style={{fontSize:"18px",color:td.color,fontWeight:"700"}}>{td.emoji} {td.label}</div></div><div style={{fontSize:"18px",fontWeight:"900",color:"#7C3AED"}}>{s.avg}점</div></div>);})} {topD&&weakD&&<div style={{display:"flex",gap:"7px",marginTop:"7px"}}><div style={{flex:1,background:"#f0fdf4",borderRadius:"7px",padding:"7px",fontSize:"18px",color:"#166534",fontWeight:"700"}}>💚 강점: {topD.label}</div><div style={{flex:1,background:"#fef2f2",borderRadius:"7px",padding:"7px",fontSize:"18px",color:"#991B1B",fontWeight:"700"}}>⚠️ 보완: {weakD.label}</div></div>}</div>);})}</div>)}
         </div>)}
 
         {tab==="b2b"&&(<div style={{display:"flex",flexDirection:"column",gap:"12px"}}>
           <div style={{background:"linear-gradient(135deg,#1e3a5f,#1e1b4b)",borderRadius:"16px",padding:"16px 20px",color:"white",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:"10px"}}>
-            <div><div style={{fontSize:"11px",fontWeight:"800",letterSpacing:"2px",opacity:.6,marginBottom:"4px"}}>🏫 B2B PARTNERS</div><div style={{fontSize:"15px",fontWeight:"900"}}>파트너 기관 운영 현황</div></div>
-            <div style={{display:"flex",gap:"8px"}}><div style={{textAlign:"center",background:"rgba(255,255,255,0.12)",borderRadius:"10px",padding:"8px 14px"}}><div style={{fontSize:"18px",fontWeight:"900"}}>{subAccounts.length}</div><div style={{fontSize:"10px",opacity:.6}}>파트너</div></div><div style={{textAlign:"center",background:"rgba(255,255,255,0.12)",borderRadius:"10px",padding:"8px 14px"}}><div style={{fontSize:"18px",fontWeight:"900"}}>{students.length}</div><div style={{fontSize:"10px",opacity:.6}}>참가자</div></div></div>
+            <div><div style={{fontSize:"18px",fontWeight:"800",letterSpacing:"2px",opacity:.6,marginBottom:"4px"}}>🏫 B2B PARTNERS</div><div style={{fontSize:"18px",fontWeight:"900"}}>파트너 기관 운영 현황</div></div>
+            <div style={{display:"flex",gap:"8px"}}><div style={{textAlign:"center",background:"rgba(255,255,255,0.12)",borderRadius:"10px",padding:"8px 14px"}}><div style={{fontSize:"18px",fontWeight:"900"}}>{subAccounts.length}</div><div style={{fontSize:"18px",opacity:.6}}>파트너</div></div><div style={{textAlign:"center",background:"rgba(255,255,255,0.12)",borderRadius:"10px",padding:"8px 14px"}}><div style={{fontSize:"18px",fontWeight:"900"}}>{students.length}</div><div style={{fontSize:"18px",opacity:.6}}>참가자</div></div></div>
           </div>
-          <div style={{...CARD,display:"flex",gap:"10px",flexWrap:"wrap",alignItems:"center"}}><select value={selOrg} onChange={e=>setSelOrg(e.target.value)} style={{border:"1.5px solid #e5e7eb",borderRadius:"10px",padding:"7px 12px",fontSize:"13px",cursor:"pointer",flex:1}}><option value="all">전체 기관</option>{subAccounts.map(a=><option key={a.code} value={a.code}>{a.org}</option>)}</select><span style={{fontSize:"12px",color:"#9CA3AF"}}>{orgStudents.length}명</span></div>
-          {subAccounts.length===0?<div style={{...CARD,textAlign:"center",padding:"40px"}}><p style={{color:"#9CA3AF"}}>등록된 B2B 파트너가 없어요.</p></div>:subAccounts.map(acc=>{const accEvs=events.filter(e=>e.orgCode===acc.code);const accStuds=students.filter(s=>accEvs.map(e=>e.id).includes(s.evId));return(<div key={acc.code} style={{...CARD,border:accStuds.length>=CONFIG.REPORT_CTA_MIN?"2px solid #7C3AED":"1.5px solid #e5e7eb"}}><div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",flexWrap:"wrap",gap:"10px"}}><div style={{flex:1}}><div style={{display:"flex",alignItems:"center",gap:"8px",marginBottom:"6px",flexWrap:"wrap"}}><span style={{fontSize:"15px",fontWeight:"900"}}>{acc.org}</span><span style={{background:"#f5f3ff",color:"#7C3AED",fontSize:"10px",fontWeight:"800",padding:"2px 9px",borderRadius:"20px"}}>{acc.code}</span>{accStuds.length>=CONFIG.REPORT_CTA_MIN&&<span style={{background:"#fef3c7",color:"#92400e",fontSize:"10px",fontWeight:"800",padding:"2px 9px",borderRadius:"20px"}}>📋 보고서 가능</span>}</div><div style={{display:"flex",gap:"12px",flexWrap:"wrap",fontSize:"11px",color:"#9CA3AF"}}><span>👤 {acc.contact}</span><span>📧 {acc.email}</span><span>📅 {accEvs.length}개 행사</span><span>👥 {accStuds.length}명</span></div></div></div>{accStuds.length>0&&(<div style={{display:"flex",gap:"6px",flexWrap:"wrap",marginTop:"10px"}}>{DIMS.map(d=>{const a=Math.round(accStuds.reduce((s,st)=>s+(st.scores?.[d.key]||0),0)/accStuds.length);return(<div key={d.key} style={{background:d.color+"15",border:`1px solid ${d.color}40`,borderRadius:"8px",padding:"4px 9px",display:"flex",gap:"5px",alignItems:"center"}}><span style={{fontSize:"10px"}}>{d.emoji}</span><span style={{fontSize:"11px",fontWeight:"800",color:d.color}}>{a}</span></div>);})}</div>)}</div>);})}
+          <div style={{...CARD,display:"flex",gap:"10px",flexWrap:"wrap",alignItems:"center"}}><select value={selOrg} onChange={e=>setSelOrg(e.target.value)} style={{border:"1.5px solid #e5e7eb",borderRadius:"10px",padding:"7px 12px",fontSize:"18px",cursor:"pointer",flex:1}}><option value="all">전체 기관</option>{subAccounts.map(a=><option key={a.code} value={a.code}>{a.org}</option>)}</select><span style={{fontSize:"18px",color:"#9CA3AF"}}>{orgStudents.length}명</span></div>
+          {subAccounts.length===0?<div style={{...CARD,textAlign:"center",padding:"40px"}}><p style={{color:"#9CA3AF"}}>등록된 B2B 파트너가 없어요.</p></div>:subAccounts.map(acc=>{const accEvs=events.filter(e=>e.orgCode===acc.code);const accStuds=students.filter(s=>accEvs.map(e=>e.id).includes(s.evId));return(<div key={acc.code} style={{...CARD,border:accStuds.length>=CONFIG.REPORT_CTA_MIN?"2px solid #7C3AED":"1.5px solid #e5e7eb"}}><div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",flexWrap:"wrap",gap:"10px"}}><div style={{flex:1}}><div style={{display:"flex",alignItems:"center",gap:"8px",marginBottom:"6px",flexWrap:"wrap"}}><span style={{fontSize:"18px",fontWeight:"900"}}>{acc.org}</span><span style={{background:"#f5f3ff",color:"#7C3AED",fontSize:"18px",fontWeight:"800",padding:"2px 9px",borderRadius:"20px"}}>{acc.code}</span>{accStuds.length>=CONFIG.REPORT_CTA_MIN&&<span style={{background:"#fef3c7",color:"#92400e",fontSize:"18px",fontWeight:"800",padding:"2px 9px",borderRadius:"20px"}}>📋 보고서 가능</span>}</div><div style={{display:"flex",gap:"12px",flexWrap:"wrap",fontSize:"18px",color:"#9CA3AF"}}><span>👤 {acc.contact}</span><span>📧 {acc.email}</span><span>📅 {accEvs.length}개 행사</span><span>👥 {accStuds.length}명</span></div></div></div>{accStuds.length>0&&(<div style={{display:"flex",gap:"6px",flexWrap:"wrap",marginTop:"10px"}}>{DIMS.map(d=>{const a=Math.round(accStuds.reduce((s,st)=>s+(st.scores?.[d.key]||0),0)/accStuds.length);return(<div key={d.key} style={{background:d.color+"15",border:`1px solid ${d.color}40`,borderRadius:"8px",padding:"4px 9px",display:"flex",gap:"5px",alignItems:"center"}}><span style={{fontSize:"18px"}}>{d.emoji}</span><span style={{fontSize:"18px",fontWeight:"800",color:d.color}}>{a}</span></div>);})}</div>)}</div>);})}
         </div>)}
 
         {tab==="compare"&&(()=>{
@@ -963,8 +963,8 @@ function SuperAdminDashboard({onBack}){
           <div style={{display:"flex",flexDirection:"column",gap:"14px"}}>
             {/* 프로젝트 목록 */}
             <div style={CARD}>
-              <h3 style={{margin:"0 0 4px",fontSize:"14px",fontWeight:"900",color:"#1e1b4b"}}>📊 프로젝트별 역량 분석</h3>
-              <p style={{margin:"0 0 14px",fontSize:"12px",color:"#6B7280"}}>프로젝트를 선택하면 역량 분포와 상세 통계를 확인할 수 있어요</p>
+              <h3 style={{margin:"0 0 4px",fontSize:"18px",fontWeight:"900",color:"#1e1b4b"}}>📊 프로젝트별 역량 분석</h3>
+              <p style={{margin:"0 0 14px",fontSize:"18px",color:"#6B7280"}}>프로젝트를 선택하면 역량 분포와 상세 통계를 확인할 수 있어요</p>
               {allEvents.length===0?(
                 <div style={{textAlign:"center",padding:"32px",color:"#9CA3AF"}}>생성된 행사가 없어요.</div>
               ):(
@@ -980,17 +980,17 @@ function SuperAdminDashboard({onBack}){
                         <span style={{fontSize:"20px"}}>{isDirect?"🏢":"🏫"}</span>
                         <div style={{flex:1,minWidth:0}}>
                           <div style={{display:"flex",alignItems:"center",gap:"7px",flexWrap:"wrap",marginBottom:"2px"}}>
-                            <span style={{fontSize:"13px",fontWeight:"800",color:"#1e1b4b"}}>{ev.name}</span>
-                            <span style={{fontSize:"10px",background:isDirect?"#f0fdf4":"#eff6ff",color:isDirect?"#059669":"#0284C7",fontWeight:"700",padding:"1px 7px",borderRadius:"20px"}}>{isDirect?"🏢 직접운영":"🏫 B2B"}</span>
+                            <span style={{fontSize:"18px",fontWeight:"800",color:"#1e1b4b"}}>{ev.name}</span>
+                            <span style={{fontSize:"18px",background:isDirect?"#f0fdf4":"#eff6ff",color:isDirect?"#059669":"#0284C7",fontWeight:"700",padding:"1px 7px",borderRadius:"20px"}}>{isDirect?"🏢 직접운영":"🏫 B2B"}</span>
                           </div>
-                          <div style={{fontSize:"11px",color:"#9CA3AF"}}>{ev.date||"날짜 미정"} · {evStudents.length}명 참가</div>
+                          <div style={{fontSize:"18px",color:"#9CA3AF"}}>{ev.date||"날짜 미정"} · {evStudents.length}명 참가</div>
                         </div>
                         {evStudents.length>0&&<div style={{textAlign:"center",flexShrink:0}}>
                           <div style={{fontSize:"18px",fontWeight:"900",color:lv.c}}>{evAvg}</div>
-                          <div style={{fontSize:"9px",color:"#9CA3AF"}}>평균점</div>
+                          <div style={{fontSize:"18px",color:"#9CA3AF"}}>평균점</div>
                         </div>}
-                        {evStudents.length===0&&<div style={{fontSize:"11px",color:"#d1d5db",flexShrink:0}}>결과 없음</div>}
-                        <span style={{fontSize:"14px",color:isSelected?"#7C3AED":"#d1d5db"}}>▶</span>
+                        {evStudents.length===0&&<div style={{fontSize:"18px",color:"#d1d5db",flexShrink:0}}>결과 없음</div>}
+                        <span style={{fontSize:"18px",color:isSelected?"#7C3AED":"#d1d5db"}}>▶</span>
                       </div>
                     );
                   })}
@@ -1010,19 +1010,19 @@ function SuperAdminDashboard({onBack}){
                 <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",flexWrap:"wrap",gap:"10px",marginBottom:"16px"}}>
                   <div>
                     <div style={{display:"flex",alignItems:"center",gap:"8px",flexWrap:"wrap",marginBottom:"4px"}}>
-                      <span style={{fontSize:"15px",fontWeight:"900",color:"#1e1b4b"}}>{selEv.name}</span>
-                      <span style={{fontSize:"10px",background:selEv.mode==="direct"?"#f0fdf4":"#eff6ff",color:selEv.mode==="direct"?"#059669":"#0284C7",fontWeight:"700",padding:"1px 7px",borderRadius:"20px"}}>{selEv.mode==="direct"?"🏢 직접운영":"🏫 B2B"}</span>
+                      <span style={{fontSize:"18px",fontWeight:"900",color:"#1e1b4b"}}>{selEv.name}</span>
+                      <span style={{fontSize:"18px",background:selEv.mode==="direct"?"#f0fdf4":"#eff6ff",color:selEv.mode==="direct"?"#059669":"#0284C7",fontWeight:"700",padding:"1px 7px",borderRadius:"20px"}}>{selEv.mode==="direct"?"🏢 직접운영":"🏫 B2B"}</span>
                     </div>
-                    <div style={{fontSize:"12px",color:"#9CA3AF"}}>{selEv.date||""} · 총 {projStudents.length}명</div>
+                    <div style={{fontSize:"18px",color:"#9CA3AF"}}>{selEv.date||""} · 총 {projStudents.length}명</div>
                   </div>
-                  <button onClick={()=>exportAllResults(projStudents,allEvents,selEv.name)} style={{background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",border:"none",borderRadius:"10px",padding:"8px 16px",fontSize:"12px",fontWeight:"800",cursor:"pointer"}}>📥 결과 내보내기</button>
+                  <button onClick={()=>exportAllResults(projStudents,allEvents,selEv.name)} style={{background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",border:"none",borderRadius:"10px",padding:"8px 16px",fontSize:"18px",fontWeight:"800",cursor:"pointer"}}>📥 결과 내보내기</button>
                 </div>
                 {/* 요약 카드 */}
                 <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(100px,1fr))",gap:"8px",marginBottom:"20px"}}>
                   {[{n:projStudents.length+"명",l:"총 참가자"},{n:projAvg+"점",l:"전체 평균"},{n:(topDim?.avg||0)+"점",l:`최강 ${topDim?.label||""}`},{n:(weakDim?.avg||0)+"점",l:`보완 ${weakDim?.label||""}`}].map(({n,l})=>(
                     <div key={l} style={{background:"#f5f3ff",borderRadius:"10px",padding:"10px",textAlign:"center"}}>
-                      <div style={{fontSize:"16px",fontWeight:"900",color:"#7C3AED"}}>{n}</div>
-                      <div style={{fontSize:"9px",color:"#6B7280",marginTop:"2px"}}>{l}</div>
+                      <div style={{fontSize:"18px",fontWeight:"900",color:"#7C3AED"}}>{n}</div>
+                      <div style={{fontSize:"18px",color:"#6B7280",marginTop:"2px"}}>{l}</div>
                     </div>
                   ))}
                 </div>
@@ -1035,10 +1035,10 @@ function SuperAdminDashboard({onBack}){
                       return(
                         <div key={d.key} style={{marginBottom:"8px"}}>
                           <div style={{display:"flex",justifyContent:"space-between",marginBottom:"2px"}}>
-                            <span style={{fontSize:"11px",fontWeight:"700"}}>{d.emoji} {d.label}</span>
+                            <span style={{fontSize:"18px",fontWeight:"700"}}>{d.emoji} {d.label}</span>
                             <div style={{display:"flex",gap:"4px",alignItems:"center"}}>
-                              <span style={{fontSize:"9px",background:lv.bg,color:lv.c,fontWeight:"700",padding:"1px 5px",borderRadius:"8px"}}>{lv.l}</span>
-                              <span style={{fontSize:"12px",fontWeight:"900",color:d.color}}>{d.avg}</span>
+                              <span style={{fontSize:"18px",background:lv.bg,color:lv.c,fontWeight:"700",padding:"1px 5px",borderRadius:"8px"}}>{lv.l}</span>
+                              <span style={{fontSize:"18px",fontWeight:"900",color:d.color}}>{d.avg}</span>
                             </div>
                           </div>
                           <div style={{background:"#e5e7eb",borderRadius:"100px",height:"6px"}}>
@@ -1051,15 +1051,15 @@ function SuperAdminDashboard({onBack}){
                 </div>
                 {/* 등급 분포 */}
                 <div style={{borderTop:"1px solid #f3f4f6",paddingTop:"14px"}}>
-                  <div style={{fontSize:"11px",fontWeight:"700",color:"#6B7280",marginBottom:"8px"}}>등급 분포</div>
+                  <div style={{fontSize:"18px",fontWeight:"700",color:"#6B7280",marginBottom:"8px"}}>등급 분포</div>
                   <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:"6px"}}>
                     {[{l:"탁월",min:80,c:"#7C3AED",bg:"#f5f3ff"},{l:"우수",min:60,max:80,c:"#0284C7",bg:"#eff6ff"},{l:"보통",min:40,max:60,c:"#D97706",bg:"#fffbeb"},{l:"개발필요",max:40,c:"#DC2626",bg:"#fef2f2"}].map(({l,min,max,c,bg})=>{
                       const cnt=projStudents.filter(s=>s.avg>=(min||0)&&s.avg<(max||999)).length;
                       const pct=Math.round(cnt/projStudents.length*100);
                       return(<div key={l} style={{background:bg,borderRadius:"10px",padding:"10px",textAlign:"center"}}>
                         <div style={{fontSize:"18px",fontWeight:"900",color:c}}>{cnt}명</div>
-                        <div style={{fontSize:"10px",color:c,fontWeight:"700"}}>{pct}%</div>
-                        <div style={{fontSize:"9px",color:"#6B7280",marginTop:"2px"}}>{l}</div>
+                        <div style={{fontSize:"18px",color:c,fontWeight:"700"}}>{pct}%</div>
+                        <div style={{fontSize:"18px",color:"#6B7280",marginTop:"2px"}}>{l}</div>
                       </div>);
                     })}
                   </div>
@@ -1074,18 +1074,18 @@ function SuperAdminDashboard({onBack}){
           {approveResult&&(
             <div style={{position:"fixed",inset:0,background:"rgba(0,0,0,0.6)",zIndex:9999,display:"flex",alignItems:"center",justifyContent:"center",padding:"16px"}}>
               <div style={{background:"white",borderRadius:"20px",maxWidth:"400px",width:"100%",padding:"24px"}}>
-                <div style={{textAlign:"center",marginBottom:"16px"}}><div style={{fontSize:"40px"}}>✅</div><h3 style={{margin:"8px 0 4px",fontSize:"16px",fontWeight:"900",color:"#111"}}>{approveResult.org} 승인 완료</h3><p style={{margin:0,fontSize:"12px",color:"#9CA3AF"}}>아래 정보를 담당자에게 직접 전달해주세요</p></div>
+                <div style={{textAlign:"center",marginBottom:"16px"}}><div style={{fontSize:"40px"}}>✅</div><h3 style={{margin:"8px 0 4px",fontSize:"18px",fontWeight:"900",color:"#111"}}>{approveResult.org} 승인 완료</h3><p style={{margin:0,fontSize:"18px",color:"#9CA3AF"}}>아래 정보를 담당자에게 직접 전달해주세요</p></div>
                 <div style={{background:"#f5f3ff",borderRadius:"12px",padding:"14px",marginBottom:"16px"}}>
-                  <div style={{marginBottom:"10px"}}><div style={{fontSize:"10px",color:"#7C3AED",fontWeight:"800",marginBottom:"3px"}}>📧 로그인 이메일</div><div style={{fontSize:"14px",fontWeight:"700",color:"#111"}}>{approveResult.email}</div></div>
-                  <div style={{marginBottom:"10px"}}><div style={{fontSize:"10px",color:"#7C3AED",fontWeight:"800",marginBottom:"3px"}}>🔑 기관 코드</div><div style={{fontSize:"18px",fontWeight:"900",color:"#7C3AED",letterSpacing:"2px"}}>{approveResult.code}</div></div>
-                  <div><div style={{fontSize:"10px",color:"#7C3AED",fontWeight:"800",marginBottom:"3px"}}>🔒 초기 비밀번호</div><div style={{fontSize:"18px",fontWeight:"900",color:"#7C3AED",letterSpacing:"2px"}}>{approveResult.pw}</div></div>
+                  <div style={{marginBottom:"10px"}}><div style={{fontSize:"18px",color:"#7C3AED",fontWeight:"800",marginBottom:"3px"}}>📧 로그인 이메일</div><div style={{fontSize:"18px",fontWeight:"700",color:"#111"}}>{approveResult.email}</div></div>
+                  <div style={{marginBottom:"10px"}}><div style={{fontSize:"18px",color:"#7C3AED",fontWeight:"800",marginBottom:"3px"}}>🔑 기관 코드</div><div style={{fontSize:"18px",fontWeight:"900",color:"#7C3AED",letterSpacing:"2px"}}>{approveResult.code}</div></div>
+                  <div><div style={{fontSize:"18px",color:"#7C3AED",fontWeight:"800",marginBottom:"3px"}}>🔒 초기 비밀번호</div><div style={{fontSize:"18px",fontWeight:"900",color:"#7C3AED",letterSpacing:"2px"}}>{approveResult.pw}</div></div>
                 </div>
-                <p style={{margin:"0 0 14px",fontSize:"11px",color:"#9CA3AF",textAlign:"center",lineHeight:1.6}}>기관 담당자는 <strong>이메일로 로그인</strong> 또는<br/><strong>기관코드 + 초기 비밀번호</strong>로 로그인할 수 있어요</p>
-                <button onClick={()=>setApproveResult(null)} style={{width:"100%",background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",border:"none",borderRadius:"10px",padding:"12px",fontSize:"14px",fontWeight:"800",cursor:"pointer"}}>확인</button>
+                <p style={{margin:"0 0 14px",fontSize:"18px",color:"#9CA3AF",textAlign:"center",lineHeight:1.6}}>기관 담당자는 <strong>이메일로 로그인</strong> 또는<br/><strong>기관코드 + 초기 비밀번호</strong>로 로그인할 수 있어요</p>
+                <button onClick={()=>setApproveResult(null)} style={{width:"100%",background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",border:"none",borderRadius:"10px",padding:"12px",fontSize:"18px",fontWeight:"800",cursor:"pointer"}}>확인</button>
               </div>
             </div>
           )}
-          {pendingAccounts.length===0?(<div style={{...CARD,textAlign:"center",padding:"40px"}}><div style={{fontSize:"40px",marginBottom:"10px"}}>✅</div><p style={{color:"#9CA3AF"}}>승인 대기 중인 기관이 없어요.</p></div>):pendingAccounts.map(acc=>(<div key={acc.code} style={{...CARD,border:"1.5px solid #fbbf24"}}><div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",flexWrap:"wrap",gap:"10px"}}><div><div style={{fontSize:"15px",fontWeight:"900",marginBottom:"6px"}}>{acc.org}</div><div style={{fontSize:"11px",color:"#9CA3AF",display:"flex",gap:"12px",flexWrap:"wrap"}}><span>👤 {acc.contact}</span><span>📧 {acc.email}</span><span>📅 {acc.reqAt}</span></div></div><button onClick={()=>handleApprove(acc.code)} style={{background:"linear-gradient(135deg,#059669,#0284C7)",color:"white",border:"none",borderRadius:"8px",padding:"8px 16px",fontSize:"12px",fontWeight:"800",cursor:"pointer"}}>✅ 승인</button></div></div>))}
+          {pendingAccounts.length===0?(<div style={{...CARD,textAlign:"center",padding:"40px"}}><div style={{fontSize:"40px",marginBottom:"10px"}}>✅</div><p style={{color:"#9CA3AF"}}>승인 대기 중인 기관이 없어요.</p></div>):pendingAccounts.map(acc=>(<div key={acc.code} style={{...CARD,border:"1.5px solid #fbbf24"}}><div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",flexWrap:"wrap",gap:"10px"}}><div><div style={{fontSize:"18px",fontWeight:"900",marginBottom:"6px"}}>{acc.org}</div><div style={{fontSize:"18px",color:"#9CA3AF",display:"flex",gap:"12px",flexWrap:"wrap"}}><span>👤 {acc.contact}</span><span>📧 {acc.email}</span><span>📅 {acc.reqAt}</span></div></div><button onClick={()=>handleApprove(acc.code)} style={{background:"linear-gradient(135deg,#059669,#0284C7)",color:"white",border:"none",borderRadius:"8px",padding:"8px 16px",fontSize:"18px",fontWeight:"800",cursor:"pointer"}}>✅ 승인</button></div></div>))}
         </div>)}
       </div>
     </div>
@@ -1149,8 +1149,8 @@ function ParticipantMode({onBack}){
       <style>{`@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}} @keyframes pulse3{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(0.92)}}`}</style>
       <div style={{textAlign:"center",color:"white",padding:"20px"}}>
         <div style={{fontSize:"56px",animation:"pulse3 1.6s ease-in-out infinite",marginBottom:"20px"}}>🧬</div>
-        <div style={{fontSize:"16px",fontWeight:"900",marginBottom:"8px"}}>창업 역량 진단</div>
-        <div style={{fontSize:"12px",opacity:.5,marginBottom:"28px"}}>by {COMPANY.name}</div>
+        <div style={{fontSize:"18px",fontWeight:"900",marginBottom:"8px"}}>창업 역량 진단</div>
+        <div style={{fontSize:"18px",opacity:.5,marginBottom:"28px"}}>by {COMPANY.name}</div>
         <div style={{display:"flex",justifyContent:"center",gap:"7px"}}>
           {[0,1,2].map(i=><div key={i} style={{width:"8px",height:"8px",borderRadius:"50%",background:"#a78bfa",animation:`pulse3 1.2s ease-in-out ${i*0.2}s infinite`}}/>)}
         </div>
@@ -1164,23 +1164,23 @@ function ParticipantMode({onBack}){
       {showPrivacy&&(
         <div style={{position:"fixed",inset:0,background:"rgba(0,0,0,0.6)",zIndex:9999,display:"flex",alignItems:"center",justifyContent:"center",padding:"16px"}}>
           <div style={{background:"white",borderRadius:"20px",maxWidth:"400px",width:"100%",padding:"24px"}}>
-            <h3 style={{margin:"0 0 8px",fontSize:"16px",fontWeight:"900",color:"#111"}}>개인정보 수집·이용 동의</h3>
-            <p style={{margin:"0 0 12px",fontSize:"12px",color:"#9CA3AF"}}>결과 확인 전 동의가 필요해요.</p>
-            <div style={{background:"#f5f3ff",borderRadius:"12px",padding:"12px",marginBottom:"16px",fontSize:"11px",color:"#374151",lineHeight:1.7}}>수집 항목: 이름, 전공, 팀명(또는 개인참가), 진단 결과<br/>수집 목적: 역량 진단 결과 제공 및 팀 빌딩<br/>보유 기간: 프로그램 종료 후 파기</div>
+            <h3 style={{margin:"0 0 8px",fontSize:"18px",fontWeight:"900",color:"#111"}}>개인정보 수집·이용 동의</h3>
+            <p style={{margin:"0 0 12px",fontSize:"18px",color:"#9CA3AF"}}>결과 확인 전 동의가 필요해요.</p>
+            <div style={{background:"#f5f3ff",borderRadius:"12px",padding:"12px",marginBottom:"16px",fontSize:"18px",color:"#374151",lineHeight:1.7}}>수집 항목: 이름, 전공, 팀명(또는 개인참가), 진단 결과<br/>수집 목적: 역량 진단 결과 제공 및 팀 빌딩<br/>보유 기간: 프로그램 종료 후 파기</div>
             <div style={{display:"flex",gap:"8px"}}>
-              <button onClick={()=>{setShowPrivacy(false);setScreen("refused");}} style={{flex:1,background:"white",color:"#6B7280",border:"1.5px solid #e5e7eb",borderRadius:"10px",padding:"11px",fontSize:"13px",fontWeight:"700",cursor:"pointer"}}>취소</button>
-              <button onClick={()=>{setShowPrivacy(false);fetchAI(scores);}} style={{flex:2,background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",border:"none",borderRadius:"10px",padding:"11px",fontSize:"13px",fontWeight:"900",cursor:"pointer"}}>✅ 동의하고 결과 보기</button>
+              <button onClick={()=>{setShowPrivacy(false);setScreen("refused");}} style={{flex:1,background:"white",color:"#6B7280",border:"1.5px solid #e5e7eb",borderRadius:"10px",padding:"11px",fontSize:"18px",fontWeight:"700",cursor:"pointer"}}>취소</button>
+              <button onClick={()=>{setShowPrivacy(false);fetchAI(scores);}} style={{flex:2,background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",border:"none",borderRadius:"10px",padding:"11px",fontSize:"18px",fontWeight:"900",cursor:"pointer"}}>✅ 동의하고 결과 보기</button>
             </div>
           </div>
         </div>
       )}
       <div style={{maxWidth:"380px",width:"100%",textAlign:"center",color:"white"}}>
-        <button onClick={onBack} style={{background:"rgba(255,255,255,0.1)",color:"white",border:"none",borderRadius:"8px",padding:"6px 12px",fontSize:"12px",cursor:"pointer",marginBottom:"20px",display:"block"}}>← 홈</button>
+        <button onClick={onBack} style={{background:"rgba(255,255,255,0.1)",color:"white",border:"none",borderRadius:"8px",padding:"6px 12px",fontSize:"18px",cursor:"pointer",marginBottom:"20px",display:"block"}}>← 홈</button>
         <div style={{fontSize:"56px",animation:"float 3s ease-in-out infinite",marginBottom:"10px"}}>🧬</div>
         <h1 style={{margin:"0 0 16px",fontSize:"24px",fontWeight:"900"}}>창업 역량 진단</h1>
         <div style={{background:"rgba(255,255,255,0.1)",borderRadius:"20px",padding:"18px",marginBottom:"14px",textAlign:"left"}}>
-          <p style={{margin:"0 0 8px",fontSize:"12px",fontWeight:"800",opacity:.8}}>📅 참여 행사 선택</p>
-          <select value={selEvId} onChange={e=>setSelEvId(e.target.value)} style={{width:"100%",background:"rgba(255,255,255,0.15)",border:"1.5px solid rgba(255,255,255,0.25)",borderRadius:"10px",padding:"10px 14px",fontSize:"13px",color:"white",boxSizing:"border-box",cursor:"pointer"}}>
+          <p style={{margin:"0 0 8px",fontSize:"18px",fontWeight:"800",opacity:.8}}>📅 참여 행사 선택</p>
+          <select value={selEvId} onChange={e=>setSelEvId(e.target.value)} style={{width:"100%",background:"rgba(255,255,255,0.15)",border:"1.5px solid rgba(255,255,255,0.25)",borderRadius:"10px",padding:"10px 14px",fontSize:"18px",color:"white",boxSizing:"border-box",cursor:"pointer"}}>
             <option value="general" style={{color:"#111",background:"white"}}>🔖 일반 진단</option>
             {(activeEvents.length>0?activeEvents:events).map(ev=><option key={ev.id} value={ev.id} style={{color:"#111",background:"white"}}>{activeEvIds.includes(ev.id)?"🟢":"⚪"} {ev.name}{ev.mode==="direct"?" 🏢":""}</option>)}
           </select>
@@ -1188,21 +1188,21 @@ function ParticipantMode({onBack}){
         <div style={{background:"rgba(255,255,255,0.08)",borderRadius:"20px",padding:"18px",marginBottom:"16px",textAlign:"left"}}>
           {[{label:"이름 *",key:"name",ph:"홍길동"},{label:"전공",key:"major",ph:"경영학"}].map(({label,key,ph})=>(
             <div key={key} style={{marginBottom:"10px"}}>
-              <label style={{fontSize:"12px",fontWeight:"700",opacity:.7,display:"block",marginBottom:"5px"}}>{label}</label>
-              <input value={info[key]} onChange={e=>setInfo(p=>({...p,[key]:e.target.value}))} placeholder={ph} style={{width:"100%",background:"rgba(255,255,255,0.12)",border:"1.5px solid rgba(255,255,255,0.2)",borderRadius:"10px",padding:"10px 14px",fontSize:"14px",color:"white",boxSizing:"border-box"}}/>
+              <label style={{fontSize:"18px",fontWeight:"700",opacity:.7,display:"block",marginBottom:"5px"}}>{label}</label>
+              <input value={info[key]} onChange={e=>setInfo(p=>({...p,[key]:e.target.value}))} placeholder={ph} style={{width:"100%",background:"rgba(255,255,255,0.12)",border:"1.5px solid rgba(255,255,255,0.2)",borderRadius:"10px",padding:"10px 14px",fontSize:"18px",color:"white",boxSizing:"border-box"}}/>
             </div>
           ))}
           <div style={{marginBottom:"10px"}}>
-            <label style={{fontSize:"12px",fontWeight:"700",opacity:.7,display:"block",marginBottom:"5px"}}>팀명 / 개인 참가</label>
+            <label style={{fontSize:"18px",fontWeight:"700",opacity:.7,display:"block",marginBottom:"5px"}}>팀명 / 개인 참가</label>
             <div style={{display:"flex",gap:"7px",marginBottom:"7px"}}>
-              <button onClick={()=>setInfo(p=>({...p,team:"개인참가"}))} style={{flex:1,padding:"8px",borderRadius:"10px",border:info.team==="개인참가"?"2px solid #a78bfa":"1.5px solid rgba(255,255,255,0.2)",background:info.team==="개인참가"?"rgba(167,139,250,0.25)":"rgba(255,255,255,0.08)",color:"white",fontSize:"12px",fontWeight:"800",cursor:"pointer"}}>👤 개인 참가</button>
-              <button onClick={()=>setInfo(p=>({...p,team:""}))} style={{flex:1,padding:"8px",borderRadius:"10px",border:info.team!==""&&info.team!=="개인참가"?"2px solid #a78bfa":"1.5px solid rgba(255,255,255,0.2)",background:info.team!==""&&info.team!=="개인참가"?"rgba(167,139,250,0.25)":"rgba(255,255,255,0.08)",color:"white",fontSize:"12px",fontWeight:"800",cursor:"pointer"}}>👥 팀 참가</button>
+              <button onClick={()=>setInfo(p=>({...p,team:"개인참가"}))} style={{flex:1,padding:"8px",borderRadius:"10px",border:info.team==="개인참가"?"2px solid #a78bfa":"1.5px solid rgba(255,255,255,0.2)",background:info.team==="개인참가"?"rgba(167,139,250,0.25)":"rgba(255,255,255,0.08)",color:"white",fontSize:"18px",fontWeight:"800",cursor:"pointer"}}>👤 개인 참가</button>
+              <button onClick={()=>setInfo(p=>({...p,team:""}))} style={{flex:1,padding:"8px",borderRadius:"10px",border:info.team!==""&&info.team!=="개인참가"?"2px solid #a78bfa":"1.5px solid rgba(255,255,255,0.2)",background:info.team!==""&&info.team!=="개인참가"?"rgba(167,139,250,0.25)":"rgba(255,255,255,0.08)",color:"white",fontSize:"18px",fontWeight:"800",cursor:"pointer"}}>👥 팀 참가</button>
             </div>
-            {info.team!=="개인참가"&&<input value={info.team} onChange={e=>setInfo(p=>({...p,team:e.target.value}))} placeholder="팀명 입력 (예: A팀)" style={{width:"100%",background:"rgba(255,255,255,0.12)",border:"1.5px solid rgba(255,255,255,0.2)",borderRadius:"10px",padding:"10px 14px",fontSize:"14px",color:"white",boxSizing:"border-box"}}/>}
+            {info.team!=="개인참가"&&<input value={info.team} onChange={e=>setInfo(p=>({...p,team:e.target.value}))} placeholder="팀명 입력 (예: A팀)" style={{width:"100%",background:"rgba(255,255,255,0.12)",border:"1.5px solid rgba(255,255,255,0.2)",borderRadius:"10px",padding:"10px 14px",fontSize:"18px",color:"white",boxSizing:"border-box"}}/>}
           </div>
         </div>
-        <button onClick={()=>{if(info.name.trim()&&(info.team.trim()))setScreen("quiz");}} disabled={!info.name.trim()||!info.team.trim()} style={{width:"100%",background:info.name.trim()&&info.team.trim()?"linear-gradient(135deg,#7C3AED,#DB2777)":"rgba(255,255,255,0.2)",color:"white",border:"none",borderRadius:"50px",padding:"15px",fontSize:"15px",fontWeight:"900",cursor:"pointer"}}>진단 시작 →</button>
-        <p style={{margin:"10px 0 0",fontSize:"11px",opacity:.4}}>24문항 · 약 5분 · 6가지 역량 측정</p>
+        <button onClick={()=>{if(info.name.trim()&&(info.team.trim()))setScreen("quiz");}} disabled={!info.name.trim()||!info.team.trim()} style={{width:"100%",background:info.name.trim()&&info.team.trim()?"linear-gradient(135deg,#7C3AED,#DB2777)":"rgba(255,255,255,0.2)",color:"white",border:"none",borderRadius:"50px",padding:"15px",fontSize:"18px",fontWeight:"900",cursor:"pointer"}}>진단 시작 →</button>
+        <p style={{margin:"10px 0 0",fontSize:"18px",opacity:.4}}>24문항 · 약 5분 · 6가지 역량 측정</p>
       </div>
     </div>
   );
@@ -1210,7 +1210,7 @@ function ParticipantMode({onBack}){
   if(screen==="loading"){
     const stages=[{label:"역량 데이터 분석 중",emoji:"🧬"},{label:"6개 영역 점수 계산 중",emoji:"📊"},{label:"AI 유형 진단 중",emoji:"🤖"},{label:"맞춤 피드백 생성 중",emoji:"✨"}];
     const cs=stages[loadStage]||stages[3];
-    return(<div style={{minHeight:"100vh",background:"linear-gradient(145deg,#0f0a2e,#1e1b4b)",display:"flex",alignItems:"center",justifyContent:"center",fontFamily:FF}}><style>{`@keyframes pulse2{0%,100%{opacity:1}50%{opacity:.5}}`}</style><div style={{textAlign:"center",color:"white",width:"100%",maxWidth:"300px",padding:"20px"}}><div style={{fontSize:"48px",marginBottom:"16px",animation:"pulse2 1.4s ease-in-out infinite"}}>{cs.emoji}</div><p style={{fontSize:"15px",fontWeight:"800",margin:"0 0 4px"}}>{cs.label}...</p><p style={{fontSize:"11px",opacity:.5,margin:"0 0 24px"}}>{info.name}님의 창업 DNA 분석 중</p><div style={{background:"rgba(255,255,255,0.15)",borderRadius:"100px",height:"9px",overflow:"hidden",marginBottom:"8px"}}><div style={{height:"9px",borderRadius:"100px",background:"linear-gradient(90deg,#7C3AED,#DB2777,#f59e0b)",width:`${loadProgress}%`,transition:"width .15s linear"}}/></div><div style={{fontSize:"18px",fontWeight:"900"}}>{loadProgress}<span style={{fontSize:"11px",opacity:.7}}>%</span></div></div></div>);
+    return(<div style={{minHeight:"100vh",background:"linear-gradient(145deg,#0f0a2e,#1e1b4b)",display:"flex",alignItems:"center",justifyContent:"center",fontFamily:FF}}><style>{`@keyframes pulse2{0%,100%{opacity:1}50%{opacity:.5}}`}</style><div style={{textAlign:"center",color:"white",width:"100%",maxWidth:"300px",padding:"20px"}}><div style={{fontSize:"48px",marginBottom:"16px",animation:"pulse2 1.4s ease-in-out infinite"}}>{cs.emoji}</div><p style={{fontSize:"18px",fontWeight:"800",margin:"0 0 4px"}}>{cs.label}...</p><p style={{fontSize:"18px",opacity:.5,margin:"0 0 24px"}}>{info.name}님의 창업 DNA 분석 중</p><div style={{background:"rgba(255,255,255,0.15)",borderRadius:"100px",height:"9px",overflow:"hidden",marginBottom:"8px"}}><div style={{height:"9px",borderRadius:"100px",background:"linear-gradient(90deg,#7C3AED,#DB2777,#f59e0b)",width:`${loadProgress}%`,transition:"width .15s linear"}}/></div><div style={{fontSize:"18px",fontWeight:"900"}}>{loadProgress}<span style={{fontSize:"18px",opacity:.7}}>%</span></div></div></div>);
   }
 
   if(screen==="result"&&scores&&aiResult){
@@ -1220,27 +1220,27 @@ function ParticipantMode({onBack}){
       <div style={{minHeight:"100vh",background:"#f5f3ff",fontFamily:FF,padding:"20px 16px 48px"}}>
         <div style={{maxWidth:"420px",margin:"0 auto",display:"flex",flexDirection:"column",gap:"14px"}}>
           <div style={{background:"linear-gradient(145deg,#0f0a2e,#4c1d95)",borderRadius:"24px",padding:"24px 20px",textAlign:"center",color:"white"}}>
-            <div style={{fontSize:"13px",opacity:.5,marginBottom:"6px",letterSpacing:"1px"}}>창업 역량 진단 결과</div>
+            <div style={{fontSize:"18px",opacity:.5,marginBottom:"6px",letterSpacing:"1px"}}>창업 역량 진단 결과</div>
             <div style={{fontSize:"22px",fontWeight:"900",marginBottom:"2px"}}>{info.name}</div>
-            <div style={{fontSize:"12px",opacity:.6,marginBottom:"16px"}}>{[info.major,info.team].filter(Boolean).join(" · ")}</div>
+            <div style={{fontSize:"18px",opacity:.6,marginBottom:"16px"}}>{[info.major,info.team].filter(Boolean).join(" · ")}</div>
             <div style={{fontSize:"26px",fontWeight:"900",marginBottom:"4px"}}>{aiResult.type}</div>
-            <div style={{fontSize:"12px",opacity:.8,marginBottom:"16px"}}>{aiResult.tagline}</div>
+            <div style={{fontSize:"18px",opacity:.8,marginBottom:"16px"}}>{aiResult.tagline}</div>
             <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"10px"}}>
-              <div style={{background:"rgba(255,255,255,0.12)",borderRadius:"12px",padding:"12px"}}><div style={{fontSize:"26px",fontWeight:"900"}}>{avg}</div><div style={{fontSize:"11px",opacity:.6}}>종합 점수</div></div>
-              <div style={{background:"rgba(255,255,255,0.12)",borderRadius:"12px",padding:"12px"}}><div style={{fontSize:"14px",fontWeight:"800",background:lv.bg,color:lv.c,borderRadius:"8px",padding:"2px 8px",display:"inline-block"}}>{lv.l}</div><div style={{fontSize:"11px",opacity:.6,marginTop:"4px"}}>역량 등급</div></div>
+              <div style={{background:"rgba(255,255,255,0.12)",borderRadius:"12px",padding:"12px"}}><div style={{fontSize:"26px",fontWeight:"900"}}>{avg}</div><div style={{fontSize:"18px",opacity:.6}}>종합 점수</div></div>
+              <div style={{background:"rgba(255,255,255,0.12)",borderRadius:"12px",padding:"12px"}}><div style={{fontSize:"18px",fontWeight:"800",background:lv.bg,color:lv.c,borderRadius:"8px",padding:"2px 8px",display:"inline-block"}}>{lv.l}</div><div style={{fontSize:"18px",opacity:.6,marginTop:"4px"}}>역량 등급</div></div>
             </div>
           </div>
-          <div style={CARD}><h3 style={{margin:"0 0 12px",fontSize:"14px",fontWeight:"800",color:"#1e1b4b"}}>📊 역량 차트</h3>
+          <div style={CARD}><h3 style={{margin:"0 0 12px",fontSize:"18px",fontWeight:"800",color:"#1e1b4b"}}>📊 역량 차트</h3>
             <div style={{display:"flex",justifyContent:"center",marginBottom:"12px"}}><Radar scores={scores} size={150}/></div>
-            {sorted.map(d=>{const lv2=getLevel(scores[d.key]);return(<div key={d.key} style={{marginBottom:"9px"}}><div style={{display:"flex",justifyContent:"space-between",marginBottom:"3px"}}><span style={{fontSize:"12px",fontWeight:"700"}}>{d.emoji} {d.label}</span><div style={{display:"flex",gap:"5px",alignItems:"center"}}><span style={{fontSize:"10px",background:lv2.bg,color:lv2.c,fontWeight:"700",padding:"1px 6px",borderRadius:"20px"}}>{lv2.l}</span><span style={{fontSize:"13px",fontWeight:"900",color:d.color}}>{scores[d.key]}</span></div></div><div style={{background:"#f3f4f6",borderRadius:"100px",height:"6px"}}><div style={{background:d.color,height:"6px",width:`${scores[d.key]}%`,borderRadius:"100px"}}/></div></div>);})}
+            {sorted.map(d=>{const lv2=getLevel(scores[d.key]);return(<div key={d.key} style={{marginBottom:"9px"}}><div style={{display:"flex",justifyContent:"space-between",marginBottom:"3px"}}><span style={{fontSize:"18px",fontWeight:"700"}}>{d.emoji} {d.label}</span><div style={{display:"flex",gap:"5px",alignItems:"center"}}><span style={{fontSize:"18px",background:lv2.bg,color:lv2.c,fontWeight:"700",padding:"1px 6px",borderRadius:"20px"}}>{lv2.l}</span><span style={{fontSize:"18px",fontWeight:"900",color:d.color}}>{scores[d.key]}</span></div></div><div style={{background:"#f3f4f6",borderRadius:"100px",height:"6px"}}><div style={{background:d.color,height:"6px",width:`${scores[d.key]}%`,borderRadius:"100px"}}/></div></div>);})}
           </div>
-          <div style={{background:"linear-gradient(135deg,#ede9fe,#fce7f3)",borderRadius:"20px",padding:"18px"}}><h3 style={{margin:"0 0 8px",fontSize:"14px",fontWeight:"800",color:"#1e1b4b"}}>✨ 역량 분석</h3><p style={{margin:0,fontSize:"13px",lineHeight:1.8,color:"#374151"}}>{aiResult.summary}</p></div>
-          <div style={{background:"linear-gradient(135deg,#0f0a2e,#4c1d95)",borderRadius:"16px",padding:"14px",color:"white"}}><p style={{margin:"0 0 4px",fontSize:"11px",opacity:.7}}>🎯 최적 팀 포지션</p><p style={{margin:0,fontSize:"14px",fontWeight:"900"}}>{aiResult.team_role}</p></div>
-          <div style={CARD}><p style={{margin:"0 0 12px",fontSize:"14px",fontWeight:"800",color:"#1e1b4b"}}>⚡ 지금 당장 해볼 것 3가지</p>
-            {(aiResult.action_items||[]).map((a,i)=><div key={i} style={{display:"flex",gap:"9px",alignItems:"flex-start",marginBottom:i<2?"10px":0}}><div style={{width:"22px",height:"22px",borderRadius:"50%",background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"10px",fontWeight:"900",flexShrink:0}}>{i+1}</div><span style={{fontSize:"13px",lineHeight:1.6,color:"#374151"}}>{a}</span></div>)}
+          <div style={{background:"linear-gradient(135deg,#ede9fe,#fce7f3)",borderRadius:"20px",padding:"18px"}}><h3 style={{margin:"0 0 8px",fontSize:"18px",fontWeight:"800",color:"#1e1b4b"}}>✨ 역량 분석</h3><p style={{margin:0,fontSize:"18px",lineHeight:1.8,color:"#374151"}}>{aiResult.summary}</p></div>
+          <div style={{background:"linear-gradient(135deg,#0f0a2e,#4c1d95)",borderRadius:"16px",padding:"14px",color:"white"}}><p style={{margin:"0 0 4px",fontSize:"18px",opacity:.7}}>🎯 최적 팀 포지션</p><p style={{margin:0,fontSize:"18px",fontWeight:"900"}}>{aiResult.team_role}</p></div>
+          <div style={CARD}><p style={{margin:"0 0 12px",fontSize:"18px",fontWeight:"800",color:"#1e1b4b"}}>⚡ 지금 당장 해볼 것 3가지</p>
+            {(aiResult.action_items||[]).map((a,i)=><div key={i} style={{display:"flex",gap:"9px",alignItems:"flex-start",marginBottom:i<2?"10px":0}}><div style={{width:"22px",height:"22px",borderRadius:"50%",background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"18px",fontWeight:"900",flexShrink:0}}>{i+1}</div><span style={{fontSize:"18px",lineHeight:1.6,color:"#374151"}}>{a}</span></div>)}
           </div>
-          <div style={CARD}><p style={{margin:"0 0 10px",fontSize:"14px",fontWeight:"800",color:"#1e1b4b"}}>🌟 나와 비슷한 창업가</p>
-            {(aiResult.famous_matches||[]).map((item,i)=><div key={i} style={{display:"flex",gap:"9px",alignItems:"flex-start",padding:"9px 11px",background:i%2===0?"#fafafa":"#f5f3ff",borderRadius:"10px",marginBottom:i<4?"7px":0}}><div style={{width:"22px",height:"22px",borderRadius:"50%",background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"11px",fontWeight:"900",flexShrink:0}}>{i+1}</div><div><div style={{fontSize:"12px",fontWeight:"900",color:"#1e1b4b",marginBottom:"2px"}}>{item.name}</div>{item.reason&&<div style={{fontSize:"10px",color:"#6B7280"}}>{item.reason}</div>}</div></div>)}
+          <div style={CARD}><p style={{margin:"0 0 10px",fontSize:"18px",fontWeight:"800",color:"#1e1b4b"}}>🌟 나와 비슷한 창업가</p>
+            {(aiResult.famous_matches||[]).map((item,i)=><div key={i} style={{display:"flex",gap:"9px",alignItems:"flex-start",padding:"9px 11px",background:i%2===0?"#fafafa":"#f5f3ff",borderRadius:"10px",marginBottom:i<4?"7px":0}}><div style={{width:"22px",height:"22px",borderRadius:"50%",background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"18px",fontWeight:"900",flexShrink:0}}>{i+1}</div><div><div style={{fontSize:"18px",fontWeight:"900",color:"#1e1b4b",marginBottom:"2px"}}>{item.name}</div>{item.reason&&<div style={{fontSize:"18px",color:"#6B7280"}}>{item.reason}</div>}</div></div>)}
           </div>
           <button onClick={()=>{
             if(navigator.share){
@@ -1251,11 +1251,11 @@ function ParticipantMode({onBack}){
             } else {
               window.print();
             }
-          }} className="no-print" style={{width:"100%",background:"linear-gradient(135deg,#059669,#0284C7)",color:"white",border:"none",borderRadius:"50px",padding:"13px",fontSize:"14px",fontWeight:"800",cursor:"pointer"}}>
+          }} className="no-print" style={{width:"100%",background:"linear-gradient(135deg,#059669,#0284C7)",color:"white",border:"none",borderRadius:"50px",padding:"13px",fontSize:"18px",fontWeight:"800",cursor:"pointer"}}>
             {navigator.share ? "📤 결과 공유하기" : "📄 결과 PDF 저장"}
           </button>
-          <button onClick={restart} className="no-print" style={{width:"100%",background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",border:"none",borderRadius:"50px",padding:"13px",fontSize:"14px",fontWeight:"800",cursor:"pointer"}}>🔄 다시 진단하기</button>
-          <button onClick={onBack} className="no-print" style={{width:"100%",background:"white",color:"#6B7280",border:"1.5px solid #e5e7eb",borderRadius:"50px",padding:"11px",fontSize:"13px",fontWeight:"700",cursor:"pointer"}}>← 홈으로</button>
+          <button onClick={restart} className="no-print" style={{width:"100%",background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",border:"none",borderRadius:"50px",padding:"13px",fontSize:"18px",fontWeight:"800",cursor:"pointer"}}>🔄 다시 진단하기</button>
+          <button onClick={onBack} className="no-print" style={{width:"100%",background:"white",color:"#6B7280",border:"1.5px solid #e5e7eb",borderRadius:"50px",padding:"11px",fontSize:"18px",fontWeight:"700",cursor:"pointer"}}>← 홈으로</button>
         </div>
       </div>
     );
@@ -1266,9 +1266,9 @@ function ParticipantMode({onBack}){
       <div style={{maxWidth:"360px",width:"100%",textAlign:"center",color:"white"}}>
         <div style={{fontSize:"52px",marginBottom:"16px"}}>🙏</div>
         <h2 style={{margin:"0 0 10px",fontSize:"20px",fontWeight:"900"}}>동의하지 않으셨어요</h2>
-        <p style={{margin:"0 0 28px",fontSize:"13px",opacity:.7,lineHeight:1.7}}>개인정보 수집에 동의하지 않으시면<br/>진단 결과를 확인할 수 없어요.</p>
-        <button onClick={restart} style={{width:"100%",background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",border:"none",borderRadius:"50px",padding:"13px",fontSize:"14px",fontWeight:"800",cursor:"pointer",marginBottom:"10px"}}>🔄 다시 시도하기</button>
-        <button onClick={onBack} style={{width:"100%",background:"rgba(255,255,255,0.1)",color:"white",border:"1px solid rgba(255,255,255,0.2)",borderRadius:"50px",padding:"11px",fontSize:"13px",fontWeight:"700",cursor:"pointer"}}>← 홈으로</button>
+        <p style={{margin:"0 0 28px",fontSize:"18px",opacity:.7,lineHeight:1.7}}>개인정보 수집에 동의하지 않으시면<br/>진단 결과를 확인할 수 없어요.</p>
+        <button onClick={restart} style={{width:"100%",background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",border:"none",borderRadius:"50px",padding:"13px",fontSize:"18px",fontWeight:"800",cursor:"pointer",marginBottom:"10px"}}>🔄 다시 시도하기</button>
+        <button onClick={onBack} style={{width:"100%",background:"rgba(255,255,255,0.1)",color:"white",border:"1px solid rgba(255,255,255,0.2)",borderRadius:"50px",padding:"11px",fontSize:"18px",fontWeight:"700",cursor:"pointer"}}>← 홈으로</button>
       </div>
     </div>
   );
@@ -1281,20 +1281,20 @@ function ParticipantMode({onBack}){
         <div style={{marginBottom:"14px"}}>
           <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"5px"}}>
             <div style={{display:"flex",alignItems:"center",gap:"8px"}}>
-              {cur>0&&<button onClick={handleBack} style={{background:"rgba(124,58,237,0.1)",border:"none",borderRadius:"8px",padding:"5px 10px",fontSize:"11px",fontWeight:"800",color:"#7C3AED",cursor:"pointer"}}>← 이전</button>}
-              <span>{dim.emoji}</span><span style={{fontSize:"12px",fontWeight:"800",color:dim.color}}>{dim.label}</span>
+              {cur>0&&<button onClick={handleBack} style={{background:"rgba(124,58,237,0.1)",border:"none",borderRadius:"8px",padding:"5px 10px",fontSize:"18px",fontWeight:"800",color:"#7C3AED",cursor:"pointer"}}>← 이전</button>}
+              <span>{dim.emoji}</span><span style={{fontSize:"18px",fontWeight:"800",color:dim.color}}>{dim.label}</span>
             </div>
-            <span style={{fontSize:"11px",color:"#9CA3AF",fontWeight:"700"}}>{cur+1}/{QUESTIONS.length}</span>
+            <span style={{fontSize:"18px",color:"#9CA3AF",fontWeight:"700"}}>{cur+1}/{QUESTIONS.length}</span>
           </div>
           <div style={{background:"#e5e7eb",borderRadius:"100px",height:"6px",overflow:"hidden"}}><div style={{background:"linear-gradient(90deg,#7C3AED,#DB2777)",height:"6px",width:`${prog}%`,borderRadius:"100px",transition:"width .4s ease"}}/></div>
         </div>
         <div key={cur} className="qw" style={{background:"white",borderRadius:"20px",padding:"22px 18px",marginBottom:"12px",boxShadow:"0 4px 20px rgba(0,0,0,0.07)"}}>
-          <div style={{display:"flex",gap:"8px",alignItems:"center",marginBottom:"10px"}}><span style={{fontSize:"11px",fontWeight:"800",color:dim.color,background:`${dim.color}15`,padding:"3px 10px",borderRadius:"20px"}}>{dim.label}</span><span style={{fontSize:"11px",color:"#9CA3AF"}}>{q.sub}</span></div>
-          <h2 style={{margin:0,fontSize:"16px",fontWeight:"900",lineHeight:1.5,color:"#111"}}>Q{cur+1}. {q.text}</h2>
+          <div style={{display:"flex",gap:"8px",alignItems:"center",marginBottom:"10px"}}><span style={{fontSize:"18px",fontWeight:"800",color:dim.color,background:`${dim.color}15`,padding:"3px 10px",borderRadius:"20px"}}>{dim.label}</span><span style={{fontSize:"18px",color:"#9CA3AF"}}>{q.sub}</span></div>
+          <h2 style={{margin:0,fontSize:"18px",fontWeight:"900",lineHeight:1.5,color:"#111"}}>Q{cur+1}. {q.text}</h2>
         </div>
         <div style={{background:"white",borderRadius:"16px",padding:"14px",boxShadow:"0 2px 12px rgba(0,0,0,0.06)"}}>
-          <p style={{margin:"0 0 10px",fontSize:"11px",fontWeight:"700",color:"#9CA3AF",textAlign:"center"}}>나에게 얼마나 해당되나요?</p>
-          {LABELS.map((lbl,i)=>(<button key={i} className="scbtn" onClick={()=>handleAnswer(i+1)} style={{padding:"12px 14px",borderRadius:"11px",width:"100%",textAlign:"left",display:"flex",alignItems:"center",gap:"10px",marginBottom:i<4?"7px":0,background:"#f8f7ff",color:"#374151",fontWeight:"700",fontSize:"13px"}}><span style={{width:"24px",height:"24px",borderRadius:"50%",background:"rgba(0,0,0,0.05)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"12px",fontWeight:"900",flexShrink:0,color:dim.color}}>{i+1}</span>{lbl}</button>))}
+          <p style={{margin:"0 0 10px",fontSize:"18px",fontWeight:"700",color:"#9CA3AF",textAlign:"center"}}>나에게 얼마나 해당되나요?</p>
+          {LABELS.map((lbl,i)=>(<button key={i} className="scbtn" onClick={()=>handleAnswer(i+1)} style={{padding:"12px 14px",borderRadius:"11px",width:"100%",textAlign:"left",display:"flex",alignItems:"center",gap:"10px",marginBottom:i<4?"7px":0,background:"#f8f7ff",color:"#374151",fontWeight:"700",fontSize:"18px"}}><span style={{width:"24px",height:"24px",borderRadius:"50%",background:"rgba(0,0,0,0.05)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"18px",fontWeight:"900",flexShrink:0,color:dim.color}}>{i+1}</span>{lbl}</button>))}
         </div>
       </div>
     </div>
