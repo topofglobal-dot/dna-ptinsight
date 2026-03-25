@@ -29,6 +29,8 @@
     };
   </script>
 
+  <link rel="preload" href="https://unpkg.com/react@18/umd/react.production.min.js" as="script" crossorigin/>
+  <link rel="preload" href="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" as="script" crossorigin/>
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
     body{font-family:'Pretendard',system-ui,-apple-system,sans-serif}
@@ -38,7 +40,23 @@
   </style>
 </head>
 <body>
-<div id="root"></div>
+<div id="root">
+  <!-- Babel 컴파일 전 즉시 표시되는 스피너 -->
+  <div id="init-loader" style="position:fixed;inset:0;background:#0f0a2e;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:99999;font-family:system-ui,sans-serif">
+    <div style="font-size:52px;margin-bottom:16px;animation:spin 2s linear infinite">🧬</div>
+    <div style="color:white;font-size:16px;font-weight:700;margin-bottom:8px">창업 역량 진단</div>
+    <div style="color:rgba(255,255,255,0.4);font-size:13px;margin-bottom:24px">by (주)피티인사이트</div>
+    <div style="display:flex;gap:8px">
+      <div style="width:8px;height:8px;border-radius:50%;background:#a78bfa;animation:dot 1.2s ease-in-out 0s infinite"></div>
+      <div style="width:8px;height:8px;border-radius:50%;background:#a78bfa;animation:dot 1.2s ease-in-out 0.2s infinite"></div>
+      <div style="width:8px;height:8px;border-radius:50%;background:#a78bfa;animation:dot 1.2s ease-in-out 0.4s infinite"></div>
+    </div>
+    <style>
+      @keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+      @keyframes dot{0%,100%{opacity:.3;transform:scale(0.8)}50%{opacity:1;transform:scale(1.2)}}
+    </style>
+  </div>
+</div>
 <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -685,7 +703,7 @@ function LandingPage({onSubLogin,onSuperLogin,onParticipant}){
         <div className="fade1" style={{fontSize:"13px",fontWeight:"800",letterSpacing:"4px",color:"#a78bfa",marginBottom:"16px"}}>RESEARCH-BASED · STARTUP DNA PLATFORM</div>
         <h1 className="fade2" style={{margin:"0 0 20px",fontSize:"clamp(28px,5vw,48px)",fontWeight:"900",lineHeight:1.2}}>내 안의 창업 DNA를<br/><span style={{background:"linear-gradient(135deg,#a78bfa,#f472b6)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent"}}>지금 발견해보세요</span></h1>
         <p className="fade3" style={{margin:"0 0 36px",fontSize:"clamp(13px,2vw,17px)",opacity:.7,lineHeight:1.8,maxWidth:"560px",marginLeft:"auto",marginRight:"auto"}}>나는 어떤 창업가 유형일까? 어떤 역량이 강하고 어떤 부분을 키워야 할까?<br/>5분 진단으로 6가지 창업 역량을 데이터로 확인하세요</p>
-        <div style={{display:"flex",gap:"12px",justifyContent:"center",flexWrap:"wrap",marginBottom:"60px"}}>
+        <div style={{display:"flex",gap:"12px",justifyContent:"center",flexWrap:"wrap",marginBottom:"60px",flexDirection:"column",alignItems:"center",maxWidth:"320px",marginLeft:"auto",marginRight:"auto"}}>
           <button className="lbtn" onClick={onParticipant} style={{background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",borderRadius:"50px",padding:"16px 36px",fontSize:"16px",fontWeight:"900"}}>🧬 내 창업 DNA 진단하기 →</button>
           <button className="lbtn" onClick={()=>setShowReg(true)} style={{background:"rgba(255,255,255,0.1)",color:"white",border:"1px solid rgba(255,255,255,0.2)",borderRadius:"50px",padding:"16px 24px",fontSize:"15px",fontWeight:"700"}}>🏫 기관 도입 신청</button>
         </div>
@@ -703,7 +721,7 @@ function LandingPage({onSubLogin,onSuperLogin,onParticipant}){
           <h2 style={{margin:"0 0 12px",fontSize:"clamp(22px,4vw,32px)",fontWeight:"900"}}>이런 분들, 공감하시나요?</h2>
           <p style={{margin:0,fontSize:"15px",opacity:.6,lineHeight:1.8}}>창업에 관심은 있지만, 내가 어떤 역량을 가진 사람인지<br/>한 번도 제대로 확인해본 적이 없었을 거예요</p>
         </div>
-        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"24px",alignItems:"stretch"}}>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(300px,1fr))",gap:"24px",alignItems:"start"}}>
           {/* 페르소나 카드들 */}
           <div style={{display:"flex",flexDirection:"column",gap:"12px",height:"100%"}}>
             {[
@@ -726,7 +744,7 @@ function LandingPage({onSubLogin,onSuperLogin,onParticipant}){
             ))}
           </div>
           {/* 샘플 결과 미리보기 */}
-          <div style={{position:"sticky",top:"80px",alignSelf:"flex-start"}}>
+          <div style={{position:"sticky",top:"80px",alignSelf:"flex-start",display:"flex",flexDirection:"column"}}>
             <div style={{background:"linear-gradient(145deg,#1e1b4b,#2d1b69)",border:"1px solid rgba(167,139,250,0.3)",borderRadius:"24px",padding:"24px",boxShadow:"0 20px 60px rgba(124,58,237,0.3)"}}>
               <div style={{fontSize:"12px",fontWeight:"800",letterSpacing:"2px",color:"#a78bfa",marginBottom:"12px",textAlign:"center"}}>✨ 진단 결과 예시</div>
               <div style={{textAlign:"center",marginBottom:"16px"}}>
@@ -962,6 +980,13 @@ function LandingPage({onSubLogin,onSuperLogin,onParticipant}){
           </div>
         </div>
       </div>
+      {/* 모바일 하단 고정 CTA */}
+      <div className="no-print" style={{position:"fixed",bottom:0,left:0,right:0,padding:"12px 16px",background:"rgba(15,10,46,0.97)",backdropFilter:"blur(10px)",borderTop:"1px solid rgba(255,255,255,0.08)",display:"flex",gap:"8px",zIndex:50}}>
+        <button className="lbtn" onClick={onParticipant} style={{flex:2,background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",border:"none",borderRadius:"12px",padding:"13px",fontSize:"14px",fontWeight:"900"}}>🧬 지금 진단하기</button>
+        <button className="lbtn" onClick={()=>setShowReg(true)} style={{flex:1,background:"rgba(255,255,255,0.1)",color:"white",border:"1px solid rgba(255,255,255,0.2)",borderRadius:"12px",padding:"13px",fontSize:"13px",fontWeight:"700"}}>🏫 기관</button>
+      </div>
+      {/* 하단 고정 버튼 높이만큼 여백 */}
+      <div style={{height:"70px"}}/>
       {showReg&&(
         <div style={{position:"fixed",inset:0,background:"rgba(0,0,0,0.7)",zIndex:9999,display:"flex",alignItems:"center",justifyContent:"center",padding:"16px"}}>
           <div style={{background:"#1e1b4b",border:"1px solid rgba(167,139,250,0.3)",borderRadius:"24px",maxWidth:"420px",width:"100%",padding:"28px"}}>
@@ -1762,7 +1787,16 @@ function App(){
   return <LandingPage onSubLogin={()=>setMode("sublogin")} onSuperLogin={()=>setMode("superlogin")} onParticipant={()=>setMode("participant")}/>;
 }
 
-ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+const rootEl = document.getElementById('root');
+const loader = document.getElementById('init-loader');
+ReactDOM.createRoot(rootEl).render(<App/>);
+// 렌더 완료 후 스피너 제거
+requestAnimationFrame(()=>{
+  setTimeout(()=>{
+    if(loader) loader.style.opacity='0';
+    setTimeout(()=>{ if(loader) loader.remove(); },400);
+  },100);
+});
 </script>
 </body>
 </html>
