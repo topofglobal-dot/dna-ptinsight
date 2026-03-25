@@ -1096,14 +1096,26 @@ function SuperAdminDashboard({onBack}){
 //  🎓 참가자 진단
 // ══════════════════════════════════════════════════════
 function ParticipantMode({onBack}){
-  const [screen,setScreen]=useState("info");
-  const [info,setInfo]=useState({name:"",major:"",team:""});
+  // URL 해시에서 결과 복원
+  const _hashResult = React.useMemo(()=>{
+    try{
+      if(window.location.hash.startsWith('#r=')){
+        const decoded = JSON.parse(decodeURIComponent(atob(window.location.hash.slice(3))));
+        return decoded;
+      }
+    }catch(e){}
+    return null;
+  },[]);
+
+  const [screen,setScreen]=useState(_hashResult?"result":"info");
+  const [info,setInfo]=useState(_hashResult?{name:_hashResult.name||"",major:_hashResult.major||"",team:_hashResult.team||""}:{name:"",major:"",team:""});
   const [selEvId,setSelEvId]=useState("general");
   const [events,setEvents]=useState([]);const [activeEvIds,setActiveEvIds]=useState([]);
   const [cur,setCur]=useState(0);const [answers,setAnswers]=useState([]);
-  const [scores,setScores]=useState(null);const [aiResult,setAiResult]=useState(null);
+  const [scores,setScores]=useState(_hashResult?_hashResult.scores:null);
+  const [aiResult,setAiResult]=useState(_hashResult?_hashResult.aiResult:null);
   const [loadProgress,setLoadProgress]=useState(0);const [loadStage,setLoadStage]=useState(0);
-  const [showPrivacy,setShowPrivacy]=useState(false);const [evLoading,setEvLoading]=useState(true);
+  const [showPrivacy,setShowPrivacy]=useState(false);const [evLoading,setEvLoading]=useState(_hashResult?false:true);
 
   useEffect(()=>{
     Promise.all([db.evList(null,"b2b"),db.evGetActiveList(),db.evGetDirectActiveList()])
@@ -1121,7 +1133,15 @@ function ParticipantMode({onBack}){
     setScreen("loading");setLoadProgress(0);setLoadStage(0);
     let prog=0;
     const iv=setInterval(()=>{prog=Math.min(prog+Math.random()*2+0.8,92);setLoadProgress(Math.round(prog));setLoadStage(prog<25?0:prog<52?1:prog<78?2:3);},120);
-    const done=async(result)=>{clearInterval(iv);setLoadProgress(100);await delay(400);setAiResult(result);setScreen("result");};
+    const done=async(result)=>{
+      clearInterval(iv);setLoadProgress(100);await delay(400);
+      setAiResult(result);setScreen("result");
+      // URL 해시에 결과 저장 (공유용)
+      try{
+        const payload={name:info.name,major:info.major,team:info.team,scores:sc,aiResult:result};
+        window.location.hash='r='+btoa(encodeURIComponent(JSON.stringify(payload)));
+      }catch(e){}
+    };
     const avg=Math.round(Object.values(sc).reduce((a,b)=>a+b,0)/6);
     try{
       const messages=[{role:"user",content:`창업 역량 진단. 20대 대학생 공감 톤, 반말체.\n이름:${info.name}/전공:${info.major}/팀:${info.team}\n평균:${avg}점 / ${DIMS.map(d=>`${d.label} ${sc[d.key]}`).join(" | ")}\n\nJSON만(마크다운없이):{"type":"유형(이모지포함)","tagline":"한줄","summary":"3문장","strength_insight":"2문장","growth_tip":"2문장","team_role":"포지션","action_items":["강점활용1","약점보완1","약점보완2"],"famous_matches":[{"name":"창업가","reason":"이유"},{"name":"창업가","reason":"이유"},{"name":"창업가","reason":"이유"},{"name":"창업가","reason":"이유"},{"name":"창업가","reason":"이유"}]}`}];
@@ -1141,7 +1161,7 @@ function ParticipantMode({onBack}){
     } else setCur(cur+1);
   };
   const handleBack=()=>{if(cur===0)return;setCur(cur-1);setAnswers(prev=>prev.slice(0,-1));};
-  const restart=()=>{setScreen("info");setCur(0);setAnswers([]);setScores(null);setAiResult(null);setLoadProgress(0);setLoadStage(0);setInfo({name:"",major:"",team:""});setShowPrivacy(false);};
+  const restart=()=>{setScreen("info");setCur(0);setAnswers([]);setScores(null);setAiResult(null);setLoadProgress(0);setLoadStage(0);setInfo({name:"",major:"",team:""});setShowPrivacy(false);window.location.hash='';};
   const activeEvents=events.filter(e=>activeEvIds.includes(e.id));
 
   if(evLoading) return(
@@ -1242,18 +1262,29 @@ function ParticipantMode({onBack}){
           <div style={CARD}><p style={{margin:"0 0 10px",fontSize:"15px",fontWeight:"800",color:"#1e1b4b"}}>🌟 나와 비슷한 창업가</p>
             {(aiResult.famous_matches||[]).map((item,i)=><div key={i} style={{display:"flex",gap:"9px",alignItems:"flex-start",padding:"9px 11px",background:i%2===0?"#fafafa":"#f5f3ff",borderRadius:"10px",marginBottom:i<4?"7px":0}}><div style={{width:"22px",height:"22px",borderRadius:"50%",background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"13px",fontWeight:"900",flexShrink:0}}>{i+1}</div><div><div style={{fontSize:"14px",fontWeight:"900",color:"#1e1b4b",marginBottom:"2px"}}>{item.name}</div>{item.reason&&<div style={{fontSize:"12px",color:"#6B7280"}}>{item.reason}</div>}</div></div>)}
           </div>
-          <button onClick={()=>{
-            if(navigator.share){
-              navigator.share({
-                title:`창업 DNA 진단 결과 — ${info.name}`,
-                text:`✨ 내 창업 유형: ${aiResult.type}\n📊 종합 점수: ${Math.round(Object.values(scores).reduce((a,b)=>a+b,0)/6)}점\n${aiResult.tagline}\n\n창업 역량 진단 해보기 👉 ${window.location.href}`
-              }).catch(()=>{});
+          {/* 모바일: 공유, PC: PDF 저장 */}
+          {(()=>{
+            const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+            if(isMobile && navigator.share) {
+              return (
+                <button onClick={()=>{
+                  navigator.share({
+                    title:`창업 DNA 진단 결과 — ${info.name}`,
+                    text:`🧬 ${info.name}님의 창업 DNA 진단 결과\n\n${aiResult.type}\n"${aiResult.tagline}"\n\n📊 종합 점수: ${Math.round(Object.values(scores).reduce((a,b)=>a+b,0)/6)}점\n\n👇 내 결과 보기`,
+                    url: window.location.href
+                  }).catch(()=>{});
+                }} className="no-print" style={{width:"100%",background:"linear-gradient(135deg,#059669,#0284C7)",color:"white",border:"none",borderRadius:"50px",padding:"13px",fontSize:"15px",fontWeight:"800",cursor:"pointer"}}>
+                  📤 결과 공유하기
+                </button>
+              );
             } else {
-              window.print();
+              return (
+                <button onClick={()=>window.print()} className="no-print" style={{width:"100%",background:"linear-gradient(135deg,#059669,#0284C7)",color:"white",border:"none",borderRadius:"50px",padding:"13px",fontSize:"15px",fontWeight:"800",cursor:"pointer"}}>
+                  📄 결과 PDF 저장
+                </button>
+              );
             }
-          }} className="no-print" style={{width:"100%",background:"linear-gradient(135deg,#059669,#0284C7)",color:"white",border:"none",borderRadius:"50px",padding:"13px",fontSize:"15px",fontWeight:"800",cursor:"pointer"}}>
-            {navigator.share ? "📤 결과 공유하기" : "📄 결과 PDF 저장"}
-          </button>
+          })()}
           <button onClick={restart} className="no-print" style={{width:"100%",background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",border:"none",borderRadius:"50px",padding:"13px",fontSize:"15px",fontWeight:"800",cursor:"pointer"}}>🔄 다시 진단하기</button>
           <button onClick={onBack} className="no-print" style={{width:"100%",background:"white",color:"#6B7280",border:"1.5px solid #e5e7eb",borderRadius:"50px",padding:"11px",fontSize:"15px",fontWeight:"700",cursor:"pointer"}}>← 홈으로</button>
         </div>
@@ -1305,10 +1336,14 @@ function ParticipantMode({onBack}){
 //  🏠 앱 루트
 // ══════════════════════════════════════════════════════
 function App(){
-  const [mode,setMode]=useState("landing");
+  const [mode,setMode]=useState(()=>{
+    // URL 해시에 결과 데이터가 있으면 participant 모드로 시작
+    if(window.location.hash.startsWith('#r=')) return "participant";
+    return "landing";
+  });
   const [subAccount,setSubAccount]=useState(null);
   const [superAuthed,setSuperAuthed]=useState(false);
-  const goHome=()=>{setMode("landing");setSubAccount(null);setSuperAuthed(false);};
+  const goHome=()=>{setMode("landing");setSubAccount(null);setSuperAuthed(false);window.location.hash='';};
   if(mode==="participant")  return <ParticipantMode onBack={goHome}/>;
   if(mode==="sublogin")     return <SubAdminLogin onSuccess={acc=>{setSubAccount(acc);setMode("subdash");}} onBack={goHome}/>;
   if(mode==="subdash"&&subAccount) return <SubAdminDashboard account={subAccount} onBack={goHome}/>;
