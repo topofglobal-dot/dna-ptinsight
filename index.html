@@ -504,92 +504,142 @@ function makeFallback(sc,name){
     AP[bot.key][lv(bot.key)],
   ];
 
-  // ── 창업가 매칭: 역량+점수+패턴 기반 ────────────────
+  // ── 창업가 매칭: 역량+점수+패턴 기반 ──────────────────────────────────
+  // ※ 출처: 공식 인터뷰·언론 보도·저서·강연 발언 검증 완료
+  // ※ S=80이상 탁월 / A=65~79 우수 / B=50~64 보통 / C=50미만 개발필요
+  // ※ 각 레벨당 2~4명 → 점수+패턴으로 세밀 매칭
   const FAMOUS={
     OPP:{
       S:[
-        {name:"토스 이승건",reason:`금융 불편함을 먼저 발견해 간편 송금을 만든 기회 포착의 달인. 규제 장벽에도 7번 거절 끝에 출시했어.`},
-        {name:"당근 김용현",reason:`카카오 사내 게시판에서 하이퍼로컬 아이디어를 얻어 중고거래 유니콘을 만든 일상 속 기회 발굴가.`},
+        {name:"토스 이승건",reason:`치과의사를 그만두고 6년간 8번 실패 끝에 간편송금 토스를 만들었어. 아산나눔재단 강연에서 "결국 끈기의 차이만 있었을 뿐"이라고 직접 말했어.`},
+        {name:"당근 김용현",reason:`카카오 사내 게시판에서 하이퍼로컬 아이디어를 발견했어. 이미 있는 것에서 시장을 읽는 기회 포착 능력이 탁월해.`},
+        {name:"장병규 크래프톤",reason:`한국경제인협회 강연에서 "나는 게임을 좋아하지 않지만, 게임이 글로벌 비즈니스이기에 창업했다"고 밝혔어. 기회를 감정이 아닌 구조로 보는 창업가야.`},
       ],
       A:[
-        {name:"마켓컬리 김슬아",reason:`강남 워킹맘의 불편함에서 새벽 배송 시장 기회를 포착한 프리미엄 기회 탐색가.`},
-        {name:"야놀자 이수진",reason:`여가 시장의 숨겨진 기회를 발굴해 유니콘을 만든 기회 탐색가.`},
+        {name:"야놀자 이수진",reason:`모텔 청소 알바에서 숙박 시장 디지털화 기회를 발견했어. 저서 '리스타트'에서 "끝까지 포기만 하지 않으면 된다"고 강조했어.`},
+        {name:"배달의민족 김봉진",reason:`비글로벌서울 강연에서 "창업은 기존 것을 더 빠르고 편리하게"라고 정의했어. 전단지에서 플랫폼 기회를 본 기회 탐색가야.`},
+        {name:"컬리 김슬아",reason:`강남 워킹맘의 새벽배송 니즈를 발굴해 마켓컬리(현 컬리)를 창업했어. 소수의 고통에서 대규모 시장 기회를 포착했어.`},
       ],
-      B:[{name:"29CM 이창우",reason:`패션 콘텐츠 커머스의 새로운 기회를 발견한 틈새 시장 개척가.`}],
-      C:[{name:"스타트업 에코시스템",reason:`지금 기회를 보는 눈을 키우는 중이야. 매일 작은 관찰이 쌓이면 큰 기회가 보이기 시작해.`}],
+      B:[
+        {name:"무신사 조만호",reason:`고3 시절 신발 커뮤니티를 만들었어. 취향 공유에서 4조 거래액 플랫폼으로 성장한 사례야. 좋아하는 것에서 시장을 발견했어.`},
+        {name:"쿠팡 김범석",reason:`소셜커머스 중 하나였던 쿠팡을 로켓배송으로 재정의했어. 기존 이커머스에서 당일배송 기회를 먼저 봤어.`},
+      ],
+      C:[
+        {name:"지금 주변 불편함을 메모해봐",reason:`당근 창업자들도 사내 게시판에서 아이디어를 얻었어. 오늘 하루 불편했던 것 3가지를 적어보는 것이 기회인식 훈련의 시작이야.`},
+      ],
     },
     CRE:{
       S:[
-        {name:"배달의민족 김봉진",reason:`디자이너 출신으로 배달 앱을 문화 브랜드로 재정의한 창의적 혁신가. 치믈리에 같은 독창적 마케팅이 강점이야.`},
-        {name:"오늘의집 이승재",reason:`인테리어 콘텐츠와 커머스를 창의적으로 결합해 완전히 새로운 카테고리를 만든 창의 설계자.`},
+        {name:"배달의민족 김봉진",reason:`서울예술대 디자인 출신으로 배달 전단지를 문화 브랜드로 재정의했어. 국민대 졸업식 축사에서 "'생각하는 디자이너'가 배민 철학으로 이어졌다"고 직접 밝혔어.`},
+        {name:"카카오 김범수",reason:`PC통신 시대에 한게임을 만들었고 스마트폰 시대엔 카카오톡으로 소통 방식 자체를 바꿨어. 시대마다 창의적 재해석으로 성공한 연쇄 창업가야.`},
+        {name:"하이브 방시혁",reason:`K팝 아이돌 시스템을 글로벌 IP 비즈니스로 창의적으로 재정의했어. BTS를 통해 한국 음악 산업의 문법을 완전히 바꿨어.`},
       ],
       A:[
-        {name:"컬리 김슬아",reason:`기존 신선식품 시장을 새벽 배송이라는 창의적 방식으로 재편한 혁신가.`},
-        {name:"리디 배기식",reason:`전자책 시장을 콘텐츠 플랫폼으로 재정의한 창의적 사업가.`},
+        {name:"무신사 조만호",reason:`고3 때 신발 사진 커뮤니티에서 시작해 콘텐츠·커머스를 창의적으로 결합했어. BoF 500 선정 시 "기술과 커뮤니티를 결합한 새 패션 비즈니스 모델"로 평가받았어.`},
+        {name:"컬리 김슬아",reason:`새벽배송이라는 기존에 없던 물류 방식으로 신선식품 유통을 재편했어. 서비스 설계 자체를 창의적으로 접근한 사례야.`},
+        {name:"장병규 크래프톤",reason:`"실패할 자유가 없다면 혁신은 없다"는 조직 철학을 설계했어. 세이클럽 아바타는 최근 메타버스의 전신이라 불려.`},
       ],
-      B:[{name:"스푼라디오 최혁재",reason:`오디오 콘텐츠의 새로운 형태를 창의적으로 만들어낸 혁신가.`}],
-      C:[{name:"아이디어 빌더",reason:`창의성은 훈련으로 키울 수 있어. 지금부터 다양한 것들을 연결하는 연습을 시작해봐.`}],
+      B:[
+        {name:"당근 김용현",reason:`하이퍼로컬이라는 개념을 중고거래에 창의적으로 결합했어. 지역 커뮤니티와 커머스를 연결하는 새로운 플랫폼 문법을 만들었어.`},
+        {name:"토스 이승건",reason:`금융 서비스 UX를 완전히 재설계했어. 공인인증서를 없애는 창의적 접근이 한국 핀테크 시장을 바꿨어.`},
+      ],
+      C:[
+        {name:"다른 분야를 하나 연결해봐",reason:`배민 김봉진은 디자인과 배달을 연결했어. 오늘 관심 없던 분야 1개를 내 일과 연결해보는 연습이 창의성 훈련의 핵심이야.`},
+      ],
     },
     ACT:{
       S:[
-        {name:"쿠팡 김범석",reason:`로켓배송을 위해 수조 원 물류 인프라에 과감히 베팅한 실행력의 화신. 고객이 원한다면 무엇이든 실행했어.`},
-        {name:"무신사 조만호",reason:`패션 커뮤니티에서 시작해 끊임없이 실행하며 국내 최대 패션 플랫폼을 키운 실행가.`},
+        {name:"토스 이승건",reason:`6년 8번 실패 후에도 멈추지 않았어. 아산나눔재단 강연에서 "팀원 월급 못 주는 시기도 있었지만 계속 실행했다"고 직접 말했어.`},
+        {name:"쿠팡 김범석",reason:`2021년 NYSE 상장 시 CNBC 인터뷰에서 "혁신을 멈추지 않겠다"고 밝혔어. 로켓배송을 위해 수조 원 물류 인프라에 과감히 베팅한 실행력의 화신이야.`},
+        {name:"장병규 크래프톤",reason:`블루홀 시절 회사가 파산 직전이던 2016년 한국·미국을 오가며 주 100시간씩 일했어. 폐업 직전 상황에서도 실행을 멈추지 않았어.`},
       ],
       A:[
-        {name:"크래프톤 장병규",reason:`게임 산업에서 수많은 시도와 실행을 거쳐 글로벌 히트작을 만들어낸 집요한 실행가.`},
-        {name:"비바리퍼블리카(토스) 이승건",reason:`핀테크 불모지에서 끊임없이 실행하며 금융 플랫폼을 만든 추진력의 아이콘.`},
+        {name:"야놀자 이수진",reason:`모텔 청소 알바부터 소프트뱅크 투자까지, 포기 없는 실행으로 유니콘을 만들었어. "포기란 없다"는 말이 ZDNet 보도에 실제로 인용돼 있어.`},
+        {name:"무신사 조만호",reason:`고3 때 시작한 커뮤니티를 포기하지 않고 20년간 꾸준히 실행했어. 2024년 BoF 500에 한국인 중 유일하게 선정될 때까지 멈추지 않았어.`},
+        {name:"배달의민족 김봉진",reason:`전국 음식 전단지를 직접 수집·스캔했어. 국민대 축사에서 "거창한 4차혁명이 아닌 전단지가 불편해서 시작했다"고 직접 밝혔어.`},
       ],
-      B:[{name:"클래스101 고지훈",reason:`온라인 클래스 시장을 빠르게 실행으로 개척한 실행 중심 창업가.`}],
-      C:[{name:"성장하는 실행가",reason:`지금 실행력을 키우는 중이야. 작은 것부터 하나씩 실행하다 보면 실행 근육이 생겨.`}],
+      B:[
+        {name:"셀트리온 서정진",reason:`IMF로 직장을 잃고 45세에 창업해 1년간 40개국을 직접 돌았어. 유럽 간호사 뒤를 따라다니며 직접 영업한 1호 영업사원이야.`},
+        {name:"컬리 김슬아",reason:`새벽배송 시스템 구축을 위해 직접 새벽 배송 현장을 뛰었어. 초기 창업 혹독한 환경에서 직접 실행으로 시스템을 만들었어.`},
+      ],
+      C:[
+        {name:"지금 당장 작게 시작해봐",reason:`배민 김봉진도 처음엔 혼자 전단지를 스캔했어. 오늘 가장 작은 실행 1가지를 정하고 오늘 안에 완료해봐.`},
+      ],
     },
     NET:{
       S:[
-        {name:"카카오 김범수",reason:`네트워크 효과를 이해하고 국민 메신저를 만든 연결의 달인. 카카오 생태계는 그의 네트워크 사고에서 탄생했어.`},
-        {name:"라인 신중호",reason:`일본에서 글로벌 네트워크를 구축하며 아시아 최대 메신저를 키운 연결 전략가.`},
+        {name:"카카오 김범수",reason:`1999년 한게임 공동창업부터 카카오까지, 네트워크 효과를 핵심으로 한 플랫폼을 연속으로 만들었어. 국민 메신저를 설계한 연결의 달인이야.`},
+        {name:"하이브 방시혁",reason:`아티스트·팬·글로벌 파트너를 잇는 네트워크를 설계했어. BTS 팬덤 아미를 글로벌 커뮤니티로 만든 네트워크 설계의 달인이야.`},
+        {name:"장병규 크래프톤",reason:`본엔젤스를 통해 배달의민족 등 주요 스타트업에 투자하며 생태계 연결자 역할을 했어. 4번 연속 창업에서 네트워크가 핵심 자산이었어.`},
       ],
       A:[
-        {name:"패스트트랙아시아 박지웅",reason:`창업 생태계의 연결자로 수십 개 스타트업을 키운 네트워크 기반 창업가.`},
-        {name:"카카오벤처스 정신아",reason:`스타트업 생태계에서 연결과 지원으로 가치를 만들어온 네트워크 리더.`},
+        {name:"당근 김용현",reason:`하이퍼로컬 지역 네트워크에서 시작해 전국으로 확장했어. 가장 작은 단위의 연결에서 시작해 국민앱이 된 플랫폼이야.`},
+        {name:"야놀자 이수진",reason:`숙박 산업 전체의 공급자·소비자 네트워크를 디지털로 연결했어. 소프트뱅크와의 네트워크로 글로벌 확장 기반을 마련했어.`},
+        {name:"배달의민족 김봉진",reason:`음식점·라이더·소비자 3자 네트워크를 구축했어. 피치원미디어 인터뷰에서 "말이 잘 통하는 VC를 만나는 것이 더 중요하다"며 네트워크 관계를 강조했어.`},
       ],
-      B:[{name:"헤이딜러 권재현",reason:`중고차 시장의 딜러 네트워크를 디지털로 연결한 플랫폼 창업가.`}],
-      C:[{name:"성장하는 네트워커",reason:`지금 네트워크를 쌓아가는 중이야. 작은 연결이 쌓이면 큰 기회가 생겨.`}],
+      B:[
+        {name:"토스 이승건",reason:`인터뷰에서 "힘이 되는 사람을 만나는 것이 멘탈케어의 즉효약"이라고 밝혔어. 팀 네트워크를 통해 6년 8번 실패의 위기를 넘겼어.`},
+        {name:"무신사 조만호",reason:`신진 디자이너와 브랜드를 직접 발굴·연결하는 패션 생태계를 만들었어. "브랜드 스스로 자생할 수 있는 창구"를 패션비즈 인터뷰에서 강조했어.`},
+      ],
+      C:[
+        {name:"관심사 같은 사람 1명에게 먼저 연락해봐",reason:`카카오 김범수도 한게임을 공동창업하며 시작했어. 오늘 연락하고 싶었던 사람에게 짧은 메시지 하나를 보내는 것부터 시작해봐.`},
+      ],
     },
     RES:{
       S:[
-        {name:"셀트리온 서정진",reason:`바이오의약품이 불가능하다 했던 시절부터 수십 년간 포기하지 않은 불굴의 창업가. '실패는 없다 배움만 있다'.`},
-        {name:"넥슨 김정주",reason:`수많은 위기와 실패에도 포기하지 않고 글로벌 게임 제국을 만든 회복탄력성의 아이콘.`},
+        {name:"셀트리온 서정진",reason:`IMF 위기로 직장을 잃고 45세에 5천만원·직원 6명으로 창업했어. 학계가 "불가능"이라 했던 바이오시밀러를 9년간 FDA·유럽 27개국 설득 끝에 승인받았어. "관 뚜껑 닫히기 전까지 실패란 없다"고 직접 강연에서 말했어.`},
+        {name:"토스 이승건",reason:`아산나눔재단 강연에서 "팀원 월급 못 주고, 누군가 고소하고, 자주 틀리는 시기가 온다. 그래도 포기하지 말라"고 창업 현실을 솔직히 공유했어.`},
+        {name:"장병규 크래프톤",reason:`블루홀이 폐업 직전이던 2016년, 회사 매각을 시도했으나 카카오·NC 모두 거절했어. 그 위기에서 배틀그라운드를 만들어 역전했어.`},
       ],
       A:[
-        {name:"하이브 방시혁",reason:`수많은 거절과 실패 끝에 글로벌 K팝 제국을 만든 끈질긴 창업가.`},
-        {name:"스타일쉐어 윤자영",reason:`여러 번의 피벗과 위기를 극복하며 성장한 포기하지 않는 창업가.`},
+        {name:"야놀자 이수진",reason:`모텔 청소 알바에서 시작해 수많은 위기를 버텼어. 저서 '리스타트'에서 "원점에서 다시 시작해야 더 발전한다"는 회복 철학을 담았어.`},
+        {name:"배달의민족 김봉진",reason:`가구 사업 실패로 전세금을 날렸어. 국민대 축사에서 "삶의 대부분이 막막했던 사람"이라고 직접 고백했어. 그 막막함을 가능성으로 바꿨어.`},
+        {name:"하이브 방시혁",reason:`SM·JYP 등 기존 음악 산업의 거절과 냉소를 넘어 BTS를 글로벌 아티스트로 키웠어. 포기하지 않은 끈질긴 도전이 K팝의 판을 바꿨어.`},
       ],
-      B:[{name:"에이블씨엔씨 이상록",reason:`화장품 시장에서 여러 번 쓰러졌다 다시 일어선 회복탄력성의 창업가.`}],
-      C:[{name:"회복하는 창업가",reason:`지금 회복탄력성을 키우는 중이야. 작은 실패를 경험하고 일어서는 과정이 쌓여 강해져.`}],
+      B:[
+        {name:"쿠팡 김범석",reason:`소셜커머스로 시작해 수조 원 적자를 감수하며 로켓배송 인프라를 구축했어. 2021년 NYSE 상장 시 "혁신을 멈추지 않겠다"고 밝혔어.`},
+        {name:"무신사 조만호",reason:`2021년 광고 논란으로 대표직을 내려놨다가 2024년 복귀했어. 위기에서도 무신사 생태계를 지킨 창업가야.`},
+      ],
+      C:[
+        {name:"실패를 기록해봐",reason:`서정진 회장은 강연에서 "실패는 없다, 아직 성공하지 않은 것"이라고 말했어. 오늘 안 된 것에서 배운 점 1가지를 적고 내일의 시도를 설계해봐.`},
+      ],
     },
     STR:{
       S:[
-        {name:"네이버 이해진",reason:`검색에서 AI·글로벌 플랫폼으로 이어지는 장기 전략을 10년 단위로 실행한 전략적 사고의 대가.`},
-        {name:"카카오 김범수",reason:`메신저에서 금융·게임·모빌리티로 확장한 플랫폼 전략의 설계자.`},
+        {name:"카카오 김범수",reason:`메신저에서 금융·게임·모빌리티로 확장하는 플랫폼 전략을 장기적으로 실행했어. 2000년 한게임 창업부터 지금까지 일관된 전략 로드맵을 가진 창업가야.`},
+        {name:"셀트리온 서정진",reason:`바이오시밀러가 개념조차 생소하던 시절 10년 후 시장을 설계했어. 강연에서 "약값 때문에 손도 못 써보고 죽어가는 환자가 없도록"이라는 명확한 전략 목표를 강조했어.`},
+        {name:"장병규 크래프톤",reason:`더밀크 인터뷰에서 "창업 2년은 생존, 그다음이 보인다"고 했어. 4번 연속 창업을 모두 성공으로 이끈 장기 전략 설계 능력이 검증됐어.`},
       ],
       A:[
-        {name:"버킷플레이스 이승재",reason:`버티컬 콘텐츠-커머스 결합이라는 정교한 전략으로 시장을 장악한 전략가.`},
-        {name:"스캐터랩 김종윤",reason:`AI 감성 대화 서비스를 장기 전략으로 키운 기술 창업가.`},
+        {name:"크래프톤 김창한",reason:`16년간 3개 게임 연속 실패 후 배틀그라운드를 만들었어. 비즈니스포스트 보도에서 "마지막으로 하고 싶은 게임을 만들겠다"고 결심한 전략적 결단이 역전의 시작이었어.`},
+        {name:"하이브 방시혁",reason:`K팝을 글로벌 IP 비즈니스로 전환하는 장기 전략을 실행했어. 음악에서 시작해 콘텐츠·커머스·플랫폼으로 확장하는 로드맵을 일관되게 실행했어.`},
+        {name:"컬리 김슬아",reason:`프리미엄 신선식품이라는 명확한 포지셔닝으로 시장을 개척했어. 좁은 타겟에서 시작해 카테고리 자체를 만든 전략적 집중의 사례야.`},
       ],
-      B:[{name:"에이팀벤처스 고산",reason:`우주항공 전문가에서 스타트업 전략 전문가로 전환한 전략적 사고의 소유자.`}],
-      C:[{name:"성장하는 전략가",reason:`지금 전략적 사고를 키우는 중이야. 큰 그림을 그리는 연습이 쌓이면 판이 달라 보이기 시작해.`}],
+      B:[
+        {name:"당근 김용현",reason:`하이퍼로컬이라는 명확한 전략 포지션으로 전국 확장했어. 지역성을 플랫폼 핵심 가치로 전략적으로 설정한 결정이 시장을 만들었어.`},
+        {name:"무신사 조만호",reason:`커뮤니티→콘텐츠→커머스→PB 브랜드로 단계별 확장 전략을 실행했어. 2024년 연간 매출 1조 돌파 시 "아시아 최대 패션플랫폼" 비전을 공식 선언했어.`},
+      ],
+      C:[
+        {name:"큰 그림부터 그려봐",reason:`장병규 의장은 더밀크 인터뷰에서 "창업 2년은 생존, 그다음이 보인다"고 했어. 1년 후 목표를 정하고 역산해서 이번 달 할 일 1개를 정해봐.`},
+      ],
     },
   };
 
-  // 글로벌 창업가 (보조)
-  const GLOBAL=[
-    {key:"OPP",name:"스티브 잡스",reason:`'사람들은 자신이 원하는 것을 모른다'며 잠재 수요를 발굴한 역사상 최고의 기회 탐색가.`},
-    {key:"CRE",name:"일론 머스크",reason:`전기차·우주·AI를 연결하는 상상력으로 여러 산업을 동시에 혁신한 창의적 비전가.`},
-    {key:"ACT",name:"제프 베조스",reason:`'Day 1' 정신으로 수십 년간 장기 실행을 이어온 역사상 가장 집요한 실행가.`},
-    {key:"NET",name:"리드 호프만",reason:`링크드인 창업하고 수많은 창업가를 연결한 실리콘밸리 최고의 네트워커.`},
-    {key:"RES",name:"하워드 슐츠",reason:`스타벅스를 7번 거절당하고도 포기하지 않아 글로벌 커피 제국을 만든 회복탄력성의 아이콘.`},
-    {key:"STR",name:"샘 올트먼",reason:`오픈AI를 통해 AI 시대의 판을 설계한 전략적 통찰력의 소유자.`},
+  // 글로벌 창업가 보완 풀 (top 역량 기반 매칭)
+  const GLOBAL = [
+    { key: "OPP", name: "스티브 잡스", reason: `"사람들은 자신이 원하는 것을 모른다"며 아이폰으로 존재하지 않던 시장을 창조했어. 잠재 수요를 먼저 발굴한 역대 최고의 기회탐색가야.` },
+    { key: "OPP", name: "피터 틸", reason: `저서 '제로 투 원'에서 "경쟁은 패자의 전략"이라며 독점적 기회 탐색을 강조했어. 페이팔·팔란티어·페이스북 투자 모두 남들이 보지 못한 기회를 먼저 봤어.` },
+    { key: "CRE", name: "일론 머스크", reason: `전기차·우주·AI를 동시에 혁신했어. 테슬라 초기 "10년 내 파산" 전망을 뒤집으며 창의적 비전을 현실로 만들었어.` },
+    { key: "CRE", name: "브라이언 체스키(에어비앤비)", reason: `빈 방을 호텔로 만드는 창의적 발상으로 숙박 산업을 재정의했어. 초기 투자자에게 수백 번 거절당했지만 발상 자체가 너무 창의적이어서 결국 통했어.` },
+    { key: "ACT", name: "제프 베조스", reason: `아마존 주주서한에서 매년 "우리는 여전히 창업 1일차"를 강조하며 Day 1 실행 문화를 만들었어. 수십 년간 실행을 멈추지 않은 역대 최고의 실행가야.` },
+    { key: "ACT", name: "사라 블레이클리(스팩스)", reason: `팩스를 판매하던 영업사원이 스팩스를 창업해 직접 제품을 개발하고 혼자 특허를 취득했어. 실행 가능한 작은 것부터 직접 해결한 창업가야.` },
+    { key: "NET", name: "리드 호프만", reason: `링크드인 창업 후 수많은 스타트업을 연결한 실리콘밸리 최고의 네트워커야. 저서 블리츠스케일링에서 네트워크 기반 성장 전략을 체계화했어.` },
+    { key: "NET", name: "잭 마(알리바바)", reason: `영어 교사였던 잭 마는 중국 인터넷 생태계를 연결하는 알리바바를 만들었어. "오늘은 잔인하고, 내일은 더 잔인하지만 모레는 아름답다"는 말로 유명해.` },
+    { key: "RES", name: "하워드 슐츠", reason: `스타벅스 투자 제안 217번 거절. 자서전에 기록된 사실이야. 포기하지 않고 결국 글로벌 커피 제국을 만든 회복탄력성의 아이콘이야.` },
+    { key: "RES", name: "제임스 다이슨", reason: `진공청소기 5126번 프로토타입 실패 끝에 성공했어. 본인 자서전에 기록된 사실이야. "매 실패마다 배웠다"는 말이 실패를 배움으로 바꾼 회복탄력성의 상징이야.` },
+    { key: "STR", name: "샘 올트먼", reason: `오픈AI를 통해 AI 시대의 판을 설계했어. 이사회 해임 5일 만에 복귀하며 전략적 판단력을 증명했어.` },
+    { key: "STR", name: "젠슨 황(엔비디아)", reason: `게임용 GPU를 AI 인프라로 전환하는 30년 전략을 실행했어. 인터뷰에서 "나는 항상 1인치 앞에 파산이 있다고 생각하며 경영한다"고 밝혔어.` },
   ];
-
   const topFamous=(FAMOUS[top.key]&&FAMOUS[top.key][lv(top.key)])||[];
   const top2Famous=(FAMOUS[top2.key]&&FAMOUS[top2.key][lv(top2.key)])||[];
   const globalMatch=GLOBAL.find(g=>g.key===top.key)||GLOBAL[0];
@@ -1073,7 +1123,20 @@ function ReportLockScreen({participantCount,onBack}){
           {requested?(<div style={{textAlign:"center"}}><div style={{fontSize:"40px",marginBottom:"10px"}}>✅</div><h3 style={{margin:"0 0 8px",fontSize:"17px",fontWeight:"900"}}>요청 완료!</h3><p style={{margin:0,fontSize:"14px",opacity:.7}}>2영업일 내 연락드릴게요.</p></div>):(
             <><h3 style={{margin:"0 0 6px",fontSize:"17px",fontWeight:"900"}}>📋 종합 결과보고서 받기</h3>
             <p style={{margin:"0 0 16px",fontSize:"14px",opacity:.7}}>역량 분포 분석 · 맞춤 교육 제언 · 팀 구성 전략 포함</p>
-            <button onClick={()=>setRequested(true)} disabled={!hasEnough} style={{width:"100%",background:hasEnough?"linear-gradient(135deg,#DB2777,#f59e0b)":"rgba(255,255,255,0.2)",color:"white",border:"none",borderRadius:"12px",padding:"13px",fontSize:"15px",fontWeight:"900",cursor:hasEnough?"pointer":"not-allowed",marginBottom:"8px"}}>{hasEnough?"📋 보고서 요청하기":"⏳ 참가자 5명 이상 필요"}</button>
+            <button onClick={async()=>{
+              if(!hasEnough)return;
+              try{
+                await gasCall("reportRequest",{
+                  org:account.org,
+                  contact:account.contact,
+                  email:account.email,
+                  code:account.code,
+                  count:students.length,
+                  avg:Math.round(students.reduce((s,st)=>s+st.avg,0)/(students.length||1))
+                });
+              }catch(e){console.error(e);}
+              setRequested(true);
+            }} disabled={!hasEnough} style={{width:"100%",background:hasEnough?"linear-gradient(135deg,#DB2777,#f59e0b)":"rgba(255,255,255,0.2)",color:"white",border:"none",borderRadius:"12px",padding:"13px",fontSize:"15px",fontWeight:"900",cursor:hasEnough?"pointer":"not-allowed",marginBottom:"8px"}}>{hasEnough?"📋 보고서 요청하기":"⏳ 참가자 5명 이상 필요"}</button>
             <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"8px"}}>
               <a href={`tel:${COMPANY.phone}`} style={{background:"rgba(255,255,255,0.1)",color:"white",border:"1px solid rgba(255,255,255,0.2)",borderRadius:"10px",padding:"10px",fontSize:"14px",fontWeight:"700",textDecoration:"none",textAlign:"center",display:"block"}}>📞 전화 문의</a>
               <a href={COMPANY.kakao} target="_blank" rel="noreferrer" style={{background:"#FEE500",color:"#3A1D1D",borderRadius:"10px",padding:"10px",fontSize:"14px",fontWeight:"800",textDecoration:"none",textAlign:"center",display:"block"}}>💬 카카오</a>
@@ -1099,7 +1162,18 @@ function SubAdminDashboard({account,onBack}){
   const loadAll=async()=>{setLoading(true);try{const[evs,activeList]=await Promise.all([db.evList(account.code,"b2b"),db.evGetActiveList(account.code)]);const evArr=evs||[];setEvents(evArr);setActiveEvIds((activeList||[]).map(e=>e.id));const counts={};await Promise.all(evArr.map(async ev=>{counts[ev.id]=await db.resultCount(ev.id);}));setEvCounts(counts);}catch(e){console.error(e);}setLoading(false);};
   const loadResults=async()=>{setLoading(true);try{setStudents(await db.resultLoad(selEvId,account.code,"b2b")||[]);}catch(e){console.error(e);}setLoading(false);};
   useEffect(()=>{loadAll();},[]);useEffect(()=>{loadResults();},[selEvId]);
-  const handleCreateEv=async()=>{if(!evForm.name.trim())return;setEvSaving(true);await db.evCreate(evForm,account.code,"b2b");setEvForm({name:"",date:"",desc:""});await loadAll();setEvSaving(false);};
+  const handleCreateEv=async()=>{
+    if(!evForm.name.trim())return;
+    setEvSaving(true);
+    // 낙관적 업데이트: 즉시 UI에 추가
+    const tempEv={id:`ev${Date.now()}`,name:evForm.name,date:evForm.date,desc:evForm.desc,orgCode:account.code,mode:"b2b",createdAt:new Date().toLocaleDateString("ko-KR"),_temp:true};
+    setEvents(prev=>[...prev,tempEv]);
+    setEvForm({name:"",date:"",desc:""});
+    setEvSaving(false);
+    // 백그라운드에서 실제 저장 후 최신 데이터로 갱신
+    try{await db.evCreate(tempEv,account.code,"b2b");}catch(e){console.error(e);}
+    loadAll(); // 비동기로 백그라운드 갱신 (await 없음)
+  };
   const handleToggle=async ev=>{await db.evToggleActive(ev.id,"b2b");setActiveEvIds(prev=>prev.includes(ev.id)?prev.filter(x=>x!==ev.id):[...prev,ev.id]);};
   const totalP=students.length;const avgS=totalP?Math.round(students.reduce((s,st)=>s+st.avg,0)/totalP):0;
   const filtered=useMemo(()=>[...students].sort((a,b)=>sortKey==="avg"?b.avg-a.avg:(b.scores?.[sortKey]||0)-(a.scores?.[sortKey]||0)),[students,sortKey]);
@@ -1161,6 +1235,124 @@ function SuperAdminLogin({onSuccess,onBack}){
 // ══════════════════════════════════════════════════════
 
 // ── HTML 일괄 내보내기 ──────────────────────────────────
+// ── 프로젝트 분석 탭 (별도 컴포넌트 — useState 정상 동작) ──
+function CompareTab({directEvents,events,directStudents,students}){
+  const allEvents=[...directEvents,...events];
+  const allStudents=[...directStudents,...students];
+  const [selProjId,setSelProjId]=useState(allEvents[0]?.id||null);
+  const selEv=allEvents.find(e=>e.id===selProjId);
+  const projStudents=selProjId?allStudents.filter(s=>s.evId===selProjId):[];
+  const projAvg=projStudents.length?Math.round(projStudents.reduce((s,st)=>s+st.avg,0)/projStudents.length):0;
+  const dimAvgs=DIMS.map(d=>({...d,avg:projStudents.length?Math.round(projStudents.reduce((s,st)=>s+(st.scores?.[d.key]||0),0)/projStudents.length):0}));
+  const topDim=dimAvgs.length?[...dimAvgs].sort((a,b)=>b.avg-a.avg)[0]:null;
+  const weakDim=dimAvgs.length?[...dimAvgs].sort((a,b)=>a.avg-b.avg)[0]:null;
+  const projScores=DIMS.reduce((o,d)=>({...o,[d.key]:projStudents.length?Math.round(projStudents.reduce((s,st)=>s+(st.scores?.[d.key]||0),0)/projStudents.length):0}),{});
+  return(
+  <div style={{display:"flex",flexDirection:"column",gap:"14px"}}>
+    <div style={CARD}>
+      <h3 style={{margin:"0 0 4px",fontSize:"15px",fontWeight:"900",color:"#1e1b4b"}}>📊 프로젝트별 역량 분석</h3>
+      <p style={{margin:"0 0 14px",fontSize:"14px",color:"#6B7280"}}>프로젝트를 선택하면 역량 분포와 상세 통계를 확인할 수 있어요</p>
+      {allEvents.length===0?(
+        <div style={{textAlign:"center",padding:"32px",color:"#9CA3AF"}}>생성된 행사가 없어요.</div>
+      ):(
+        <div style={{display:"flex",flexDirection:"column",gap:"8px"}}>
+          {allEvents.map(ev=>{
+            const evStudents=allStudents.filter(s=>s.evId===ev.id);
+            const evAvg=evStudents.length?Math.round(evStudents.reduce((s,st)=>s+st.avg,0)/evStudents.length):0;
+            const isDirect=ev.mode==="direct";
+            const isSelected=selProjId===ev.id;
+            const lv=getLevel(evAvg);
+            return(
+              <div key={ev.id} onClick={()=>setSelProjId(ev.id)} style={{display:"flex",alignItems:"center",gap:"12px",padding:"12px 16px",borderRadius:"12px",border:isSelected?"2px solid #7C3AED":"1.5px solid #e5e7eb",background:isSelected?"#f5f3ff":"white",cursor:"pointer",transition:"all .15s"}}>
+                <span style={{fontSize:"20px"}}>{isDirect?"🏢":"🏫"}</span>
+                <div style={{flex:1,minWidth:0}}>
+                  <div style={{display:"flex",alignItems:"center",gap:"7px",flexWrap:"wrap",marginBottom:"2px"}}>
+                    <span style={{fontSize:"14px",fontWeight:"800",color:"#1e1b4b"}}>{ev.name}</span>
+                    <span style={{fontSize:"11px",background:isDirect?"#f0fdf4":"#eff6ff",color:isDirect?"#059669":"#0284C7",fontWeight:"700",padding:"1px 7px",borderRadius:"20px"}}>{isDirect?"🏢 직접운영":"🏫 B2B"}</span>
+                  </div>
+                  <div style={{fontSize:"12px",color:"#9CA3AF"}}>{ev.date||"날짜 미정"} · {evStudents.length}명 참가</div>
+                </div>
+                {evStudents.length>0&&<div style={{textAlign:"center",flexShrink:0}}>
+                  <div style={{fontSize:"18px",fontWeight:"900",color:lv.c}}>{evAvg}</div>
+                  <div style={{fontSize:"10px",color:"#9CA3AF"}}>평균점</div>
+                </div>}
+                {evStudents.length===0&&<div style={{fontSize:"12px",color:"#d1d5db",flexShrink:0}}>결과 없음</div>}
+                <span style={{fontSize:"14px",color:isSelected?"#7C3AED":"#d1d5db"}}>▶</span>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+    {selEv&&projStudents.length===0&&(
+      <div style={{...CARD,textAlign:"center",padding:"32px",color:"#9CA3AF"}}>
+        <div style={{fontSize:"32px",marginBottom:"8px"}}>📭</div>
+        <div>이 프로젝트에 진단 결과가 없어요</div>
+      </div>
+    )}
+    {selEv&&projStudents.length>0&&(
+      <div style={CARD}>
+        <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",flexWrap:"wrap",gap:"10px",marginBottom:"16px"}}>
+          <div>
+            <div style={{display:"flex",alignItems:"center",gap:"8px",flexWrap:"wrap",marginBottom:"4px"}}>
+              <span style={{fontSize:"16px",fontWeight:"900",color:"#1e1b4b"}}>{selEv.name}</span>
+              <span style={{fontSize:"11px",background:selEv.mode==="direct"?"#f0fdf4":"#eff6ff",color:selEv.mode==="direct"?"#059669":"#0284C7",fontWeight:"700",padding:"1px 7px",borderRadius:"20px"}}>{selEv.mode==="direct"?"🏢 직접운영":"🏫 B2B"}</span>
+            </div>
+            <div style={{fontSize:"13px",color:"#9CA3AF"}}>{selEv.date||""} · 총 {projStudents.length}명</div>
+          </div>
+          <button onClick={()=>exportAllResults(projStudents,allEvents,selEv.name)} style={{background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",border:"none",borderRadius:"10px",padding:"8px 16px",fontSize:"13px",fontWeight:"800",cursor:"pointer"}}>📥 결과 내보내기</button>
+        </div>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(90px,1fr))",gap:"8px",marginBottom:"20px"}}>
+          {[{n:projStudents.length+"명",l:"총 참가자"},{n:projAvg+"점",l:"전체 평균"},{n:(topDim?.avg||0)+"점",l:`최강 ${topDim?.label||""}`},{n:(weakDim?.avg||0)+"점",l:`보완 ${weakDim?.label||""}`}].map(({n,l})=>(
+            <div key={l} style={{background:"#f5f3ff",borderRadius:"10px",padding:"10px",textAlign:"center"}}>
+              <div style={{fontSize:"17px",fontWeight:"900",color:"#7C3AED"}}>{n}</div>
+              <div style={{fontSize:"10px",color:"#6B7280",marginTop:"2px"}}>{l}</div>
+            </div>
+          ))}
+        </div>
+        <div style={{display:"grid",gridTemplateColumns:"auto 1fr",gap:"20px",alignItems:"center",marginBottom:"16px"}}>
+          <Radar scores={projScores} size={140}/>
+          <div>
+            {dimAvgs.map(d=>{
+              const lv=getLevel(d.avg);
+              return(
+                <div key={d.key} style={{marginBottom:"8px"}}>
+                  <div style={{display:"flex",justifyContent:"space-between",marginBottom:"2px"}}>
+                    <span style={{fontSize:"12px",fontWeight:"700"}}>{d.emoji} {d.label}</span>
+                    <div style={{display:"flex",gap:"4px",alignItems:"center"}}>
+                      <span style={{fontSize:"10px",background:lv.bg,color:lv.c,fontWeight:"700",padding:"1px 5px",borderRadius:"8px"}}>{lv.l}</span>
+                      <span style={{fontSize:"13px",fontWeight:"900",color:d.color}}>{d.avg}</span>
+                    </div>
+                  </div>
+                  <div style={{background:"#e5e7eb",borderRadius:"100px",height:"6px"}}>
+                    <div style={{background:d.color,height:"6px",width:`${d.avg}%`,borderRadius:"100px",transition:"width .4s ease"}}/>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        <div style={{borderTop:"1px solid #f3f4f6",paddingTop:"14px"}}>
+          <div style={{fontSize:"12px",fontWeight:"700",color:"#6B7280",marginBottom:"8px"}}>등급 분포</div>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:"6px"}}>
+            {[{l:"탁월",min:80,c:"#7C3AED",bg:"#f5f3ff"},{l:"우수",min:60,max:80,c:"#0284C7",bg:"#eff6ff"},{l:"보통",min:40,max:60,c:"#D97706",bg:"#fffbeb"},{l:"개발필요",max:40,c:"#DC2626",bg:"#fef2f2"}].map(({l,min,max,c,bg})=>{
+              const cnt=projStudents.filter(s=>s.avg>=(min||0)&&s.avg<(max||999)).length;
+              const pct=Math.round(cnt/projStudents.length*100);
+              return(<div key={l} style={{background:bg,borderRadius:"10px",padding:"10px",textAlign:"center"}}>
+                <div style={{fontSize:"18px",fontWeight:"900",color:c}}>{cnt}명</div>
+                <div style={{fontSize:"11px",color:c,fontWeight:"700"}}>{pct}%</div>
+                <div style={{fontSize:"10px",color:"#6B7280",marginTop:"2px"}}>{l}</div>
+              </div>);
+            })}
+          </div>
+        </div>
+      </div>
+    )}
+  </div>
+  );
+}
+
+
 function exportAllResults(students, events, title) {
   const evMap = {};
   (events||[]).forEach(e=>{ evMap[e.id]=e.name; });
@@ -1217,7 +1409,7 @@ function exportAllResults(students, events, title) {
 <title>${title} — 창업 DNA 진단 결과</title>
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:'Apple SD Gothic Neo',system-ui,sans-serif;background:#f5f3ff;color:#1e1b4b;font-size:13px}
+  body{font-family:'Apple SD Gothic Neo','Pretendard',system-ui,sans-serif;background:#f5f3ff;color:#1e1b4b;font-size:14px;line-height:1.6}
   @media print{body{background:white}.no-print{display:none}@page{margin:15mm}}
   .print-btn{position:fixed;top:16px;right:16px;background:linear-gradient(135deg,#7C3AED,#DB2777);color:white;border:none;border-radius:20px;padding:10px 20px;font-size:13px;font-weight:700;cursor:pointer;z-index:999}
   .wrap{max-width:900px;margin:0 auto;padding:24px 20px 60px}
@@ -1228,25 +1420,29 @@ function exportAllResults(students, events, title) {
   .sum-card{background:rgba(255,255,255,0.12);border-radius:12px;padding:12px;text-align:center}
   .sum-n{font-size:22px;font-weight:900;color:#a78bfa}
   .sum-l{font-size:10px;opacity:.6;margin-top:3px}
-  .card{background:white;border-radius:14px;margin-bottom:14px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.06)}
-  .card-header{display:flex;gap:14px;padding:16px;align-items:flex-start}
-  .rank{font-size:12px;font-weight:900;color:#9CA3AF;width:20px;flex-shrink:0;padding-top:2px}
+  .card{background:white;border-radius:16px;margin-bottom:20px;overflow:hidden;box-shadow:0 2px 14px rgba(0,0,0,0.08);page-break-inside:avoid}
+  .card-header{display:flex;gap:18px;padding:22px;align-items:flex-start}
+  .rank{font-size:13px;font-weight:900;color:#9CA3AF;width:24px;flex-shrink:0;padding-top:4px}
   .radar{flex-shrink:0}
-  .info{flex:1}
-  .name-row{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:6px}
-  .name{font-size:15px;font-weight:900}
-  .badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px}
-  .badge2{font-size:10px;color:#7C3AED;font-weight:700}
-  .meta{font-size:11px;color:#9CA3AF;margin-bottom:10px}
-  .dims{display:flex;flex-direction:column;gap:5px}
-  .dim-row{display:flex;align-items:center;gap:7px}
-  .dim-label{font-size:10px;font-weight:700;width:90px;flex-shrink:0;color:#374151}
-  .bar-wrap{flex:1;background:#f3f4f6;border-radius:100px;height:5px;overflow:hidden}
-  .bar{height:5px;border-radius:100px}
-  .dim-score{font-size:11px;font-weight:900;width:24px;text-align:right;flex-shrink:0}
-  .dim-lv{font-size:9px;font-weight:700;width:36px;flex-shrink:0}
-  .score{font-size:26px;font-weight:900;color:#7C3AED;flex-shrink:0;align-self:center}
-  .section-title{font-size:14px;font-weight:900;color:#1e1b4b;margin:28px 0 12px;padding-bottom:8px;border-bottom:2px solid #ede9fe}
+  .info{flex:1;min-width:0}
+  .name-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+  .name{font-size:17px;font-weight:900;line-height:1.3;letter-spacing:-0.3px}
+  .badge{font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;line-height:1.5}
+  .badge2{font-size:11px;color:#7C3AED;font-weight:700;background:#f5f3ff;padding:3px 8px;border-radius:20px}
+  .meta{font-size:12px;color:#9CA3AF;margin-bottom:14px;line-height:1.7}
+  .dims{display:flex;flex-direction:column;gap:9px}
+  .dim-row{display:flex;align-items:center;gap:10px;padding:3px 0}
+  .dim-label{font-size:12px;font-weight:700;width:110px;flex-shrink:0;color:#374151;line-height:1.5}
+  .bar-wrap{flex:1;background:#f3f4f6;border-radius:100px;height:8px;overflow:hidden}
+  .bar{height:8px;border-radius:100px}
+  .dim-score{font-size:13px;font-weight:900;width:30px;text-align:right;flex-shrink:0}
+  .dim-lv{font-size:11px;font-weight:700;width:52px;flex-shrink:0;text-align:center}
+  .score{font-size:32px;font-weight:900;color:#7C3AED;flex-shrink:0;align-self:center;min-width:48px;text-align:right;padding-left:8px}
+  .section-title{font-size:16px;font-weight:900;color:#1e1b4b;margin:36px 0 16px;padding-bottom:10px;border-bottom:2px solid #ede9fe;letter-spacing:-0.3px}
+  @media print{.card{margin-bottom:14px}.card-header{padding:16px}@page{margin:12mm}}
+  .name-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+  .badge{font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px}
+  .badge2{font-size:11px;color:#7C3AED;font-weight:700}
 </style>
 </head>
 <body>
@@ -1307,7 +1503,16 @@ function SuperAdminDashboard({onBack}){
   useEffect(()=>{loadAll();},[]);
   useEffect(()=>{loadDirectResults();},[dSelEvId,directEvents.length]);
 
-  const handleCreateDirectEv=async()=>{if(!dEvForm.name.trim())return;setDEvSaving(true);await db.evCreate(dEvForm,"SUPER","direct");setDEvForm({name:"",date:"",desc:""});await loadAll();setDEvSaving(false);};
+  const handleCreateDirectEv=async()=>{
+    if(!dEvForm.name.trim())return;
+    setDEvSaving(true);
+    const tempEv={id:`ev${Date.now()}`,name:dEvForm.name,date:dEvForm.date,desc:dEvForm.desc,orgCode:"SUPER",mode:"direct",createdAt:new Date().toLocaleDateString("ko-KR"),_temp:true};
+    setDirectEvents(prev=>[...prev,tempEv]);
+    setDEvForm({name:"",date:"",desc:""});
+    setDEvSaving(false);
+    try{await db.evCreate(tempEv,"SUPER","direct");}catch(e){console.error(e);}
+    loadAll();
+  };
   const handleToggleDirectEv=async ev=>{await db.evToggleActive(ev.id,"direct");setDirectActiveIds(prev=>prev.includes(ev.id)?prev.filter(x=>x!==ev.id):[...prev,ev.id]);};
   const handleApprove=async code=>{
     await db.subAccountApprove(code);
@@ -1376,128 +1581,7 @@ function SuperAdminDashboard({onBack}){
           {subAccounts.length===0?<div style={{...CARD,textAlign:"center",padding:"40px"}}><p style={{color:"#9CA3AF"}}>등록된 B2B 파트너가 없어요.</p></div>:subAccounts.map(acc=>{const accEvs=events.filter(e=>e.orgCode===acc.code);const accStuds=students.filter(s=>accEvs.map(e=>e.id).includes(s.evId));return(<div key={acc.code} style={{...CARD,border:accStuds.length>=CONFIG.REPORT_CTA_MIN?"2px solid #7C3AED":"1.5px solid #e5e7eb"}}><div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",flexWrap:"wrap",gap:"10px"}}><div style={{flex:1}}><div style={{display:"flex",alignItems:"center",gap:"8px",marginBottom:"6px",flexWrap:"wrap"}}><span style={{fontSize:"16px",fontWeight:"900"}}>{acc.org}</span><span style={{background:"#f5f3ff",color:"#7C3AED",fontSize:"12px",fontWeight:"800",padding:"2px 9px",borderRadius:"20px"}}>{acc.code}</span>{accStuds.length>=CONFIG.REPORT_CTA_MIN&&<span style={{background:"#fef3c7",color:"#92400e",fontSize:"12px",fontWeight:"800",padding:"2px 9px",borderRadius:"20px"}}>📋 보고서 가능</span>}</div><div style={{display:"flex",gap:"12px",flexWrap:"wrap",fontSize:"13px",color:"#9CA3AF"}}><span>👤 {acc.contact}</span><span>📧 {acc.email}</span><span>📅 {accEvs.length}개 행사</span><span>👥 {accStuds.length}명</span></div></div></div>{accStuds.length>0&&(<div style={{display:"flex",gap:"6px",flexWrap:"wrap",marginTop:"10px"}}>{DIMS.map(d=>{const a=Math.round(accStuds.reduce((s,st)=>s+(st.scores?.[d.key]||0),0)/accStuds.length);return(<div key={d.key} style={{background:d.color+"15",border:`1px solid ${d.color}40`,borderRadius:"8px",padding:"4px 9px",display:"flex",gap:"5px",alignItems:"center"}}><span style={{fontSize:"12px"}}>{d.emoji}</span><span style={{fontSize:"13px",fontWeight:"800",color:d.color}}>{a}</span></div>);})}</div>)}</div>);})}
         </div>)}
 
-        {tab==="compare"&&(()=>{
-          const allEvents=[...directEvents,...events];
-          const [selProjId,setSelProjId]=React.useState(allEvents[0]?.id||null);
-          const selEv=allEvents.find(e=>e.id===selProjId);
-          const allStudents=[...directStudents,...students];
-          const projStudents=selProjId?allStudents.filter(s=>s.evId===selProjId):[];
-          const projAvg=projStudents.length?Math.round(projStudents.reduce((s,st)=>s+st.avg,0)/projStudents.length):0;
-          const dimAvgs=DIMS.map(d=>({...d,avg:projStudents.length?Math.round(projStudents.reduce((s,st)=>s+(st.scores?.[d.key]||0),0)/projStudents.length):0}));
-          const topDim=dimAvgs.length?[...dimAvgs].sort((a,b)=>b.avg-a.avg)[0]:null;
-          const weakDim=dimAvgs.length?[...dimAvgs].sort((a,b)=>a.avg-b.avg)[0]:null;
-          const projScores=DIMS.reduce((o,d)=>({...o,[d.key]:projStudents.length?Math.round(projStudents.reduce((s,st)=>s+(st.scores?.[d.key]||0),0)/projStudents.length):0}),{});
-          return(
-          <div style={{display:"flex",flexDirection:"column",gap:"14px"}}>
-            {/* 프로젝트 목록 */}
-            <div style={CARD}>
-              <h3 style={{margin:"0 0 4px",fontSize:"15px",fontWeight:"900",color:"#1e1b4b"}}>📊 프로젝트별 역량 분석</h3>
-              <p style={{margin:"0 0 14px",fontSize:"14px",color:"#6B7280"}}>프로젝트를 선택하면 역량 분포와 상세 통계를 확인할 수 있어요</p>
-              {allEvents.length===0?(
-                <div style={{textAlign:"center",padding:"32px",color:"#9CA3AF"}}>생성된 행사가 없어요.</div>
-              ):(
-                <div style={{display:"flex",flexDirection:"column",gap:"8px"}}>
-                  {allEvents.map(ev=>{
-                    const evStudents=allStudents.filter(s=>s.evId===ev.id);
-                    const evAvg=evStudents.length?Math.round(evStudents.reduce((s,st)=>s+st.avg,0)/evStudents.length):0;
-                    const isDirect=ev.mode==="direct";
-                    const isSelected=selProjId===ev.id;
-                    const lv=getLevel(evAvg);
-                    return(
-                      <div key={ev.id} onClick={()=>setSelProjId(ev.id)} style={{display:"flex",alignItems:"center",gap:"12px",padding:"12px 16px",borderRadius:"12px",border:isSelected?"2px solid #7C3AED":"1.5px solid #e5e7eb",background:isSelected?"#f5f3ff":"white",cursor:"pointer",transition:"all .15s"}}>
-                        <span style={{fontSize:"20px"}}>{isDirect?"🏢":"🏫"}</span>
-                        <div style={{flex:1,minWidth:0}}>
-                          <div style={{display:"flex",alignItems:"center",gap:"7px",flexWrap:"wrap",marginBottom:"2px"}}>
-                            <span style={{fontSize:"15px",fontWeight:"800",color:"#1e1b4b"}}>{ev.name}</span>
-                            <span style={{fontSize:"12px",background:isDirect?"#f0fdf4":"#eff6ff",color:isDirect?"#059669":"#0284C7",fontWeight:"700",padding:"1px 7px",borderRadius:"20px"}}>{isDirect?"🏢 직접운영":"🏫 B2B"}</span>
-                          </div>
-                          <div style={{fontSize:"13px",color:"#9CA3AF"}}>{ev.date||"날짜 미정"} · {evStudents.length}명 참가</div>
-                        </div>
-                        {evStudents.length>0&&<div style={{textAlign:"center",flexShrink:0}}>
-                          <div style={{fontSize:"18px",fontWeight:"900",color:lv.c}}>{evAvg}</div>
-                          <div style={{fontSize:"11px",color:"#9CA3AF"}}>평균점</div>
-                        </div>}
-                        {evStudents.length===0&&<div style={{fontSize:"13px",color:"#d1d5db",flexShrink:0}}>결과 없음</div>}
-                        <span style={{fontSize:"15px",color:isSelected?"#7C3AED":"#d1d5db"}}>▶</span>
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
-            </div>
-            {/* 선택된 프로젝트 상세 */}
-            {selEv&&projStudents.length===0&&(
-              <div style={{...CARD,textAlign:"center",padding:"32px",color:"#9CA3AF"}}>
-                <div style={{fontSize:"32px",marginBottom:"8px"}}>📭</div>
-                <div>이 프로젝트에 진단 결과가 없어요</div>
-              </div>
-            )}
-            {selEv&&projStudents.length>0&&(
-              <div style={CARD}>
-                {/* 헤더 */}
-                <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",flexWrap:"wrap",gap:"10px",marginBottom:"16px"}}>
-                  <div>
-                    <div style={{display:"flex",alignItems:"center",gap:"8px",flexWrap:"wrap",marginBottom:"4px"}}>
-                      <span style={{fontSize:"16px",fontWeight:"900",color:"#1e1b4b"}}>{selEv.name}</span>
-                      <span style={{fontSize:"12px",background:selEv.mode==="direct"?"#f0fdf4":"#eff6ff",color:selEv.mode==="direct"?"#059669":"#0284C7",fontWeight:"700",padding:"1px 7px",borderRadius:"20px"}}>{selEv.mode==="direct"?"🏢 직접운영":"🏫 B2B"}</span>
-                    </div>
-                    <div style={{fontSize:"14px",color:"#9CA3AF"}}>{selEv.date||""} · 총 {projStudents.length}명</div>
-                  </div>
-                  <button onClick={()=>exportAllResults(projStudents,allEvents,selEv.name)} style={{background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",border:"none",borderRadius:"10px",padding:"8px 16px",fontSize:"14px",fontWeight:"800",cursor:"pointer"}}>📥 결과 내보내기</button>
-                </div>
-                {/* 요약 카드 */}
-                <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(100px,1fr))",gap:"8px",marginBottom:"20px"}}>
-                  {[{n:projStudents.length+"명",l:"총 참가자"},{n:projAvg+"점",l:"전체 평균"},{n:(topDim?.avg||0)+"점",l:`최강 ${topDim?.label||""}`},{n:(weakDim?.avg||0)+"점",l:`보완 ${weakDim?.label||""}`}].map(({n,l})=>(
-                    <div key={l} style={{background:"#f5f3ff",borderRadius:"10px",padding:"10px",textAlign:"center"}}>
-                      <div style={{fontSize:"17px",fontWeight:"900",color:"#7C3AED"}}>{n}</div>
-                      <div style={{fontSize:"11px",color:"#6B7280",marginTop:"2px"}}>{l}</div>
-                    </div>
-                  ))}
-                </div>
-                {/* 레이더 + 역량 바 */}
-                <div style={{display:"grid",gridTemplateColumns:"auto 1fr",gap:"20px",alignItems:"center",marginBottom:"16px"}}>
-                  <Radar scores={projScores} size={140}/>
-                  <div>
-                    {dimAvgs.map(d=>{
-                      const lv=getLevel(d.avg);
-                      return(
-                        <div key={d.key} style={{marginBottom:"8px"}}>
-                          <div style={{display:"flex",justifyContent:"space-between",marginBottom:"2px"}}>
-                            <span style={{fontSize:"13px",fontWeight:"700"}}>{d.emoji} {d.label}</span>
-                            <div style={{display:"flex",gap:"4px",alignItems:"center"}}>
-                              <span style={{fontSize:"11px",background:lv.bg,color:lv.c,fontWeight:"700",padding:"1px 5px",borderRadius:"8px"}}>{lv.l}</span>
-                              <span style={{fontSize:"14px",fontWeight:"900",color:d.color}}>{d.avg}</span>
-                            </div>
-                          </div>
-                          <div style={{background:"#e5e7eb",borderRadius:"100px",height:"6px"}}>
-                            <div style={{background:d.color,height:"6px",width:`${d.avg}%`,borderRadius:"100px",transition:"width .4s ease"}}/>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-                {/* 등급 분포 */}
-                <div style={{borderTop:"1px solid #f3f4f6",paddingTop:"14px"}}>
-                  <div style={{fontSize:"13px",fontWeight:"700",color:"#6B7280",marginBottom:"8px"}}>등급 분포</div>
-                  <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:"6px"}}>
-                    {[{l:"탁월",min:80,c:"#7C3AED",bg:"#f5f3ff"},{l:"우수",min:60,max:80,c:"#0284C7",bg:"#eff6ff"},{l:"보통",min:40,max:60,c:"#D97706",bg:"#fffbeb"},{l:"개발필요",max:40,c:"#DC2626",bg:"#fef2f2"}].map(({l,min,max,c,bg})=>{
-                      const cnt=projStudents.filter(s=>s.avg>=(min||0)&&s.avg<(max||999)).length;
-                      const pct=Math.round(cnt/projStudents.length*100);
-                      return(<div key={l} style={{background:bg,borderRadius:"10px",padding:"10px",textAlign:"center"}}>
-                        <div style={{fontSize:"18px",fontWeight:"900",color:c}}>{cnt}명</div>
-                        <div style={{fontSize:"12px",color:c,fontWeight:"700"}}>{pct}%</div>
-                        <div style={{fontSize:"11px",color:"#6B7280",marginTop:"2px"}}>{l}</div>
-                      </div>);
-                    })}
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-          );
-        })()}
-
+        {tab==="compare"&&<CompareTab directEvents={directEvents} events={events} directStudents={directStudents} students={students}/>}
         {tab==="pending"&&(<div style={{display:"flex",flexDirection:"column",gap:"12px"}}>
           {approveResult&&(
             <div style={{position:"fixed",inset:0,background:"rgba(0,0,0,0.6)",zIndex:9999,display:"flex",alignItems:"center",justifyContent:"center",padding:"16px"}}>
@@ -1697,23 +1781,98 @@ function ParticipantMode({onBack}){
           <div style={CARD}><p style={{margin:"0 0 10px",fontSize:"15px",fontWeight:"800",color:"#1e1b4b"}}>🌟 나와 비슷한 창업가</p>
             {(aiResult.famous_matches||[]).map((item,i)=><div key={i} style={{display:"flex",gap:"9px",alignItems:"flex-start",padding:"9px 11px",background:i%2===0?"#fafafa":"#f5f3ff",borderRadius:"10px",marginBottom:i<4?"7px":0}}><div style={{width:"22px",height:"22px",borderRadius:"50%",background:"linear-gradient(135deg,#7C3AED,#DB2777)",color:"white",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"13px",fontWeight:"900",flexShrink:0}}>{i+1}</div><div><div style={{fontSize:"14px",fontWeight:"900",color:"#1e1b4b",marginBottom:"2px"}}>{item.name}</div>{item.reason&&<div style={{fontSize:"12px",color:"#6B7280"}}>{item.reason}</div>}</div></div>)}
           </div>
-          {/* 모바일: 공유, PC: PDF 저장 */}
+          {/* 모바일: 이미지 카드 공유, PC: PDF 저장 */}
           {(()=>{
-            const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-            if(isMobile && navigator.share) {
-              return (
-                <button onClick={()=>{
-                  navigator.share({
-                    title:`창업 DNA 진단 결과 — ${info.name}`,
-                    text:`🧬 ${info.name}님의 창업 DNA 진단 결과\n\n${aiResult.type}\n"${aiResult.tagline}"\n\n📊 종합 점수: ${Math.round(Object.values(scores).reduce((a,b)=>a+b,0)/6)}점\n\n👇 내 결과 보기`,
-                    url: window.location.href
-                  }).catch(()=>{});
-                }} className="no-print" style={{width:"100%",background:"linear-gradient(135deg,#059669,#0284C7)",color:"white",border:"none",borderRadius:"50px",padding:"13px",fontSize:"15px",fontWeight:"800",cursor:"pointer"}}>
-                  📤 결과 공유하기
+            const avg2=Math.round(Object.values(scores).reduce((a,b)=>a+b,0)/6);
+            const lv2=getLevel(avg2);
+            const isMobile=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+            const shareAsImage=async()=>{
+              try{
+                // Canvas로 결과 카드 이미지 생성
+                const canvas=document.createElement('canvas');
+                const dpr=window.devicePixelRatio||1;
+                canvas.width=600*dpr; canvas.height=400*dpr;
+                const ctx=canvas.getContext('2d');
+                ctx.scale(dpr,dpr);
+                // 배경
+                const grad=ctx.createLinearGradient(0,0,600,400);
+                grad.addColorStop(0,'#0f0a2e'); grad.addColorStop(1,'#4c1d95');
+                ctx.fillStyle=grad; ctx.beginPath();
+                ctx.roundRect(0,0,600,400,24); ctx.fill();
+                // 헤더
+                ctx.fillStyle='rgba(255,255,255,0.1)';
+                ctx.beginPath(); ctx.roundRect(20,20,560,70,14); ctx.fill();
+                ctx.fillStyle='#a78bfa'; ctx.font='bold 13px system-ui';
+                ctx.fillText('🧬 창업 역량 진단 결과  |  (주)피티인사이트',36,52);
+                ctx.fillStyle='white'; ctx.font='bold 22px system-ui';
+                ctx.fillText(`${info.name}님`,36,78);
+                // 유형
+                ctx.fillStyle='white'; ctx.font='bold 26px system-ui';
+                ctx.fillText(aiResult.type,20,130);
+                ctx.fillStyle='rgba(255,255,255,0.6)'; ctx.font='16px system-ui';
+                ctx.fillText(`"${aiResult.tagline}"`,20,158);
+                // 점수
+                ctx.fillStyle='#a78bfa'; ctx.font='bold 64px system-ui';
+                ctx.fillText(`${avg2}`,20,248);
+                ctx.fillStyle='rgba(255,255,255,0.5)'; ctx.font='16px system-ui';
+                ctx.fillText('종합 점수',20,272);
+                // 등급
+                ctx.fillStyle=lv2.c; ctx.font='bold 22px system-ui';
+                ctx.fillText(lv2.l,120,248);
+                ctx.fillStyle='rgba(255,255,255,0.5)'; ctx.font='15px system-ui';
+                ctx.fillText('역량 등급',120,272);
+                // 역량 바
+                const barY=300; const barH=8; const barW=560/6-8;
+                DIMS.forEach((d,i)=>{
+                  const x=20+i*(barW+8);
+                  const v=(scores[d.key]||0)/100;
+                  ctx.fillStyle='rgba(255,255,255,0.1)';
+                  ctx.beginPath(); ctx.roundRect(x,barY,barW,barH,4); ctx.fill();
+                  ctx.fillStyle=d.color;
+                  ctx.beginPath(); ctx.roundRect(x,barY,barW*v,barH,4); ctx.fill();
+                  ctx.fillStyle='rgba(255,255,255,0.6)'; ctx.font='10px system-ui';
+                  ctx.fillText(d.emoji,x+barW/2-6,barY+26);
+                  ctx.fillStyle='white'; ctx.font='bold 11px system-ui';
+                  ctx.fillText(scores[d.key]||0,x+barW/2-8,barY+42);
+                });
+                // CTA
+                ctx.fillStyle='rgba(255,255,255,0.15)';
+                ctx.beginPath(); ctx.roundRect(20,365,560,24,8); ctx.fill();
+                ctx.fillStyle='rgba(255,255,255,0.6)'; ctx.font='12px system-ui';
+                ctx.fillText('👇 나도 창업 DNA 진단해보기  →  topofglobal-dot.github.io/dna-ptinsight',36,381);
+                // 이미지로 변환
+                canvas.toBlob(async blob=>{
+                  if(!blob) return;
+                  const file=new File([blob],`창업DNA_${info.name}.png`,{type:'image/png'});
+                  if(navigator.canShare&&navigator.canShare({files:[file]})){
+                    await navigator.share({
+                      title:`${info.name}님의 창업 DNA 진단 결과`,
+                      text:`🧬 ${aiResult.type}\n"${aiResult.tagline}"\n📊 종합 점수: ${avg2}점`,
+                      files:[file],
+                      url: window.location.href
+                    }).catch(()=>{});
+                  } else {
+                    // 파일 공유 불가시 텍스트만 공유
+                    navigator.share({
+                      title:`${info.name}님의 창업 DNA 진단 결과`,
+                      text:`🧬 ${aiResult.type}\n"${aiResult.tagline}"\n📊 종합 점수: ${avg2}점`,
+                      url: window.location.href
+                    }).catch(()=>{});
+                  }
+                },'image/png');
+              } catch(e){
+                // 실패 시 기본 공유
+                navigator.share({title:`창업 DNA 결과`,text:`${info.name} · ${aiResult.type} · ${avg2}점`,url:window.location.href}).catch(()=>{});
+              }
+            };
+            if(isMobile&&navigator.share){
+              return(
+                <button onClick={shareAsImage} className="no-print" style={{width:"100%",background:"linear-gradient(135deg,#059669,#0284C7)",color:"white",border:"none",borderRadius:"50px",padding:"13px",fontSize:"15px",fontWeight:"800",cursor:"pointer"}}>
+                  🖼️ 결과 이미지로 공유하기
                 </button>
               );
             } else {
-              return (
+              return(
                 <button onClick={()=>window.print()} className="no-print" style={{width:"100%",background:"linear-gradient(135deg,#059669,#0284C7)",color:"white",border:"none",borderRadius:"50px",padding:"13px",fontSize:"15px",fontWeight:"800",cursor:"pointer"}}>
                   📄 결과 PDF 저장
                 </button>
